@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="5f968bea-aff9-4ba0-9b52-5234d24b507b" name="Default Changelist" comment="">
+=======
+<<<<<<< HEAD
+    <list default="true" id="d620df65-c95d-404b-a202-26371c84109a" name="Default Changelist" comment="">
+>>>>>>> 3150def905b6f119bfb4090ea806ea47c6e88944
       <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+=======
+=======
+    <list default="true" id="12da7b36-c5ca-4190-a6aa-e35f3b131a8e" name="Default Changelist" comment="Creating a Self-contained JAR">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+>>>>>>> b72717f9d701bcfd49ce3dca7211952f2ee5ea3b
+>>>>>>> 3150def905b6f119bfb4090ea806ea47c6e88944
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +28,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+<<<<<<< HEAD
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="release" />
@@ -22,15 +36,54 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="MERGE" />
+=======
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+<<<<<<< HEAD
+        <option value="Nightmare &lt;nightmare51379@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+=======
+        <option value="Khant Sithu Aung &lt;45054709+caster082@users.noreply.github.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+>>>>>>> b72717f9d701bcfd49ce3dca7211952f2ee5ea3b
+>>>>>>> 3150def905b6f119bfb4090ea806ea47c6e88944
   </component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
       <set>
+<<<<<<< HEAD
         <option value="C:\Users\Usere\IdeaProjects\DevOps\.idea" />
       </set>
     </option>
   </component>
   <component name="ProjectId" id="1W9R2RBHKzSQG0fBMnuuQm8lLA3" />
+=======
+<<<<<<< HEAD
+        <option value="C:\Users\Do You Know Da Wai\IdeaProjects\DevOps\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1W9RQbCjO2lh0Kp3e7hnIfgPi9k" />
+=======
+        <option value="C:\Users\dell\OneDrive - Edinburgh Napier University\DevOps\DevOps\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1W9UM2Gxpa8VHxi6ibEGDY5uDV9" />
+>>>>>>> b72717f9d701bcfd49ce3dca7211952f2ee5ea3b
+>>>>>>> 3150def905b6f119bfb4090ea806ea47c6e88944
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -41,6 +94,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+<<<<<<< HEAD
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -49,6 +103,12 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+=======
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../seMethods" />
+=======
+>>>>>>> b72717f9d701bcfd49ce3dca7211952f2ee5ea3b
+>>>>>>> 3150def905b6f119bfb4090ea806ea47c6e88944
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -67,6 +127,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="5f968bea-aff9-4ba0-9b52-5234d24b507b" name="Default Changelist" comment="" />
       <created>1578559616878</created>
       <option name="number" value="Default" />
@@ -104,5 +165,143 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1578563011209" />
+=======
+<<<<<<< HEAD
+      <changelist id="d620df65-c95d-404b-a202-26371c84109a" name="Default Changelist" comment="" />
+      <created>1578559809010</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578559809010</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Adding &quot;.travis.yml&quot; file to repository">
+      <created>1578560825357</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1578560825357</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added dependencies to pom.xml">
+      <created>1578561530810</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1578561530810</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Replace dependencies with properties to pom.xml">
+      <created>1578561833504</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1578561833504</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added Build Status to readme.md">
+      <created>1578562448356</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1578562448356</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Adding &quot;.travis.yml&quot; file to repository" />
+    <MESSAGE value="Added dependencies to pom.xml" />
+    <MESSAGE value="Replace dependencies with properties to pom.xml" />
+    <MESSAGE value="Added Build Status to readme.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Build Status to readme.md" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="392" y="92" key="#Notifications" timestamp="1578562622970">
+      <screen x="63" y="0" width="1473" height="864" />
+    </state>
+    <state x="392" y="92" key="#Notifications/63.0.1473.864@63.0.1473.864" timestamp="1578562622970" />
+    <state x="452" y="28" key="CommitChangelistDialog2" timestamp="1578562446674">
+      <screen x="63" y="0" width="1473" height="864" />
+    </state>
+    <state x="452" y="28" key="CommitChangelistDialog2/63.0.1473.864@63.0.1473.864" timestamp="1578562446674" />
+    <state x="156" y="93" width="1287" height="678" key="DiffContextDialog" timestamp="1578562837376">
+      <screen x="63" y="0" width="1473" height="864" />
+    </state>
+    <state x="156" y="93" width="1287" height="678" key="DiffContextDialog/63.0.1473.864@63.0.1473.864" timestamp="1578562837376" />
+    <state x="580" y="188" key="FileChooserDialogImpl" timestamp="1578561316861">
+      <screen x="63" y="0" width="1473" height="864" />
+    </state>
+    <state x="580" y="188" key="FileChooserDialogImpl/63.0.1473.864@63.0.1473.864" timestamp="1578561316861" />
+    <state x="392" y="166" key="Vcs.Push.Dialog.v2" timestamp="1578562644067">
+      <screen x="63" y="0" width="1473" height="864" />
+    </state>
+    <state x="392" y="166" key="Vcs.Push.Dialog.v2/63.0.1473.864@63.0.1473.864" timestamp="1578562644067" />
+    <state x="561" y="167" key="VcsDiffUtil.ChangesDialog" timestamp="1578562732242">
+      <screen x="63" y="0" width="1473" height="864" />
+    </state>
+    <state x="561" y="167" key="VcsDiffUtil.ChangesDialog/63.0.1473.864@63.0.1473.864" timestamp="1578562732242" />
+    <state x="156" y="93" width="1287" height="678" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1578562837376">
+      <screen x="63" y="0" width="1473" height="864" />
+    </state>
+    <state x="156" y="93" width="1287" height="678" key="com.intellij.dvcs.ui.CompareBranchesDialog/63.0.1473.864@63.0.1473.864" timestamp="1578562837376" />
+    <state x="610" y="350" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578562585348">
+      <screen x="63" y="0" width="1473" height="864" />
+    </state>
+    <state x="610" y="350" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/63.0.1473.864@63.0.1473.864" timestamp="1578562585348" />
+    <state x="562" y="225" key="git4idea.merge.GitMergeDialog" timestamp="1578562813273">
+      <screen x="63" y="0" width="1473" height="864" />
+    </state>
+    <state x="562" y="225" key="git4idea.merge.GitMergeDialog/63.0.1473.864@63.0.1473.864" timestamp="1578562813273" />
+    <state x="531" y="225" key="git4idea.merge.GitPullDialog" timestamp="1578562652436">
+      <screen x="63" y="0" width="1473" height="864" />
+    </state>
+    <state x="531" y="225" key="git4idea.merge.GitPullDialog/63.0.1473.864@63.0.1473.864" timestamp="1578562652436" />
+=======
+      <changelist id="12da7b36-c5ca-4190-a6aa-e35f3b131a8e" name="Default Changelist" comment="" />
+      <created>1578561252417</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578561252417</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Creating a Self-contained JAR">
+      <created>1578561543936</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1578561543937</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Creating a Self-contained JAR">
+      <created>1578561656356</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1578561656356</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Creating a Self-contained JAR" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating a Self-contained JAR" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="372" y="8" key="CommitChangelistDialog2" timestamp="1578561750326">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="372" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1578561750326" />
+    <state x="147" y="71" key="MergeDialog" timestamp="1578562191442">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="147" y="71" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1578562191442" />
+    <state x="481" y="129" key="MultipleFileMergeDialog" timestamp="1578562191450">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="481" y="129" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1578562191450" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1578561792947">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1578561792947" />
+    <state x="483" y="205" key="git4idea.merge.GitPullDialog" timestamp="1578562142782">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="483" y="205" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1578562142782" />
+>>>>>>> b72717f9d701bcfd49ce3dca7211952f2ee5ea3b
+>>>>>>> 3150def905b6f119bfb4090ea806ea47c6e88944
   </component>
 </project>
