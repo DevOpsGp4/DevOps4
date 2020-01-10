@@ -6,8 +6,10 @@ Status Checking
 - Release [![Releases](https://img.shields.io/github/release/DevOpsGp4/DevOps4/all.svg?style=flat-square)](https://github.com/DevOpsGp4/DevOps4/releases)
  
 Product Backlog For Code Review 1
+
+
 | Task ID | Description   | Estimate   | Priority  |
-| --------|:-------------| ----------:| ---------:|
+| --------|:------------- | ----------:| ---------:|
 |   1     | GitHub project for coursework set-up. | 2     | 1     |
 |   2     | Product Backlog created.      |   1     |   2    |
 |  3      | Project builds to self-contained JAR with Maven.     |    3      |    3     |
@@ -16,4 +18,4 @@ Product Backlog For Code Review 1
 |  6      | Correct branches for GitFlow workflow created - includes master, develop, and release branches.     |   6      |    6     |
 |   7     | First release created on GitHub.| 7      |7   |
 |   8     | Code of Conduct defined.      |   8     |   8    |
- 
+
