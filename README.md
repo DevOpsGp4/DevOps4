@@ -1,8 +1,9 @@
-Software Engineering Methods
+Status Checking
 
-.Master Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travis-ci.com/DevOpsGp4/DevOps4)
- 
- Code Review 1
+- Master Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travis-ci.com/DevOpsGp4/DevOps4)
+- Develop Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travisci.com/DevOpsGp4/DevOps4)
+
+ Code Review 1 for Group 4
 
 - [x] GitHub project for coursework set-up.
 - [x] Product Backlog created.

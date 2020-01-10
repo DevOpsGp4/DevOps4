@@ -8,8 +8,6 @@
     <artifactId>DevOps</artifactId>
     <version>0.1.0.1</version>
 
-<<<<<<< HEAD
-=======
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -41,5 +39,5 @@
             </plugin>
         </plugins>
     </build>
->>>>>>> 3150def905b6f119bfb4090ea806ea47c6e88944
+
 </project>
