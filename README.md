@@ -1,4 +1,12 @@
-Product Backlog
+ 
+**Software Engineering Methods**
+
+- Master Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travis-ci.com/DevOpsGp4/DevOps4)
+- Develop Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travisci.com/DevOpsGp4/DevOps4)
+- License [![LICENSE](https://img.shields.io/github/license/DevOpsGp4/DevOps4.svg?style=flat-square)](https://img.shields.io/github/license/DevOpsGp4/DevOps4)
+- Release [![Releases](https://img.shields.io/github/release/DevOpsGp4/DevOps4/all.svg?style=flat-square)](https://github.com/DevOpsGp4/DevOps4/releases)
+
+**Product Backlog**
 
 
 | Task ID |Deliverables features |    Description   | Priority   | Status  |
@@ -12,15 +20,8 @@ Product Backlog
 | 7 | Top populated capital cities |top N populated capital cities in world\continent\region where N is provided by the user.| 7 | In progress  |
 | 8 |  Population of people |population of people, people living in cities, and people not living in cities in each country. |8 | In progress |
 
- 
-Software Engineering Methods
 
-- Master Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travis-ci.com/DevOpsGp4/DevOps4)
-- Develop Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travisci.com/DevOpsGp4/DevOps4)
-- License [![LICENSE](https://img.shields.io/github/license/DevOpsGp4/DevOps4.svg?style=flat-square)](https://img.shields.io/github/license/DevOpsGp4/DevOps4)
-- Release [![Releases](https://img.shields.io/github/release/DevOpsGp4/DevOps4/all.svg?style=flat-square)](https://github.com/DevOpsGp4/DevOps4/releases)
-
-Checklist Code Review 1 
+**Checklist Code Review 1** 
 
  - [x] GitHub project for coursework set-up.
  - [x] Product Backlog created.
@@ -30,3 +31,12 @@ Checklist Code Review 1
  - [x] Correct branches for GitFlow workflow created - includes master, develop, and release branches.
  - [x] First release created on GitHub.
  - [x] Code of Conduct defined.
+ 
+ **User Stroy** 
+ 
+ | Matric ID | status  |
+ | --------  |:--------|
+ | 40437529 | As the Product Owner , I were documented the project backlog  and  prepare for code of review and builds self-contained JAR with Maven.|
+| 40437506| As the Team leader, Dockerfile for project set-up and works, SQL DataBase connect created.|
+|40437522| As the scrum master, I created code of conduct and assign tasks for team members.|
+| 40437509| As the Developer , Travis CI for project set-up and build is working using JAR, and Docker on Travis CI.|
