@@ -1,12 +1,12 @@
  
-Software Engineering Methods
+**Software Engineering Methods**
 
 - Master Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travis-ci.com/DevOpsGp4/DevOps4)
 - Develop Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travisci.com/DevOpsGp4/DevOps4)
 - License [![LICENSE](https://img.shields.io/github/license/DevOpsGp4/DevOps4.svg?style=flat-square)](https://img.shields.io/github/license/DevOpsGp4/DevOps4)
 - Release [![Releases](https://img.shields.io/github/release/DevOpsGp4/DevOps4/all.svg?style=flat-square)](https://github.com/DevOpsGp4/DevOps4/releases)
 
-Product Backlog
+**Product Backlog**
 
 
 | Task ID |Deliverables features |    Description   | Priority   | Status  |
@@ -21,7 +21,7 @@ Product Backlog
 | 8 |  Population of people |population of people, people living in cities, and people not living in cities in each country. |8 | In progress |
 
 
-Checklist Code Review 1 
+**Checklist Code Review 1** 
 
  - [x] GitHub project for coursework set-up.
  - [x] Product Backlog created.
@@ -32,7 +32,7 @@ Checklist Code Review 1
  - [x] First release created on GitHub.
  - [x] Code of Conduct defined.
  
- User Stroy 
+ **User Stroy** 
  
  | Matric ID | status  |
  | --------  |:--------|
