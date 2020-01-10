@@ -1,6 +1,7 @@
 Software Engineering Methods
 
 - Master Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travis-ci.com/DevOpsGp4/DevOps4)
+- Develop Build Status [![Build Status](https://travis-ci.org/DevOpsGp4/DevOps4.svg?branch=develop)](https://travis-ci.org/DevOpsGp4/DevOps4)
 - License [![LICENSE](https://img.shields.io/github/license/DevOpsGp4/DevOps4.svg?style=flat-square)](https://github.com/DevOpsGp4/DevOps4/blob/master/LICENSE)
 - Release [![Releases](https://img.shields.io/github/release/DevOpsGp4/DevOps4/all.svg?style=flat-square)](https://github.com/DevOpsGp4/DevOps4/releases)
  
