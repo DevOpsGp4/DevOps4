@@ -1,16 +1,16 @@
 Product Backlog
 
 
-| Task ID |Deliverables features |    Description   | Estimate   | Priority  |
+| Task ID |Deliverables features |    Description   | Priority   | Status  |
 | --------|:------------- | :----------| ---------:|---------:|
-|  1 |  Setup and Documentation |There will be project repositories and documentation of Project implementation | 1 | 1 |
-|  2 |  Population amount of countries | All countries in world\continent\region organised by largest population to smallest.| 2| 2 |
-|  3 | Top populated countries | The top N populated countries in  world\continent\region where N is provided by the user. | 3| 3 |
-|  4 | Population amount of cities | Cities in world\continent\region\district\country organised by largest popul to smallest. | 5 | 4  |
-|  5 | Top populated cities |Top N populated cities in world\continent\region\district\country where N is provided by the user.| 6| 5 |
-|  6 | Population amount of  capital cities |All capital cities in world\continent\region organised by largest popul to smallest.|7| 6 |
-| 7 | Top populated capital cities |top N populated capital cities in world\continent\region where N is provided by the user.| 8 | 7  |
-| 8 |  Population of people |population of people, people living in cities, and people not living in cities in each country. | 4  | 8 |
+|  1 |  Setup And creating database|Set up Git repository and creating product backlog and develop branches and release | 1 | Done |
+|  2 |  Population amount of countries | All countries in world\continent\region organised by largest population to smallest.| 2| In progress |
+|  3 | Top populated countries | The top N populated countries in  world\continent\region where N is provided by the user. | 3| In progress |
+|  4 | Population amount of cities | Cities in world\continent\region\district\country organised by largest popul to smallest. | 4 | In progress  |
+|  5 | Top populated cities |Top N populated cities in world\continent\region\district\country where N is provided by the user.| 5| In progress |
+|  6 | Population amount of  capital cities |All capital cities in world\continent\region organised by largest popul to smallest.|6| In progress |
+| 7 | Top populated capital cities |top N populated capital cities in world\continent\region where N is provided by the user.| 7 | In progress  |
+| 8 |  Population of people |population of people, people living in cities, and people not living in cities in each country. |8 | In progress |
 
  
 Software Engineering Methods
