@@ -5,16 +5,7 @@ Status Checking
 - License [![LICENSE](https://img.shields.io/github/license/DevOpsGp4/DevOps4.svg?style=flat-square)](https://img.shields.io/github/license/DevOpsGp4/DevOps4)
 - Release [![Releases](https://img.shields.io/github/release/DevOpsGp4/DevOps4/all.svg?style=flat-square)](https://github.com/DevOpsGp4/DevOps4/releases)
  
- Code Review 1 for Group 4
-
-- [x] GitHub project for coursework set-up.
-- [x] Product Backlog created.
-- [x] Project builds to self-contained JAR with Maven.
-- [x] Project builds to self-contained JAR with Maven.
-- [x] Dockerfile for project set-up and works.
-- [x] Travis CI for project set-up and build is working using JAR, and Docker on Travis CI.
-- [x] Correct branches for GitFlow workflow created - includes master, develop, and release branches.
-
+Product Backlog For Code Review 1
 
 | Task ID | Description   | Estimate   | Priority  |
 | --------|:-------------| ----------:| ---------:|
