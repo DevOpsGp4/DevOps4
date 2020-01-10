@@ -14,3 +14,16 @@ Status Checking
 - [x] Dockerfile for project set-up and works.
 - [x] Travis CI for project set-up and build is working using JAR, and Docker on Travis CI.
 - [x] Correct branches for GitFlow workflow created - includes master, develop, and release branches.
+
+
+| Task ID | Description   | Estimate   | Priority  |
+| --------|:-------------:| ----------:| ---------:|
+|   1     | GitHub project for coursework set-up. | $1600      | 1     |
+|   2     | Product Backlog created.      |   $12      |   2    |
+|  3      | Project builds to self-contained JAR with Maven.     |    $1      |    3     |
+|   4     | Dockerfile for project set-up and works. | $1600      | 4    |
+|   5     | Travis CI for project set-up and build is working using JAR, and Docker on Travis CI.      |   $12      |   5    |
+|  6      | Correct branches for GitFlow workflow created - includes master, develop, and release branches.     |    $1      |    6     |
+|   7     | First release created on GitHub.| $1600      |7   |
+|   8     | Code of Conduct defined.      |   $12      |   8    |
+ 
