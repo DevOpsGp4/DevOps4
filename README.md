@@ -1,4 +1,4 @@
-Product Backlog For Code Review 1
+Product Backlog
 
 
 | Task ID |Deliverables features |    Description   | Estimate   | Priority  |
@@ -20,7 +20,7 @@ Software Engineering Methods
 - License [![LICENSE](https://img.shields.io/github/license/DevOpsGp4/DevOps4.svg?style=flat-square)](https://img.shields.io/github/license/DevOpsGp4/DevOps4)
 - Release [![Releases](https://img.shields.io/github/release/DevOpsGp4/DevOps4/all.svg?style=flat-square)](https://github.com/DevOpsGp4/DevOps4/releases)
 
-Checklist Submission 1 (16% of CW mark)
+Checklist Code Review 1 
 
  - [x] GitHub project for coursework set-up.
  - [x] Product Backlog created.
