@@ -20,17 +20,6 @@
 | 7 | Top populated capital cities |top N populated capital cities in world\continent\region where N is provided by the user.| 7 | In progress  |
 | 8 |  Population of people |population of people, people living in cities, and people not living in cities in each country. |8 | In progress |
 
-
-**Checklist Code Review 1** 
-
- - [x] GitHub project for coursework set-up.
- - [x] Product Backlog created.
- - [x] Project builds to self-contained JAR with Maven.
- - [x] Dockerfile for project set-up and works.
- - [x] Travis CI for project set-up and build is working using JAR, and Docker on Travis CI.
- - [x] Correct branches for GitFlow workflow created - includes master, develop, and release branches.
- - [x] First release created on GitHub.
- - [x] Code of Conduct defined.
  
  **User Stroy** 
  
