@@ -40,13 +40,3 @@
 |  6 | Population amount of  capital cities |All capital cities in world\continent\region organised by largest popul to smallest.|6| In progress |
 | 7 | Top populated capital cities |top N populated capital cities in world\continent\region where N is provided by the user.| 7 | In progress  |
 | 8 |  Population of people |population of people, people living in cities, and people not living in cities in each country. |8 | In progress |
-
- 
- # User Stroy For DevOps project
- 
- | Matric ID | status  |
- | --------  |:--------|
- | 40437529 | As the Product Owner , I were documented the project backlog and implementation of capital report including name, country and population. |
-|40437522| As the scrum master, I worked with product owner and team memerbrs then created code of conduct, kanban board and other documentation and assigned tasks for team members and implementation of country report including code, name, continent, region, population and capital.|
-| 40437506| As a Developer, Dockerfile for project set-up and works, SQL DataBase connect created and implementation of population report including name of the continent/region/country, total population of the continent/region/country and total population of the continent/region/country living or not living in cities (including a %)
-| 40437509| As a Developer , Travis CI for project set-up and build is working using JAR, and Docker on Travis and implementation of city report including name, country, district and population.|
