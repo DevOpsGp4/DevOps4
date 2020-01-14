@@ -13,14 +13,11 @@
 ### Rule 1 : Team membership as coworkers
      All team members are equal; every team member’s opinion will be thoughtfully considered; each team member will keep all commitments by the agreed upon due date; each team member agrees to constantly assess whether team members are honoring their commitment to the team norms. 
 ### Rule 2 : Communication
-    Team members will speak respectfully to each other; will not talk down to each other; will positively recognize and thank each other 
-for team contributions.
+    Team members will speak respectfully to each other; will not talk down to each other; will positively recognize and thank each other for team contributions.
 ### Rule 3 : Team member interaction in meetings
-    Team members will listen without interrupting; hold no side or competing conversations; follow the rules for effective meetings; attend 
-the meetings on time; always work from an agenda; minutes will be recorded at each meeting; end meetings on time. 
+    Team members will listen without interrupting; hold no side or competing conversations; follow the rules for effective meetings; attend the meetings on time; always work from an agenda; minutes will be recorded at each meeting; end meetings on time. 
 ### Rule 4 : Team problem solving, conflict resolution and decision making
-    Team members will make decisions by consensus, but majority will rule if timely consensus is not reached; conflicts will be resolved 
-directly with the persons in conflict. 
+    Team members will make decisions by consensus, but majority will rule if timely consensus is not reached; conflicts will be resolved directly with the persons in conflict. 
 ### Rule 5 : Respect in the workplace
     All team members should respect their teammates. We won’t allow any kind of discriminatory behavior, harassment or victimization. Team Members should conform with our equal opportunity policy in all aspects of their work, from recruitment and performance evaluation to interpersonal relations.
 
@@ -45,11 +42,11 @@ directly with the persons in conflict.
 | 8 |  Population of people |population of people, people living in cities, and people not living in cities in each country. |8 | In progress |
 
  
- # User Stroy 
+ # User Stroy For DevOps project
  
  | Matric ID | status  |
  | --------  |:--------|
- | 40437529 | As the Product Owner , I were documented the project backlog  and  prepare for code of review and builds self-contained JAR with Maven.|
-| 40437506| As the Team leader, Dockerfile for project set-up and works, SQL DataBase connect created.|
-|40437522| As the scrum master, I created code of conduct and assign tasks for team members.|
-| 40437509| As the Developer , Travis CI for project set-up and build is working using JAR, and Docker on Travis CI.|
+ | 40437529 | As the Product Owner , I were documented the project backlog and implementation of capital report including name, country and population. |
+|40437522| As the scrum master, I worked with product owner and team memerbrs then created code of conduct, kanban board and other documentation and assigned tasks for team members and implementation of country report including code, name, continent, region, population and capital.|
+| 40437506| As a Developer, Dockerfile for project set-up and works, SQL DataBase connect created and implementation of population report including name of the continent/region/country, total population of the continent/region/country and total population of the continent/region/country living or not living in cities (including a %)
+| 40437509| As a Developer , Travis CI for project set-up and build is working using JAR, and Docker on Travis and implementation of city report including name, country, district and population.|
