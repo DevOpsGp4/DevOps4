@@ -8,6 +8,24 @@
 - License [![LICENSE](https://img.shields.io/github/license/DevOpsGp4/DevOps4.svg?style=flat-square)](https://img.shields.io/github/license/DevOpsGp4/DevOps4)
 - Release [![Releases](https://img.shields.io/github/release/DevOpsGp4/DevOps4/all.svg?style=flat-square)](https://github.com/DevOpsGp4/DevOps4/releases)
 
+
+# Product Backlog
+ 
+| Task ID |Deliverables features |    Description   | Priority   | Status  |
+| --------|:------------- | :----------| ---------:|---------:|
+|  1 |  Setup And creating database|Set up Git repository and creating product backlog and develop branches and release | Must | Done |
+|  2 | Project Planning and user story| Creating User story and using Kanban board and sprint board to manage the tasks | Must | Done |
+|  3 |  Population amount of countries | All countries in world\continent\region organised by largest population to smallest.| Must | To Do |
+|  4 | Top populated countries | The top N populated countries in  world\continent\region where N is provided by the user. | Must | To Do |
+|  5 | Population amount of cities |All the cities in world\continent\region\district\country organised by largest population to smallest. | Must | To Do |
+|  6 | Top populated cities |Top N populated cities in world\continent\region\district\country where N is provided by the user.| Must | To Do |
+|  7 | Population amount of  capital cities |All capital cities in world\continent\region organised by largest popul to smallest.| Must | To Do |
+| 8 | Top populated capital cities |Top N populated capital cities in world\continent\region where N is provided by the user.| Must | To Do |
+| 9 |  Population of people |Population of people, people living in cities, and people not living in cities in each country. | Must | To Do |
+| 10|  Population |Population of world,continent,region,country,district and city | Should| To Do 
+| 11| Languages|Number of people who speak  languages(Chinese,English,Hindi,Spanish) from greatest number to smallest, including the percentage of the world population| Should| To Do|        
+
+
 ## Code Of Conduct
 
 ### Rule 1 : Team membership as coworkers
@@ -27,16 +45,3 @@
 |<ul><li> Using bad words between team members </li></ul>| Rule 2 | Buy juice for the whole team |
 |<ul><li> Act Harrased a team member or the whole team</li></ul>| Rule 5 | Apologise and Buy coffee for the whole team |
 |<ul><li> Absent at meeting </li><li> Late Meeting Day </li></ul>| Rule 3 | Apologise and Buy a juice for the whole team |
-
-# Product Backlog
-
-| Task ID |Deliverables features |    Description   | Priority   | Status  |
-| --------|:------------- | :----------| ---------:|---------:|
-|  1 |  Setup And creating database|Set up Git repository and creating product backlog and develop branches and release | 1 | Done |
-|  2 |  Population amount of countries | All countries in world\continent\region organised by largest population to smallest.| 2| In progress |
-|  3 | Top populated countries | The top N populated countries in  world\continent\region where N is provided by the user. | 3| In progress |
-|  4 | Population amount of cities |all the cities in world\continent\region\district\country organised by largest population to smallest. | 4 | In progress  |
-|  5 | Top populated cities |Top N populated cities in world\continent\region\district\country where N is provided by the user.| 5| In progress |
-|  6 | Population amount of  capital cities |All capital cities in world\continent\region organised by largest popul to smallest.|6| In progress |
-| 7 | Top populated capital cities |top N populated capital cities in world\continent\region where N is provided by the user.| 7 | In progress  |
-| 8 |  Population of people |population of people, people living in cities, and people not living in cities in each country. |8 | In progress |
