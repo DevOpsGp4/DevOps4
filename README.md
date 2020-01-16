@@ -1,12 +1,16 @@
  
 # Group 4
 
- # Software Engineering Methods
+## Team Members
 
-- Master Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travis-ci.com/DevOpsGp4/DevOps4)
-- Develop Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travisci.com/DevOpsGp4/DevOps4)
-- License [![LICENSE](https://img.shields.io/github/license/DevOpsGp4/DevOps4.svg?style=flat-square)](https://img.shields.io/github/license/DevOpsGp4/DevOps4)
-- Release [![Releases](https://img.shields.io/github/release/DevOpsGp4/DevOps4/all.svg?style=flat-square)](https://github.com/DevOpsGp4/DevOps4/releases)
+Name -Kyaw Zaw Lynn (Scrum Master, Metriculation Number 40437522)
+
+Name - Khant Sithu Aung (Product Owner, Metriculation Number 40437529)
+
+Name - Aung Htet Myat Kyaw (Developer, Metriculation Number 40437509)
+
+Name - Han Tun Zaw (Developer, Metriculation Number 40437506)
+
 
 
 # Product Backlog
@@ -45,3 +49,11 @@
 |<ul><li> Using bad words between team members </li></ul>| Rule 2 | Buy juice for the whole team |
 |<ul><li> Act Harrased a team member or the whole team</li></ul>| Rule 5 | Apologise and Buy coffee for the whole team |
 |<ul><li> Absent at meeting </li><li> Late Meeting Day </li></ul>| Rule 3 | Apologise and Buy a juice for the whole team |
+
+
+ # Software Engineering Methods
+
+- Master Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travis-ci.com/DevOpsGp4/DevOps4)
+- Develop Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travisci.com/DevOpsGp4/DevOps4)
+- License [![LICENSE](https://img.shields.io/github/license/DevOpsGp4/DevOps4.svg?style=flat-square)](https://img.shields.io/github/license/DevOpsGp4/DevOps4)
+- Release [![Releases](https://img.shields.io/github/release/DevOpsGp4/DevOps4/all.svg?style=flat-square)](https://github.com/DevOpsGp4/DevOps4/releases)
