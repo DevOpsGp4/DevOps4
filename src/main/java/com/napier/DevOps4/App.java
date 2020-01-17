@@ -15,8 +15,8 @@ public class App
         // Connect to database
         a.connect();
         // Quary List
-        a.query1();
-        a.query2();
+        a.cityWorld();
+        a.cityDistrict();
 
         // Disconnect from database
         a.disconnect();
@@ -87,8 +87,8 @@ public class App
         }
     }
 
-    public void query1() {
-        System.out.println("Query2 - All the cities in a continent organised by largest population to smallest.\n");
+    public void cityWorld() {
+        System.out.println("All the cities in the World organised by largest population to smallest.\n");
         try
         {
             // Create an SQL statement
@@ -113,7 +113,7 @@ public class App
                             + ", Population- " + resultSet.getInt("Population")
                             + ", CountryCode- " + resultSet.getString("CountryCode"));
                 }
-                System.out.println("Query1 -Finished\n");
+                System.out.println("All Cities in the World : Finished\n");
             }
         } catch (Exception e) //Catch any errors and print error message
         {
@@ -122,8 +122,8 @@ public class App
         }
     }
 
-    public void query2() {
-        System.out.println("Query2 - All the cities in a district organised by largest population to smallest.\n");
+    public void cityDistrict() {
+        System.out.println("All the cities in a district organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -131,7 +131,8 @@ public class App
             String strSelect =
                     "SELECT *"
                             + "FROM city "
-                            + "ORDER BY District, Population DESC";
+                            + "WHERE District = 'Adana'"
+                            + "ORDER BY Population DESC";
 
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
@@ -149,7 +150,7 @@ public class App
                             + ", CountryCode- " + resultSet.getString("CountryCode")
                             + ", District- " + resultSet.getString("District"));
                 }
-                System.out.println("Query2 -Finished\n");
+                System.out.println("All Cities in a district : Finished\n");
             }
         } catch (Exception e) //Catch any errors and print error message
         {
