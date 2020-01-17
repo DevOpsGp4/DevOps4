@@ -1,0 +1,29 @@
+@startuml
+rectangle Database
+actor User as "stakeholder"
+
+rectangle "Population System"{
+/'Define'/
+(population of the world) as world
+(population of a continent) as continent
+(population of a region) as region
+(population of a country) as country
+(population of a district) as district
+(population of a city) as city
+/'Connect'/
+(User) - (world)
+(User) - (continent)
+(User) - (region)
+(User) - (country)
+(User) - (district)
+(User) - (city)
+(Database) - (world)
+(Database) - (continent)
+(Database) - (region)
+(Database) - (country)
+(Database) - (district)
+(Database) - (city)
+}
+note top of Database : SQL database for World population Info.
+note top of User : The stakeholder use the several objects.
+@enduml
