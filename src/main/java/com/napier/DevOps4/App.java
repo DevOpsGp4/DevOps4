@@ -17,7 +17,7 @@ public class App
         // Quary List
         /*a.query1();
         a.query2();*/
-        a.query17();
+        //a.query17();
         // Disconnect from database
         a.disconnect();
     }
@@ -87,7 +87,6 @@ public class App
         }
     }
 
-/*
     public void query1() {
         System.out.println("Query1 - All the countries in a continent organised by largest population to smallest.\n");
         try {
@@ -159,10 +158,9 @@ public class App
         }
     }
 
-*/
 
     public void query17() {
-        System.out.println("Query1 - All the capital cities in the world organised by largest population to smallest.\n");
+        System.out.println("Query17 - All the capital cities in the world organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
