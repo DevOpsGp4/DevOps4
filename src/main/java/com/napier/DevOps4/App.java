@@ -35,7 +35,7 @@ public class App
         try
         {
             // Load Database driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         }
         catch (ClassNotFoundException e)
         {
@@ -88,29 +88,30 @@ public class App
     }
 
     public void query1() {
-        System.out.println("Query1 - All the countries in a continent organised by largest population to smallest.\n");
-        try {
+        System.out.println("Query2 - All the cities in a continent organised by largest population to smallest.\n");
+        try
+        {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Name, Population, Continent "
-                            + "FROM country "
-                            + "ORDER BY Continent, Population DESC";
+                        "SELECT *"
+                            + "FROM city "
+                            + "ORDER BY Population DESC";
 
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
 
             if (resultSet.next()) {
-                country country = new country();
-                country.Name = resultSet.getString("Name");
-                country.Population = resultSet.getInt("Population");
-                country.Continent = resultSet.getString("Continent");
+                city city = new city();
+                city.Name = resultSet.getString("Name");
+                city.Population = resultSet.getInt("Population");
+                city.CountryCode = resultSet.getString("CountryCode");
 
                 while (resultSet.next()) {
                     System.out.println(" Name- " + resultSet.getString("Name")
                             + ", Population- " + resultSet.getInt("Population")
-                            + ", Continent- " + resultSet.getString("Continent"));
+                            + ", CountryCode- " + resultSet.getString("CountryCode"));
                 }
                 System.out.println("Query1 -Finished\n");
             }
@@ -122,37 +123,36 @@ public class App
     }
 
     public void query2() {
-        System.out.println("Query2 - All the countries in a region organised by largest population to smallest.\n");
+        System.out.println("Query2 - All the cities in a district organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Name, Population, Region "
-                            + "FROM country "
-                            + "ORDER BY Region, Population DESC";
+                    "SELECT *"
+                            + "FROM city "
+                            + "ORDER BY District, Population DESC";
+
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
+
             if (resultSet.next()) {
-                country country = new country();
-//                country.Code = resultSet.getString("Code");
-                country.Name = resultSet.getString("Name");
-//                country.Continent = resultSet.getString("Continent");
-                country.Region = resultSet.getString("Region");
-                country.Population = resultSet.getInt("Population");
-//                country.Capital = resultSet.getInt("Capital");
+                city city = new city();
+                city.Name = resultSet.getString("Name");
+                city.Population = resultSet.getInt("Population");
+                city.CountryCode = resultSet.getString("CountryCode");
+                city.District = resultSet.getString("District");
 
                 while (resultSet.next()) {
-                    System.out.println(
-                            " Name - " + resultSet.getString("Name")
-
-                            + ", Region - " + resultSet.getString("Region")
-                            + ", Population - " + resultSet.getInt("Population"));
-
+                    System.out.println(" Name- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population")
+                            + ", CountryCode- " + resultSet.getString("CountryCode")
+                            + ", District- " + resultSet.getString("District"));
                 }
-                System.out.println("Query2 -finished\n");
+                System.out.println("Query2 -Finished\n");
             }
-        } catch (Exception e) {
+        } catch (Exception e) //Catch any errors and print error message
+        {
             System.out.println(e.getMessage());
             System.out.println("Failed to get details");
         }
