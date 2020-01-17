@@ -17,6 +17,11 @@ public class App
         // Query List
         a.query26();
         a.query27("Asia");
+        a.query27("Africa");
+        a.query27("Oceania");
+        a.query27("Europe");
+        a.query27("North America");
+        a.query27("South America");
 
         // Disconnect from database
         a.disconnect();
@@ -121,7 +126,7 @@ public class App
             ResultSet resultSet = stmt.executeQuery(strSelect);
             if (resultSet.next()) {
                 String result = resultSet.getString("SUM(Population)");
-                System.out.println("Query (27) Total population of " + continent + " - " + result);
+                System.out.println("Total population of " + continent + " - " + result);
             }
         }
         catch (Exception e) {
