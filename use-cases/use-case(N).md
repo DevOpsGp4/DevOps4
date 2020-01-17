@@ -1,10 +1,10 @@
-# USE CASE: Population based report.
+# USE CASE: Population based report 2.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-To produce a Report based on user input to get the population of the *cities, countries, continents, regions, districts, capital cities* in descending order.
+To produce a Report based on user input to get the population of the *cities, countries, continents, regions, districts, capital cities* in descending order with different filters.
 
 ### Scope
 
@@ -32,7 +32,7 @@ Primary task.
 
 ### Trigger
 
-1. A request for world population information is sent to Stakeholder.
+1. A request for world population information will be sent to Stakeholder.
 
 ## MAIN SUCCESS SCENARIO
 

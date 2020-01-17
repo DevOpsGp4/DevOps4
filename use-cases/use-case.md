@@ -1,69 +1,66 @@
-# USE CASE: 4 Produce a Report on the Salary of Employees of a Given Role
+# USE CASE: Population based report 1.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an *Stakeholders* I want *to report on population information* so that *I can support financial reporting of the organisation.*
+To produce a Report including the population of the *cities, countries, continents, regions, districts, capital cities* in descending order with different filters.
 
 ### Scope
 
-Company.
+Organization.
 
 ### Level
 
 Primary task.
 
 ### Preconditions
-
-<<<<<<<<< Temporary merge branch 1  
-We know the role.  Database contains current world population data.
-=========
-We know the information. Database contains current world population data.
->>>>>>>>> Temporary merge branch 2
+ 
+1. To view sensitive data, users must be logged in and need to have a registered account.
 
 ### Success End Condition
 
-A report is available for Stakeholders to provide to organization.
+1. A report containing all the require information will be provided to organization.
 
 ### Failed End Condition
 
-No report is produced.
+1. No report is produced.
 
 ### Primary Actor
 
-Stakeholders.
+1. Stakeholders.
 
 ### Trigger
 
-A request for world population information is sent to Stakeholder.
+1. A request for world population information will be sent to Stakeholder.
 
 ## MAIN SUCCESS SCENARIO
 
-<<<<<<<<< Temporary merge branch 1
-1. Finance request salary information for a given role.
-2. HR advisor captures name of the role to get salary information for.
-3. HR advisor extracts current salary information of all employees of the given role.
-4. HR advisor provides report to finance.
-=========
-1. Organization request world population information for a given role.
-2. Stakeholders capture name to get population information for.
-3. Stakeholders extract current population information of world, continents, regions, countries, district and cities of the given role.
-4. Stakeholders provide report to organization.
->>>>>>>>> Temporary merge branch 2
+1. All the countries in the world organised by largest population to smallest.
+2. All the countries in a continent organised by largest population to smallest.
+3. All the countries in a region organised by largest population to smallest.
+4. All the cities in the world organised by largest population to smallest.
+5. All the cities in a continent organised by largest population to smallest.
+6. All the cities in a region organised by largest population to smallest.
+7. All the cities in a country organised by largest population to smallest.
+8. All the cities in a district organised by largest population to smallest.
+9. All the capital cities in the world organised by largest population to smallest.
+10. All the capital cities in a continent organised by largest population to smallest.
+11. All the capital cities in a region organised by largest to smallest.
+12. The population of people, people living in cities, and people not living in cities in each continent.
+13. The population of people, people living in cities, and people not living in cities in each region.
+14. The population of people, people living in cities, and people not living in cities in each country.
+
 
 ## EXTENSIONS
 
-3. **Role does not exist**:
-<<<<<<<<< Temporary merge branch 1
-    1. HR advisor informs finance no role exists.
-=========
-    1. Stakeholders inform organization no role exists.
->>>>>>>>> Temporary merge branch 2
+**Role does not exist**:
+
+1. Stakeholders inform that the organization has no specific role exists.
 
 ## SUB-VARIATIONS
 
-None.
+1. None.
 
 ## SCHEDULE
 
