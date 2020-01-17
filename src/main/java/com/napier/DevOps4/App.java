@@ -2,32 +2,9 @@ package com.napier.DevOps4;
 
 import java.sql.*;
 
-/**
- * This class
- */
 public class App
 {
     public static void main(String[] args)
-    {
-        // Create new Application
-        App a = new App();
-
-        // Connect to database
-        a.connect();
-
-        // Disconnect from database
-        a.disconnect();
-    }
-
-    /**
-     * Connection to MySQL database.
-     */
-    private Connection con = null;
-
-    /**
-     * Connect to the MySQL database.
-     */
-    public void connect()
     {
         try
         {
@@ -36,41 +13,42 @@ public class App
         }
         catch (ClassNotFoundException e)
         {
+            // If Class not found exception,DB driver loading fail
             System.out.println("Could not load SQL driver");
-            System.exit(-1);
+            System.exit(-1); // exit
         }
 
-        int retries = 10;
-        for (int i = 0; i < retries; ++i)
+        // Connection to the database
+        Connection con = null;
+        int retries = 100;
+        for (int i = 0; i < retries; ++i)// Trying to connect database by looping
         {
             System.out.println("Connecting to database...");
             try
             {
-                // Wait a bit for db to start
-                Thread.sleep(10000);
-                // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/employees?useSSL=false", "root", "example");
+                // Waiting stage to startup database
+                Thread.sleep(30000);
+                // Connecting to database by user root and password example
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
+                // Wait a bit
+                Thread.sleep(10000);
+                // Exit for loop
                 break;
             }
             catch (SQLException sqle)
-            {
+            {   //if thr is no exception about connecting DB,attempt fail error
                 System.out.println("Failed to connect to database attempt " + Integer.toString(i));
                 System.out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
             {
+                //If there something interrupted,print out
                 System.out.println("Thread interrupted? Should not happen.");
             }
-        }
-    }
+        }//Exit loop
 
-    /**
-     * Disconnect from the MySQL database.
-     */
-    public void disconnect()
-    {
-        if (con != null)
+        if (con != null)//if conection is null,make loop to to close DB
         {
             try
             {
@@ -83,6 +61,4 @@ public class App
             }
         }
     }
-
-
 }
