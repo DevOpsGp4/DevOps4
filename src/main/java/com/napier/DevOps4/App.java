@@ -15,9 +15,9 @@ public class App
         // Connect to database
         a.connect();
         // Quary List
-        a.query1();
-        a.query2();
-
+        /*a.query1();
+        a.query2();*/
+        a.query17();
         // Disconnect from database
         a.disconnect();
     }
@@ -35,7 +35,7 @@ public class App
         try
         {
             // Load Database driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         }
         catch (ClassNotFoundException e)
         {
@@ -87,6 +87,7 @@ public class App
         }
     }
 
+/*
     public void query1() {
         System.out.println("Query1 - All the countries in a continent organised by largest population to smallest.\n");
         try {
@@ -158,7 +159,42 @@ public class App
         }
     }
 
+*/
 
+    public void query17() {
+        System.out.println("Query1 - All the capital cities in the world organised by largest population to smallest.\n");
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT * "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.ID=country.Capital "
+                            + "ORDER BY city.Population DESC";
 
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next()) {
+                city city= new city();
+                country country=new country();
+                city.Name = resultSet.getString("Name");
+                city.Population = resultSet.getInt("Population");
+                country.Name = resultSet.getString("country.Name");
+
+                while (resultSet.next()) {
+                    System.out.println(" capital city- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population")
+                            + ", Country- " + resultSet.getString("country.Name"));
+                }
+                System.out.println("Query17 -Finished\n");
+            }
+        } catch (Exception e) //Catch any errors and print error message
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
 
 }
