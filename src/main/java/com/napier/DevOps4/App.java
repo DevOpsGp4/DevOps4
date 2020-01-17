@@ -18,6 +18,7 @@ public class App
         a.query26();
         a.query27();
 
+
         // Disconnect from database
         a.disconnect();
     }
@@ -87,82 +88,44 @@ public class App
         }
     }
 
-//    public void query2() {
-//        System.out.println("Query2 - All the countries in a region organised by largest population to smallest.\n");
-//        try {
-//            // Create an SQL statement
-//            Statement stmt = con.createStatement();
-//            // Create string for SQL statement
-//            String strSelect =
-//                    "SELECT Name, Population, Region "
-//                            + "FROM country "
-//                            + "ORDER BY Region, Population DESC";
-//            // Execute SQL statement
-//            ResultSet resultSet = stmt.executeQuery(strSelect);
-//            if (resultSet.next()) {
-//                country country = new country();
-////                country.Code = resultSet.getString("Code");
-//                country.Name = resultSet.getString("Name");
-////                country.Continent = resultSet.getString("Continent");
-//                country.Region = resultSet.getString("Region");
-//                country.Population = resultSet.getInt("Population");
-////                country.Capital = resultSet.getInt("Capital");
-//
-//                while (resultSet.next()) {
-//                    System.out.println(
-//                            " Name - " + resultSet.getString("Name")
-//
-//                            + ", Region - " + resultSet.getString("Region")
-//                            + ", Population - " + resultSet.getInt("Population"));
-//
-//                }
-//                System.out.println("Query2 -finished\n");
-//            }
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//            System.out.println("Failed to get details");
-//        }
-//    }
-
-    public void query26() {
+    public void query26 () {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect =
-                    "SELECT SUM(Population)"
-                            + "FROM country";
+            String strSelect = "SELECT SUM(Population)"
+                    + "FROM country";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
             if (resultSet.next()) {
                 String result = resultSet.getString("SUM(Population)");
-                System.out.println("Quary (26) Total population of the world - "+result);
+                System.out.println("Query (26) Total population of the world - " + result);
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get details");
         }
     }
 
-    public void query27() {
+    public void query27 () {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect =
-                    "SELECT SUM(Population)"
-                            + "FROM country"
-                            + "WHERE Continent=Asia";
+            String strSelect = "SELECT SUM(Population)"
+                    + "FROM country"
+                    + "WHERE Continent=Asia";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
             if (resultSet.next()) {
-                String result = resultSet.getString("SUM(Population)");
-                System.out.println("Quary (27) Total population of the world - "+result);
+                String result = resultSet.getString("SUM(Population),Continent=Asia");
+                System.out.println("Query (27) Total population of the world - " + result);
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get details");
         }
     }
-
 }
