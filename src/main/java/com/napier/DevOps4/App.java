@@ -14,10 +14,9 @@ public class App
 
         // Connect to database
         a.connect();
-        // Quary List
+        // Query List
         a.query26();
-        a.query27();
-
+        a.query27("Asia");
 
         // Disconnect from database
         a.disconnect();
@@ -93,7 +92,7 @@ public class App
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "SELECT SUM(Population)"
+            String strSelect = "SELECT SUM(Population) "
                     + "FROM country";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
@@ -108,19 +107,21 @@ public class App
         }
     }
 
-    public void query27 () {
+    public void query27 (String continent) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "SELECT SUM(Population)"
-                    + "FROM country"
-                    + "WHERE Continent=Asia";
+            String strSelect = "SELECT SUM(Population) "
+                    + "FROM country "
+                    + "WHERE Continent='"
+                    + continent
+                    + "'";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
             if (resultSet.next()) {
-                String result = resultSet.getString("SUM(Population),Continent=Asia");
-                System.out.println("Query (27) Total population of the world - " + result);
+                String result = resultSet.getString("SUM(Population)");
+                System.out.println("Query (27) Total population of " + continent + " - " + result);
             }
         }
         catch (Exception e) {
