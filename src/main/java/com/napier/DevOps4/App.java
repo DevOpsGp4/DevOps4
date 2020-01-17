@@ -18,7 +18,8 @@ public class App
         /*a.query1();
         a.query2();*/
         //a.query17();
-        a.query18();
+        //a.query18();
+        a.query19();
         // Disconnect from database
         a.disconnect();
     }
@@ -196,8 +197,6 @@ public class App
         }
     }
 
-
-
     public void query18() {
         System.out.println("Query18 - All the capital cities in the Continent organised by largest population to smallest.\n");
         try {
@@ -226,7 +225,43 @@ public class App
                             + ", Population- " + resultSet.getInt("Population")
                             + ", Country- " + resultSet.getString("country.Name"));
                 }
-                System.out.println("Query17 -Finished\n");
+                System.out.println("Query18 -Finished\n");
+            }
+        } catch (Exception e) //Catch any errors and print error message
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
+    public void query19() {
+        System.out.println("Query19 - All the capital cities in the region  organised by largest population to smallest.\n");
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT * "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.ID=country.Capital "
+                            + "WHERE country.Region='Caribbean'"
+                            + "ORDER BY city.Population DESC";
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next()) {
+                city city= new city();
+                country country=new country();
+                city.Name = resultSet.getString("Name");
+                city.Population = resultSet.getInt("Population");
+                country.Name = resultSet.getString("country.Name");
+
+                while (resultSet.next()) {
+                    System.out.println(" capital city- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population")
+                            + ", Country- " + resultSet.getString("country.Name"));
+                }
+                System.out.println("Query19 -Finished\n");
             }
         } catch (Exception e) //Catch any errors and print error message
         {
