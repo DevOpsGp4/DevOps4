@@ -2,53 +2,78 @@ package com.napier.DevOps4;
 
 import java.sql.*;
 
+/**
+ * This class
+ */
 public class App
 {
     public static void main(String[] args)
     {
+        // Create new Application
+        App a = new App();
+
+        // Connect to database
+        a.connect();
+        // Quary List
+        a.query1();
+        a.query2();
+
+        // Disconnect from database
+        a.disconnect();
+    }
+
+    /**
+     * Connection to MySQL database.
+     */
+    private Connection con = null;
+
+    /**
+     * Connect to the MySQL database.
+     */
+    public void connect()
+    {
         try
         {
             // Load Database driver
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         }
         catch (ClassNotFoundException e)
         {
-            // If Class not found exception,DB driver loading fail
             System.out.println("Could not load SQL driver");
-            System.exit(-1); // exit
+            System.exit(-1);
         }
 
-        // Connection to the database
-        Connection con = null;
-        int retries = 100;
-        for (int i = 0; i < retries; ++i)// Trying to connect database by looping
+        int retries = 10;
+        for (int i = 0; i < retries; ++i)
         {
             System.out.println("Connecting to database...");
             try
             {
-                // Waiting stage to startup database
-                Thread.sleep(30000);
-                // Connecting to database by user root and password example
+                // Wait a bit for db to start
+                Thread.sleep(10000);
+                // Connect to database
                 con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
-                // Wait a bit
-                Thread.sleep(10000);
-                // Exit for loop
                 break;
             }
             catch (SQLException sqle)
-            {   //if thr is no exception about connecting DB,attempt fail error
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
+            {
+                System.out.println("Failed to connect to database attempt " + i);
                 System.out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
             {
-                //If there something interrupted,print out
                 System.out.println("Thread interrupted? Should not happen.");
             }
-        }//Exit loop
+        }
+    }
 
-        if (con != null)//if conection is null,make loop to to close DB
+    /**
+     * Disconnect from the MySQL database.
+     */
+    public void disconnect()
+    {
+        if (con != null)
         {
             try
             {
@@ -61,4 +86,79 @@ public class App
             }
         }
     }
+
+    public void query1() {
+        System.out.println("Query1 - All the countries in a continent organised by largest population to smallest.\n");
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Name, Population, Continent "
+                            + "FROM country "
+                            + "ORDER BY Continent, Population DESC";
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next()) {
+                country country = new country();
+                country.Name = resultSet.getString("Name");
+                country.Population = resultSet.getInt("Population");
+                country.Continent = resultSet.getString("Continent");
+
+                while (resultSet.next()) {
+                    System.out.println(" Name- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population")
+                            + ", Continent- " + resultSet.getString("Continent"));
+                }
+                System.out.println("Query1 -Finished\n");
+            }
+        } catch (Exception e) //Catch any errors and print error message
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
+
+    public void query2() {
+        System.out.println("Query2 - All the countries in a region organised by largest population to smallest.\n");
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Name, Population, Region "
+                            + "FROM country "
+                            + "ORDER BY Region, Population DESC";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            if (resultSet.next()) {
+                country country = new country();
+//                country.Code = resultSet.getString("Code");
+                country.Name = resultSet.getString("Name");
+//                country.Continent = resultSet.getString("Continent");
+                country.Region = resultSet.getString("Region");
+                country.Population = resultSet.getInt("Population");
+//                country.Capital = resultSet.getInt("Capital");
+
+                while (resultSet.next()) {
+                    System.out.println(
+                            " Name - " + resultSet.getString("Name")
+
+                            + ", Region - " + resultSet.getString("Region")
+                            + ", Population - " + resultSet.getInt("Population"));
+
+                }
+                System.out.println("Query2 -finished\n");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
+
+
+
+
 }
