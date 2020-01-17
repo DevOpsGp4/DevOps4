@@ -17,7 +17,7 @@ public class App
         // Quary List
         a.query1();
         a.query2();
-
+        a.query3();
         // Disconnect from database
         a.disconnect();
     }
@@ -35,7 +35,7 @@ public class App
         try
         {
             // Load Database driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         }
         catch (ClassNotFoundException e)
         {
@@ -94,7 +94,7 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Name, Population, Continent "
+                    "SELECT * "
                             + "FROM country "
                             + "ORDER BY Continent, Population DESC";
 
@@ -102,16 +102,7 @@ public class App
             ResultSet resultSet = stmt.executeQuery(strSelect);
 
             if (resultSet.next()) {
-                country country = new country();
-                country.Name = resultSet.getString("Name");
-                country.Population = resultSet.getInt("Population");
-                country.Continent = resultSet.getString("Continent");
-
-                while (resultSet.next()) {
-                    System.out.println(" Name- " + resultSet.getString("Name")
-                            + ", Population- " + resultSet.getInt("Population")
-                            + ", Continent- " + resultSet.getString("Continent"));
-                }
+                country(resultSet);
                 System.out.println("Query1 -Finished\n");
             }
         } catch (Exception e) //Catch any errors and print error message
@@ -128,28 +119,13 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Name, Population, Region "
+                    "SELECT *"
                             + "FROM country "
                             + "ORDER BY Region, Population DESC";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
             if (resultSet.next()) {
-                country country = new country();
-//                country.Code = resultSet.getString("Code");
-                country.Name = resultSet.getString("Name");
-//                country.Continent = resultSet.getString("Continent");
-                country.Region = resultSet.getString("Region");
-                country.Population = resultSet.getInt("Population");
-//                country.Capital = resultSet.getInt("Capital");
-
-                while (resultSet.next()) {
-                    System.out.println(
-                            " Name - " + resultSet.getString("Name")
-
-                            + ", Region - " + resultSet.getString("Region")
-                            + ", Population - " + resultSet.getInt("Population"));
-
-                }
+                country(resultSet);
                 System.out.println("Query2 -finished\n");
             }
         } catch (Exception e) {
@@ -158,7 +134,45 @@ public class App
         }
     }
 
+    public void query3() {
+        System.out.println("Query3 - All the countries in the world organised by largest population to smallest.\n");
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT *"
+                            + "FROM country "
+                            + "ORDER BY Name, Population DESC";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            if (resultSet.next()) {
+                country(resultSet);
+                System.out.println("Query3 -finished\n");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
 
+    private void country(ResultSet resultSet) throws SQLException {
+        country country = new country();
+        country.Code = resultSet.getString("Code");
+        country.Name = resultSet.getString("Name");
+        country.Continent = resultSet.getString("Continent");
+        country.Region = resultSet.getString("Region");
+        country.Population = resultSet.getInt("Population");
+        country.Capital = resultSet.getInt("Capital");
 
+        while (resultSet.next()) {
+            System.out.println(" Code - " + resultSet.getString("Code")
+                    + ", Name - " + resultSet.getString("Name")
+                    + ", Continent - " + resultSet.getString("Continent")
+                    + ", Region - " + resultSet.getString("Region")
+                    + ", Population - " + resultSet.getInt("Population")
+                    + ", Capital - " + resultSet.getInt("Capital"));
+        }
+    }
 
 }
