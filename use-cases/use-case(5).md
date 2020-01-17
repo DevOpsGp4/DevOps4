@@ -1,10 +1,10 @@
-# USE CASE: Population based report 4.
+# USE CASE: Population based report 5.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-To provide the total population, population of a continent, region, country, district and city.
+To provide the number of people who speak different languages from greatest number to smallest, including the percentage of the world population.
 
 ### Scope
 
@@ -32,16 +32,15 @@ Primary task.
 
 ### Trigger
 
-1. A request for population of people within different areas will be sent to Stakeholder.
+1. A request for world population with different speaking languages will be sent to Stakeholder.
 
 ## MAIN SUCCESS SCENARIO
 
-1. The population of the **"world"**.
-2. The population of a **"continent"**.
-3. The population of a **"region"**.
-4. The population of a **"country"**.
-5. The population of a **"district"**.
-6. The population of a **"city"**.
+1. Produce total number of people who speak **"Chinese"** language.
+2. Produce total number of people who speak **"English"** language.
+3. Produce total number of people who speak **"Hindi"** language.
+4. Produce total number of people who speak **"Spanish"** language.
+5. Produce total number of people who speak **"Arabic"** language.
 
 ## EXTENSIONS
 
