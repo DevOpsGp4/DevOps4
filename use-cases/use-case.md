@@ -16,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-<<<<<<<<< Temporary merge branch 1
+<<<<<<<<< Temporary merge branch 1  
 We know the role.  Database contains current world population data.
 =========
 We know the information. Database contains current world population data.
