@@ -2,6 +2,8 @@
 @startuml
 
 rectangle Database
+actor User as "stakeholder"
+
 rectangle "Population System"{
 /'Define for the countries'/
 (countries report) as (country)
@@ -11,6 +13,15 @@ rectangle "Population System"{
 (Descending population report) as (countries in world)
 (Descending smallest population report) as (countries in continent)
 (Descending smallest population report) as (countries in region)
+/'Connect link for largest to smallest country population.'/
+(country) <.. (world1) : extend
+(country) <.. (continent1) : extend
+(country) <.. (region1) : extend
+User - (country)
+(country) - Database
+(world1) ..> (countries in world) : include
+(continent1) ..> (countries in continent): include
+(region1) ..> (countries in region): include
 
 /'Define for All the cities'/
 (cities report) as (city)
@@ -22,27 +33,6 @@ rectangle "Population System"{
 (Descending smallest population report) as (cities in continent)
 (Descending smallest population report) as (cities in region)
 (Descending smallest population report) as (cities in district)
-
-/'Define for All the capital cities'/
-(capital cities report) as (capital)
-(capital cities in the world) as (world3)
-(capital cities in the continent ) as (continent3)
-(capital cities in the region ) as (region3)
-(Descending population report) as (capital cities in world)
-(Descending smallest population report) as (capital cities in continent)
-(Descending smallest population report) as (capital cities in region)
-}
-
-/'Connect link for largest to smallest country population.'/
-(country) <.. (world1) : extend
-(country) <.. (continent1) : extend
-(country) <.. (region1) : extend
-User - (country)
-(country) - Database
-(world1) ..> (countries in world) : include
-(continent1) ..> (countries in continent): include
-(region1) ..> (countries in region): include
-
 /'Connect link for largest to smallest city population.'/
 (city) <.. (world2) : extend
 (city) <.. (continent2) : extend
@@ -55,6 +45,14 @@ User - (city)
 (region2) ..> (cities in region): include
 (district) ..> (cities in district): include
 
+/'Define for All the capital cities'/
+(capital cities report) as (capital)
+(capital cities in the world) as (world3)
+(capital cities in the continent ) as (continent3)
+(capital cities in the region ) as (region3)
+(Descending population report) as (capital cities in world)
+(Descending smallest population report) as (capital cities in continent)
+(Descending smallest population report) as (capital cities in region)
 /'Connect link for largest to smallest capital city population.'/
 (capital) <.. (world3) : extend
 (capital) <.. (continent3) : extend
@@ -64,4 +62,6 @@ User - (capital)
 (world3) ..> (capital cities in world) : include
 (continent3) ..> (capital cities in continent): include
 (region3) ..> (capital cities in region): include
+
+}
 @enduml
