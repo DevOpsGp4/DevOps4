@@ -23,4 +23,7 @@ rectangle "Population System"{
 (Database) - (country)
 (Database) - (district)
 (Database) - (city)
+}
+note top of Database : SQL database for World population Info.
+note top of User : The stakeholder use the several objects.
 @enduml
