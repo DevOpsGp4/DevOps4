@@ -52,7 +52,7 @@ User - (city)
 (district) ..> (cities in district): include
 /'Note'/
 note right of city
-This note is countries population
+This note is cities population
 report for largest to smallest order
 with world, continent, region and district.
 end note
@@ -76,7 +76,7 @@ User - (capital)
 (region3) ..> (capital cities in region): include
 /'Note'/
 note right of capital
-This note is countries population
+This note is capital cities population
 report for largest to smallest order
 with world, continent and region.
 end note
