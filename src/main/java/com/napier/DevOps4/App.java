@@ -14,7 +14,7 @@ public class App
 
         // Connect to database
         a.connect();
-
+        a.query1();
         // Disconnect from database
         a.disconnect();
     }
@@ -49,7 +49,7 @@ public class App
                 // Wait a bit for db to start
                 Thread.sleep(10000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/employees?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             }
@@ -84,5 +84,41 @@ public class App
         }
     }
 
+    public void query1() {
+        System.out.println("Query1 - All the countries in a continent organised by largest population to smallest.\n");
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Name, Population, Continent "
+                            + "FROM country "
+                            + "ORDER BY Continent, Population DESC";
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next()) {
+                country country = new country();
+                country.Name = resultSet.getString("Name");
+                country.Population = resultSet.getInt("Population");
+                country.Continent = resultSet.getString("Continent");
+
+
+                while (resultSet.next()) {
+                    System.out.println("Name- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population")
+                            + ", Continent- " + resultSet.getString("Continent"));
+                }
+                System.out.println("Query1 -Finished\n");
+            }
+        } catch (Exception e) //Catch any errors and print error message
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+
+        }
+
+    }
 
 }
