@@ -5,6 +5,7 @@ rectangle Database
 actor User as "stakeholder"
 
 rectangle "Population System"{
+
 /'Define for the countries'/
 (countries report) as (country)
 (countries in the world) as (world1)
@@ -13,15 +14,17 @@ rectangle "Population System"{
 (Descending population report) as (countries in world)
 (Descending smallest population report) as (countries in continent)
 (Descending smallest population report) as (countries in region)
+/'End Define for the countries'/
 /'Connect link for largest to smallest country population.'/
+User - (country)
 (country) <.. (world1) : extend
 (country) <.. (continent1) : extend
 (country) <.. (region1) : extend
-User - (country)
 (country) - Database
 (world1) ..> (countries in world) : include
 (continent1) ..> (countries in continent): include
 (region1) ..> (countries in region): include
+/'End Connect link for largest to smallest country population.'/
 /'Note'/
 note right of country
 This note is countries population
@@ -39,6 +42,7 @@ end note
 (Descending smallest population report) as (cities in continent)
 (Descending smallest population report) as (cities in region)
 (Descending smallest population report) as (cities in district)
+/'End Define for All the cities'/
 /'Connect link for largest to smallest city population.'/
 (city) <.. (world2) : extend
 (city) <.. (continent2) : extend
@@ -50,6 +54,7 @@ User - (city)
 (continent2) ..> (cities in continent): include
 (region2) ..> (cities in region): include
 (district) ..> (cities in district): include
+/'End Connect link for largest to smallest city population.'/
 /'Note'/
 note right of city
 This note is countries population
@@ -65,6 +70,7 @@ end note
 (Descending population report) as (capital cities in world)
 (Descending smallest population report) as (capital cities in continent)
 (Descending smallest population report) as (capital cities in region)
+/'End Define for All the capital cities'/
 /'Connect link for largest to smallest capital city population.'/
 (capital) <.. (world3) : extend
 (capital) <.. (continent3) : extend
@@ -74,12 +80,31 @@ User - (capital)
 (world3) ..> (capital cities in world) : include
 (continent3) ..> (capital cities in continent): include
 (region3) ..> (capital cities in region): include
+/'End Connect link for largest to smallest capital city population.'/
 /'Note'/
 note right of capital
 This note is countries population
 report for largest to smallest order
 with world, continent and region.
 end note
+
+/'Define user Input(number)'/
+(user input) as (input1)
+(user input) as (input2)
+(user input) as (input3)
+/'End Define user Input(number)'/
+/'Connect link for user input'/
+(input1) ..> (world1) : include
+(input1) ..> (continent1) : include
+(input1) ..> (region1) : include
+(input2) ..> (world2) : include
+(input2) ..> (continent2) : include
+(input2) ..> (region2) : include
+(input2) ..> (district) : include
+(input3) ..> (world3) : include
+(input3) ..> (continent3) : include
+(input3) ..> (region3) : include
+/'End Connect link for user input'/
 }
 note top of Database : SQL database for World population Info.
 note top of User : The stakeholder use the several objects.
