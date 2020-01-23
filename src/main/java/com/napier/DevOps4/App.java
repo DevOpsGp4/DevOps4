@@ -93,20 +93,20 @@ public class App
 
     private void country(ResultSet resultSet) throws SQLException {
         country country = new country();
-        country.Code = resultSet.getString("Code");
-        country.Name = resultSet.getString("Name");
-        country.Continent = resultSet.getString("Continent");
-        country.Region = resultSet.getString("Region");
-        country.Population = resultSet.getInt("Population");
-        country.Capital = resultSet.getInt("Capital");
+        country.setCode(resultSet.getString("Code"));
+        country.setName(resultSet.getString("Name"));
+        country.setContinent(resultSet.getString("Continent"));
+        country.setRegion(resultSet.getString("Region"));
+        country.setPopulation(resultSet.getInt("Population"));
+        country.setCapital(resultSet.getInt("Capital"));
 
         while (resultSet.next()) {
-            System.out.println("Code - " + resultSet.getString("Code")
-                    + ", Name - " + resultSet.getString("Name")
-                    + ", Continent - " + resultSet.getString("Continent")
-                    + ", Region - " + resultSet.getString("Region")
-                    + ", Population - " + resultSet.getInt("Population")
-                    + ", Capital - " + resultSet.getInt("Capital"));
+            System.out.println("Code - " + country.getCode()
+                    + ", Name - " + country.getName()
+                    + ", Continent - " + country.getContinent()
+                    + ", Region - " + country.getRegion()
+                    + ", Population - " + country.getPopulation()
+                    + ", Capital - " + country.getCapital());
         }
     }
 
@@ -249,6 +249,14 @@ public class App
         }
     }
 
+    public Connection getCon() {
+        return con;
+    }
+
+    public void setCon(Connection con) {
+        this.con = con;
+    }
+
     public void query6() {
         System.out.println("Query6 - The top N populated countries in a continent where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
@@ -285,5 +293,6 @@ public class App
             System.out.println("Failed to get details");
         }
     }
+//query 32
 
 }
