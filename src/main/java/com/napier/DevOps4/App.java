@@ -1,6 +1,7 @@
 package com.napier.DevOps4;
 
 import java.sql.*;
+import java.util.Scanner;
 
 /**
  * This class
@@ -18,6 +19,9 @@ public class App
         a.query1();
         a.query2();
         a.query3();
+        a.query4();
+        a.query5();
+        a.query6();
         // Disconnect from database
         a.disconnect();
     }
@@ -84,6 +88,25 @@ public class App
             {
                 System.out.println("Error closing connection to database");
             }
+        }
+    }
+
+    private void country(ResultSet resultSet) throws SQLException {
+        country country = new country();
+        country.Code = resultSet.getString("Code");
+        country.Name = resultSet.getString("Name");
+        country.Continent = resultSet.getString("Continent");
+        country.Region = resultSet.getString("Region");
+        country.Population = resultSet.getInt("Population");
+        country.Capital = resultSet.getInt("Capital");
+
+        while (resultSet.next()) {
+            System.out.println("Code - " + resultSet.getString("Code")
+                    + ", Name - " + resultSet.getString("Name")
+                    + ", Continent - " + resultSet.getString("Continent")
+                    + ", Region - " + resultSet.getString("Region")
+                    + ", Population - " + resultSet.getInt("Population")
+                    + ", Capital - " + resultSet.getInt("Capital"));
         }
     }
 
@@ -156,22 +179,110 @@ public class App
         }
     }
 
-    private void country(ResultSet resultSet) throws SQLException {
-        country country = new country();
-        country.Code = resultSet.getString("Code");
-        country.Name = resultSet.getString("Name");
-        country.Continent = resultSet.getString("Continent");
-        country.Region = resultSet.getString("Region");
-        country.Population = resultSet.getInt("Population");
-        country.Capital = resultSet.getInt("Capital");
+    public void query4() {
+        System.out.println("Query4 - The top N populated countries in the world where N is provided by the user.\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the amount of countries you would like to see - ");
+        int input = scanner.nextInt();
+        input += 1;
 
-        while (resultSet.next()) {
-            System.out.println(" Code - " + resultSet.getString("Code")
-                    + ", Name - " + resultSet.getString("Name")
-                    + ", Continent - " + resultSet.getString("Continent")
-                    + ", Region - " + resultSet.getString("Region")
-                    + ", Population - " + resultSet.getInt("Population")
-                    + ", Capital - " + resultSet.getInt("Capital"));
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String limit = "LIMIT " + input + " ";
+
+            String strSelect =
+                    "SELECT * "
+                            + "FROM country "
+                            + "ORDER BY Population DESC "
+                            + limit;
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            if (resultSet.next()) {
+                country(resultSet);
+                System.out.println("Query4 -finished\n");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+
+    }
+
+    public void query5() {
+        System.out.println("Query5 - The top N populated countries in a region where N is provided by the user.\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the amount of countries you would like to see - ");
+        int input = scanner.nextInt();
+        scanner.nextLine();
+        input += 1;
+
+        System.out.println("Enter the region you would like to see - ");
+        String input_region = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String limit = "LIMIT " + input + " ";
+
+            String strSelect =
+                    "SELECT * "
+                            + "FROM country "
+                            + "WHERE Region = \"" + input_region + "\" "
+                            + "ORDER BY Population DESC "
+                            + limit;
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            if (resultSet.next()) {
+                country(resultSet);
+                System.out.println("Query5 -finished\n");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
+
+    public void query6() {
+        System.out.println("Query6 - The top N populated countries in a continent where N is provided by the user.\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the amount of countries you would like to see - ");
+        int input = scanner.nextInt();
+        scanner.nextLine();
+        input += 1;
+
+        System.out.println("Enter the continent you would like to see - ");
+        String input_continent = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String limit = "LIMIT " + input + " ";
+
+            String strSelect =
+                    "SELECT * "
+                            + "FROM country "
+                            + "WHERE Continent = \"" + input_continent + "\" "
+                            + "ORDER BY Population DESC "
+                            + limit;
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            if (resultSet.next()) {
+                country(resultSet);
+                System.out.println("Query6 -finished\n");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
         }
     }
 
