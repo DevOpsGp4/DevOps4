@@ -252,9 +252,9 @@ public class App
         city city= new city();
         country country=new country();
         city.setName(resultSet.getString("Name"));
-        city.Population = resultSet.getInt("Population");
-        city.District=resultSet.getString("District");
-        country.Name = resultSet.getString("country.Name");
+        city.setPopulation(resultSet.getInt("Population"));
+        city.setDistrict(resultSet.getString("District"));
+        country.setName(resultSet.getString("country.Name"));
 
         while (resultSet.next()) {
             System.out.println(" City- " + resultSet.getString("Name")
@@ -268,8 +268,8 @@ public class App
         city city= new city();
         country country=new country();
         city.setName(resultSet.getString("Name"));
-        city.Population = resultSet.getInt("Population");
-        country.Name = resultSet.getString("country.Name");
+        city.setPopulation(resultSet.getInt("Population"));
+        country.setName(resultSet.getString("country.Name"));
 
         while (resultSet.next()) {
             System.out.println(" capital city- " + resultSet.getString("Name")
