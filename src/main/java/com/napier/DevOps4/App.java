@@ -25,7 +25,9 @@ public class App
 //        a.query18();
 //        a.query19();
         //a.query12();
-        a.query13();
+        //a.query13();
+        a.query14();
+
         a.disconnect();
 
 
@@ -226,6 +228,39 @@ public class App
             if (resultSet.next()) {
                 tcity(resultSet);
                 System.out.println("Query13 -finished\n");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+
+    }
+    public void query14() throws IOException {
+        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Query14 - The top N populated countries in a region   where N is provided by the user.\n");
+        System.out.print("Enter Number of populated countries in a region  - ");
+        int input =Integer.parseInt(br.readLine()) + 1;
+        System.out.print("Enter the region  - ");
+        String Nreg =br.readLine();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement for N populated cities in the world
+            String limit = "LIMIT " + input + " ";
+
+            String strSelect =
+                    "SELECT city.Name,city.District,city.Population,country.Name " +
+                            "FROM city "
+                            + "INNER JOIN country ON city.ID=country.Capital "
+                            + "WHERE country.Region='"+Nreg+"'"
+                            + "ORDER BY `city`.`Population` DESC "
+                            +limit;
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            if (resultSet.next()) {
+                tcity(resultSet);
+                System.out.println("Query14 -finished\n");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
