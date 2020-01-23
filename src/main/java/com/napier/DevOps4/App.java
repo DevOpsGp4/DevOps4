@@ -8,8 +8,7 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 public class App
 {
-    int number;
-    BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+
 
     public static void main(String[] args) throws IOException {
         // Create new Application
@@ -17,26 +16,25 @@ public class App
 
         // Connect to database
         a.connect();
+        // Disconnect from database
+
+
+
         // Quary List
-        /*a.query1();
-        a.query2();*/
-        //a.query17();
-        //a.query18();
-        //a.query19();
+//        a.query17();
+//        a.query18();
+//        a.query19();
         //a.query12();
         a.query13();
-        // Disconnect from database
         a.disconnect();
+
+
     }
 
-    /**
-     * Connection to MySQL database.
-     */
+    /*** Connection to MySQL database*/
     private Connection con = null;
 
-    /**
-     * Connect to the MySQL database.
-     */
+    /** Connect to the MySQL database.*/
     public void connect()
     {
         try
@@ -169,27 +167,30 @@ public class App
     }
 
     public void query12() throws IOException {
+
+        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Query12 - The top N populated countries in the world where N is provided by the user.\n");
         System.out.print("Enter the amount of countries you would like to see - ");
-        int input =Integer.parseInt(br.readLine()) + 1;
+//        int input =Integer.parseInt(br.readLine()) + 1;
+        int input =Integer.parseInt(br.readLine());
 
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement for N populated cities in the world
-            String limit = "LIMIT " + input + " ";
+//            String limit = "LIMIT " + input + " ";
 
             String strSelect =
                     "SELECT city.Name,city.District,city.Population,country.Name " +
                             "FROM city "
                             + "INNER JOIN country ON city.ID=country.Capital "
-                            + "ORDER BY `city`.`Population` DESC "
-                            +limit;
+                            + "ORDER BY `city`.`Population` DESC LIMIT "+input;
+
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
             if (resultSet.next()) {
-                city(resultSet);
+                tcity(resultSet);
                 System.out.println("Query12 -finished\n");
             }
         } catch (Exception e) {
@@ -200,10 +201,12 @@ public class App
     }
 
     public void query13() throws IOException {
+        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Query13 - The top N populated countries in a continent  where N is provided by the user.\n");
         System.out.print("Enter Number of populated countries in a continent - ");
         int input =Integer.parseInt(br.readLine()) + 1;
-
+        System.out.print("Enter the continent - ");
+        String Ncon =br.readLine();
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -215,13 +218,13 @@ public class App
                     "SELECT city.Name,city.District,city.Population,country.Name " +
                             "FROM city "
                             + "INNER JOIN country ON city.ID=country.Capital "
-                            + "WHERE country.Continent='Asia'"
+                            + "WHERE country.Continent='"+Ncon+"'"
                             + "ORDER BY `city`.`Population` DESC "
                             +limit;
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
             if (resultSet.next()) {
-                city(resultSet);
+                tcity(resultSet);
                 System.out.println("Query13 -finished\n");
             }
         } catch (Exception e) {
@@ -231,24 +234,7 @@ public class App
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private void city(ResultSet resultSet) throws SQLException {
+    private void tcity(ResultSet resultSet) throws SQLException {
         city city= new city();
         country country=new country();
         city.setName(resultSet.getString("Name"));
@@ -260,7 +246,7 @@ public class App
             System.out.println(" City- " + resultSet.getString("Name")
                     + ", Country- " + resultSet.getString("country.Name")
                     + ", Population- " + resultSet.getInt("Population")
-                    + ", District - " + resultSet.getInt("District"));
+                    + ", District - " + resultSet.getString("District"));
         }
     }
 
