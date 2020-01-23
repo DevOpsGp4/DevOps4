@@ -1,10 +1,18 @@
 package com.napier.DevOps4;
 
 public class countrylanguage {
+    public String getCountryCode() {
+        return CountryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        CountryCode = countryCode;
+    }
+
     /**
      * CountryLanguage CountryCode
      */
-    public String CountryCode;
+    private String CountryCode;
 
     /**
      * CountryLanguage Language

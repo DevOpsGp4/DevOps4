@@ -16,12 +16,11 @@ public class App
         a.connect();
         // Query List
         a.query26();
-        a.query27("Asia");
-        a.query27("Africa");
-        a.query27("Oceania");
-        a.query27("Europe");
-        a.query27("North America");
-        a.query27("South America");
+        a.query27();
+        a.query28();
+        a.query29();
+        a.query30();
+        a.query31();
 
         // Disconnect from database
         a.disconnect();
@@ -103,7 +102,7 @@ public class App
             ResultSet resultSet = stmt.executeQuery(strSelect);
             if (resultSet.next()) {
                 String result = resultSet.getString("SUM(Population)");
-                System.out.println("Query (26) Total population of the world - " + result);
+                System.out.println("Total population of the world \n" + result + "\n------------------------------");
             }
         }
         catch (Exception e) {
@@ -112,22 +111,124 @@ public class App
         }
     }
 
-    public void query27 (String continent) {
+    public void query27 () {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "SELECT SUM(Population) "
+            String strSelect = "SELECT SUM(Population), Continent "
                     + "FROM country "
-                    + "WHERE Continent='"
-                    + continent
-                    + "'";
+                    + "Group By Continent "
+                    + "Order By SUM(Population) DESC";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
-            if (resultSet.next()) {
+            System.out.println(String.format("%-25s %-25s", "Continent", "Population"));
+            while (resultSet.next()) {
+                String con = resultSet.getString("Continent");
                 String result = resultSet.getString("SUM(Population)");
-                System.out.println("Total population of " + continent + " - " + result);
+                System.out.println(String.format("%-25s %-25s", con, result));
             }
+            System.out.println("------------------------------");
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
+
+    public void query28 () {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(Population), Region "
+                    + "FROM country "
+                    + "Group By Region "
+                    + "Order By SUM(Population) DESC";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            System.out.println(String.format("%-25s %-25s", "Region", "Population"));
+            while (resultSet.next()) {
+                String reg = resultSet.getString("Region");
+                String result = resultSet.getString("SUM(Population)");
+                System.out.println(String.format("%-25s %-25s", reg, result));
+            }
+            System.out.println("------------------------------");
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
+
+    public void query29 () {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(Population), Name "
+                    + "FROM country "
+                    + "Group By Name "
+                    + "Order By SUM(Population) DESC";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            System.out.println(String.format("%-25s %-25s", "Country Name", "Population"));
+            while (resultSet.next()) {
+                String name = resultSet.getString("Name");
+                String result = resultSet.getString("SUM(Population)");
+                System.out.println(String.format("%-25s %-25s", name, result));
+            }
+            System.out.println("------------------------------");
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
+
+    public void query30 () {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(Population), district "
+                    + "FROM city "
+                    + "Group By district "
+                    + "Order By SUM(Population) DESC";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            System.out.println(String.format("%-25s %-25s", "District Name", "Population"));
+            while (resultSet.next()) {
+                String dname = resultSet.getString("district");
+                String result = resultSet.getString("SUM(Population)");
+                System.out.println(String.format("%-25s %-25s", dname, result));
+            }
+            System.out.println("------------------------------");
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
+
+    public void query31 () {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(Population), name "
+                    + "FROM city "
+                    + "Group By name "
+                    + "Order By SUM(Population) DESC";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            System.out.println(String.format("%-25s %-25s", "City Name", "Population"));
+            while (resultSet.next()) {
+                String cname = resultSet.getString("name");
+                String result = resultSet.getString("SUM(Population)");
+                System.out.println(String.format("%-25s %-25s", cname, result));
+            }
+            System.out.println("------------------------------");
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
