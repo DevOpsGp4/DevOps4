@@ -268,7 +268,7 @@ public class App
             String limit = "LIMIT " + input + " ";
 
             String strSelect =
-                    "SELECT Name, Population, Continent "
+                    "SELECT * "
                             + "FROM country "
                             + "WHERE Continent = \"" + input_continent + "\" "
                             + "ORDER BY Population DESC "
