@@ -26,8 +26,8 @@ public class App
 //        a.query19();
         //a.query12();
         //a.query13();
-        a.query14();
-
+        //a.query14();
+        a.query15();
         a.disconnect();
 
 
@@ -171,7 +171,7 @@ public class App
     public void query12() throws IOException {
 
         BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Query12 - The top N populated countries in the world where N is provided by the user.\n");
+        System.out.println("Query12 - The top N populated cities  in the world where N is provided by the user.\n");
         System.out.print("Enter the amount of countries you would like to see - ");
 //        int input =Integer.parseInt(br.readLine()) + 1;
         int input =Integer.parseInt(br.readLine());
@@ -204,7 +204,7 @@ public class App
 
     public void query13() throws IOException {
         BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Query13 - The top N populated countries in a continent  where N is provided by the user.\n");
+        System.out.println("Query13 - The top N populated cities  in a continent  where N is provided by the user.\n");
         System.out.print("Enter Number of populated countries in a continent - ");
         int input =Integer.parseInt(br.readLine()) + 1;
         System.out.print("Enter the continent - ");
@@ -237,8 +237,8 @@ public class App
     }
     public void query14() throws IOException {
         BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Query14 - The top N populated countries in a region   where N is provided by the user.\n");
-        System.out.print("Enter Number of populated countries in a region  - ");
+        System.out.println("Query14 - The top N populated cities  in a region   where N is provided by the user.\n");
+        System.out.print("Enter Number of populated cities in a region  - ");
         int input =Integer.parseInt(br.readLine()) + 1;
         System.out.print("Enter the region  - ");
         String Nreg =br.readLine();
@@ -268,6 +268,41 @@ public class App
         }
 
     }
+
+    public void query15() throws IOException {
+        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Query15 - The top N populated city in a country where N is provided by the user.\n");
+        System.out.print("Enter Number of populated cities in a region  - ");
+        int input =Integer.parseInt(br.readLine()) + 1;
+        System.out.print("Enter the country  - ");
+        String Ncou =br.readLine();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement for N populated cities in the world
+            String limit = "LIMIT " + input + " ";
+
+            String strSelect =
+                    "SELECT city.Name,city.District,city.Population,country.Name " +
+                            "FROM city "
+                            + "INNER JOIN country ON city.ID=country.Capital "
+                            + "WHERE country.Name='"+Ncou+"'"
+                            + "ORDER BY `city`.`Population` DESC "
+                            +limit;
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            if (resultSet.next()) {
+                tcity(resultSet);
+                System.out.println("Query14 -finished\n");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+
+    }
+
 
     private void tcity(ResultSet resultSet) throws SQLException {
         city city= new city();
