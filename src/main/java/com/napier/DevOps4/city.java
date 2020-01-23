@@ -1,5 +1,7 @@
 package com.napier.DevOps4;
 
+import java.sql.ResultSet;
+
 public class city {
     /**
      * City ID

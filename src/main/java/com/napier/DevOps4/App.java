@@ -1,10 +1,7 @@
 package com.napier.DevOps4;
 
 import java.sql.*;
-
-/**
- * This class
- */
+import java.util.Scanner;
 public class App
 {
     public static void main(String[] args)
@@ -19,7 +16,8 @@ public class App
         a.query2();*/
         //a.query17();
         //a.query18();
-        a.query19();
+        //a.query19();
+        a.query12();
         // Disconnect from database
         a.disconnect();
     }
@@ -262,6 +260,53 @@ public class App
                             + ", Country- " + resultSet.getString("country.Name"));
                 }
                 System.out.println("Query19 -Finished\n");
+            }
+        } catch (Exception e) //Catch any errors and print error message
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
+
+    public void query12() {
+        System.out.println("Query12 - he top N populated cities in the world where N is provided by the user.\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the amount of populated_cities you would like to see - ");
+        int input = scanner.nextInt();
+        input += 1;
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String limit = "LIMIT " + input + " ";
+
+            String strSelect =
+                    "SELECT *  "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.ID=country.Capital "
+                            + "ORDER BY `city`.`Population` DESC"
+                            + limit;
+
+// Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next()) {
+                city city= new city();
+                country country=new country();
+                city.Name = resultSet.getString("Name");
+                city.Population = resultSet.getInt("Population");
+                city.District=resultSet.getString("District");
+                country.Name = resultSet.getString("country.Name");
+
+                while (resultSet.next()) {
+                    System.out.println(" city- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population")
+                            + ", District - " + resultSet.getInt("Population")
+                            + ", Country- " + resultSet.getString("country.Name"));
+                }
+                System.out.println("Query12 -Finished\n");
             }
         } catch (Exception e) //Catch any errors and print error message
         {
