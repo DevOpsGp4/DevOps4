@@ -20,7 +20,7 @@ Name - Han Tun Zaw (Developer, Metriculation Number 40437506)
 |  1 | <ul><li> 40437522 </li><li> 40437529 </li><li> 40437509 </li><li> 40437506 </li></ul> | Setup And creating database|Set up Git repository and creating product backlog and develop branches and release | Must | Done |
 |  2 |<ul><li> 40437522 </li><li> 40437529 </li><li> 40437509 </li><li> 40437506 </li></ul> | Project Planning and user story| Creating User story and using Kanban board and sprint board to manage the tasks | Must | Done |
 |  3 | <ul><li> 40437522 </li></ul> | Population amount of countries | All countries in world\continent\region organised by largest population to smallest.| Must | Done |
-|  4 |<ul><li> 40437522 </li></ul> | Top populated countries | The top N populated countries in  world\continent\region where N is provided by the user. | Must | To Do |
+|  4 |<ul><li> 40437522 </li></ul> | Top populated countries | The top N populated countries in  world\continent\region where N is provided by the user. | Must | Done |
 |  5 | <ul><li> 40437506 </li></ul> |Population amount of cities |All the cities in world\continent\region\district\country organised by largest population to smallest. | Must | To Do |
 |  6 |<ul><li> 40437529 </li></ul> | Top populated cities |Top N populated cities in world\continent\region\district\country where N is provided by the user.| Must | To Do |
 |  7 | <ul><li> 40437529 </li></ul> |Population amount of  capital cities |All capital cities in world\continent\region organised by largest popul to smallest.| Must | Done |
