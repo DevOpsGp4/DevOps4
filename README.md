@@ -19,7 +19,7 @@ Name - Han Tun Zaw (Developer, Metriculation Number 40437506)
 | --------|:------------- | :----------| ---------:|---------:|
 |  1 |  Setup And creating database|Set up Git repository and creating product backlog and develop branches and release | Must | Done |
 |  2 | Project Planning and user story| Creating User story and using Kanban board and sprint board to manage the tasks | Must | Done |
-|  3 |  Population amount of countries | All countries in world\continent\region organised by largest population to smallest.| Must | To Do |
+|  3 |  Population amount of countries | All countries in world\continent\region organised by largest population to smallest.| Must | Done |
 |  4 | Top populated countries | The top N populated countries in  world\continent\region where N is provided by the user. | Must | To Do |
 |  5 | Population amount of cities |All the cities in world\continent\region\district\country organised by largest population to smallest. | Must | To Do |
 |  6 | Top populated cities |Top N populated cities in world\continent\region\district\country where N is provided by the user.| Must | To Do |
