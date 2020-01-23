@@ -14,6 +14,7 @@ public class App
 
         // Connect to database
         a.connect();
+
         // Query List
         a.query26();
         a.query27();
