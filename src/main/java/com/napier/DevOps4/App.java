@@ -1,6 +1,9 @@
 package com.napier.DevOps4;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.sql.*;
+import java.util.Scanner;
 
 /**
  * This class
@@ -18,6 +21,7 @@ public class App
         a.query1();
         a.query2();
         a.query3();
+        a.query4();
         // Disconnect from database
         a.disconnect();
     }
@@ -84,6 +88,25 @@ public class App
             {
                 System.out.println("Error closing connection to database");
             }
+        }
+    }
+
+    private void country(ResultSet resultSet) throws SQLException {
+        country country = new country();
+        country.Code = resultSet.getString("Code");
+        country.Name = resultSet.getString("Name");
+        country.Continent = resultSet.getString("Continent");
+        country.Region = resultSet.getString("Region");
+        country.Population = resultSet.getInt("Population");
+        country.Capital = resultSet.getInt("Capital");
+
+        while (resultSet.next()) {
+            System.out.println(" Code - " + resultSet.getString("Code")
+                    + ", Name - " + resultSet.getString("Name")
+                    + ", Continent - " + resultSet.getString("Continent")
+                    + ", Region - " + resultSet.getString("Region")
+                    + ", Population - " + resultSet.getInt("Population")
+                    + ", Capital - " + resultSet.getInt("Capital"));
         }
     }
 
@@ -156,23 +179,39 @@ public class App
         }
     }
 
-    private void country(ResultSet resultSet) throws SQLException {
-        country country = new country();
-        country.Code = resultSet.getString("Code");
-        country.Name = resultSet.getString("Name");
-        country.Continent = resultSet.getString("Continent");
-        country.Region = resultSet.getString("Region");
-        country.Population = resultSet.getInt("Population");
-        country.Capital = resultSet.getInt("Capital");
+    public void query4() {
+        System.out.println("Query4 - The top N populated countries in the world where N is provided by the user.\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the amount of countries you would like to see - ");
+        int input = scanner.nextInt();
+        input += 1;
 
-        while (resultSet.next()) {
-            System.out.println(" Code - " + resultSet.getString("Code")
-                    + ", Name - " + resultSet.getString("Name")
-                    + ", Continent - " + resultSet.getString("Continent")
-                    + ", Region - " + resultSet.getString("Region")
-                    + ", Population - " + resultSet.getInt("Population")
-                    + ", Capital - " + resultSet.getInt("Capital"));
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String limit = "LIMIT " + input + " ";
+
+            String strSelect =
+                    "SELECT Name, Population "
+                            + "FROM country "
+                            + "ORDER BY Population DESC "
+                            + limit;
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            if (resultSet.next()) {
+                country(resultSet);
+                System.out.println("Query5 -finished\n");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
         }
+
     }
+
+
 
 }
