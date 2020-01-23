@@ -1,7 +1,5 @@
 package com.napier.DevOps4;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -22,6 +20,8 @@ public class App
         a.query2();
         a.query3();
         a.query4();
+        a.query5();
+
         // Disconnect from database
         a.disconnect();
     }
@@ -101,7 +101,7 @@ public class App
         country.Capital = resultSet.getInt("Capital");
 
         while (resultSet.next()) {
-            System.out.println(" Code - " + resultSet.getString("Code")
+            System.out.println("Code - " + resultSet.getString("Code")
                     + ", Name - " + resultSet.getString("Name")
                     + ", Continent - " + resultSet.getString("Continent")
                     + ", Region - " + resultSet.getString("Region")
@@ -194,8 +194,46 @@ public class App
             String limit = "LIMIT " + input + " ";
 
             String strSelect =
-                    "SELECT Name, Population "
+                    "SELECT * "
                             + "FROM country "
+                            + "ORDER BY Population DESC "
+                            + limit;
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            if (resultSet.next()) {
+                country(resultSet);
+                System.out.println("Query4 -finished\n");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+
+    }
+
+    public void query5() {
+        System.out.println("Query5 - The top N populated countries in a region where N is provided by the user.\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the amount of countries you would like to see - ");
+        int input = scanner.nextInt();
+        scanner.nextLine();
+        input += 1;
+
+        System.out.println("Enter the region you would like to see - ");
+        String input_region = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String limit = "LIMIT " + input + " ";
+
+            String strSelect =
+                    "SELECT * "
+                            + "FROM country "
+                            + "WHERE Region = \"" + input_region + "\" "
                             + "ORDER BY Population DESC "
                             + limit;
 
@@ -209,8 +247,8 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get details");
         }
-
     }
+
 
 
 
