@@ -144,7 +144,8 @@ public class App
             String strSelect = "SELECT SUM(Population), Region "
                     + "FROM country "
                     + "Group By Region "
-                    + "Order By SUM(Population) DESC";
+                    + "Order By SUM(Population) DESC "
+                    + "LIMIT 10";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
             System.out.println(String.format("%-25s %-25s", "Region", "Population"));
@@ -169,7 +170,8 @@ public class App
             String strSelect = "SELECT SUM(Population), Name "
                     + "FROM country "
                     + "Group By Name "
-                    + "Order By SUM(Population) DESC";
+                    + "Order By SUM(Population) DESC "
+                    + "LIMIT 10";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
             System.out.println(String.format("%-25s %-25s", "Country Name", "Population"));
@@ -194,7 +196,8 @@ public class App
             String strSelect = "SELECT SUM(Population), district "
                     + "FROM city "
                     + "Group By district "
-                    + "Order By SUM(Population) DESC";
+                    + "Order By SUM(Population) DESC "
+                    + "LIMIT 10";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
             System.out.println(String.format("%-25s %-25s", "District Name", "Population"));
@@ -219,7 +222,8 @@ public class App
             String strSelect = "SELECT SUM(Population), name "
                     + "FROM city "
                     + "Group By name "
-                    + "Order By SUM(Population) DESC";
+                    + "Order By SUM(Population) DESC "
+                    + "LIMIT 10";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
             System.out.println(String.format("%-25s %-25s", "City Name", "Population"));
