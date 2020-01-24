@@ -6,7 +6,7 @@ public class country {
      */
     private String Code;
 
-    public String getCode() {
+    public String getCode(String string) {
         return Code;
     }
 
@@ -18,7 +18,7 @@ public class country {
      */
     private String Name;
 
-    public String getName() {
+    public String getName(String string) {
         return Name;
     }
 
@@ -30,7 +30,7 @@ public class country {
      */
     private String Continent;
 
-    public String getContinent() {
+    public String getContinent(String string) {
         return Continent;
     }
 
@@ -42,7 +42,7 @@ public class country {
      */
     private String Region;
 
-    public String getRegion() {
+    public String getRegion(String string) {
         return Region;
     }
 
@@ -79,7 +79,7 @@ public class country {
      */
     private Integer Population;
 
-    public Integer getPopulation() {
+    public Integer getPopulation(String string) {
         return Population;
     }
 
@@ -162,13 +162,13 @@ public class country {
     /**
      * Country Capital
      */
-    private Integer Capital;
+    private String Capital;
 
-    public Integer getCapital() {
+    public String getCapital(String string) {
         return Capital;
     }
 
-    public void setCapital(Integer capital) {
+    public void setCapital(String capital) {
         Capital = capital;
     }
     /**
@@ -182,5 +182,15 @@ public class country {
 
     public void setCode2(String code2) {
         Code2 = code2;
+    }
+
+    @Override
+    public String toString() {
+        return "Code - '" + Code + '\'' +
+                ", Name - '" + Name + '\'' +
+                ", Continent -'" + Continent + '\'' +
+                ", Region - '" + Region + '\'' +
+                ", Population - " + Population +
+                ", Capital - " + Capital ;
     }
 }
