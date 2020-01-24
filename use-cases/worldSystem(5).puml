@@ -1,0 +1,34 @@
+@startuml
+rectangle Database
+actor User as "stakeholder"
+
+rectangle "Population System"{
+/'Define'/
+(population speaking "Chinese") as chinese
+(population speaking "English") as english
+(population speaking "Hindi") as hindi
+(population speaking "Spanish") as spanish
+(population speaking "Arabic") as arabic
+(Population in descending order + world population percentage) as gts
+/'Connect'/
+(User) - (chinese)
+(User) - (english)
+(User) - (hindi)
+(User) - (spanish)
+(User) - (arabic)
+(chinese) ..> (gts) : include
+(english) ..> (gts) : include
+(hindi) ..> (gts) : include
+(spanish) ..> (gts) : include
+(arabic) ..> (gts) : include
+(Database) - (chinese)
+(Database) - (english)
+(Database) - (hindi)
+(Database) - (spanish)
+(Database) - (arabic)
+note bottom of gts : Will display both the five languages in descending order together with total percentage of population.
+}
+/'Note'/
+note top of Database : SQL database for World population Info.
+note top of User : The stakeholder use the several objects.
+@enduml
