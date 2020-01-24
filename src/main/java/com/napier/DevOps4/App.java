@@ -44,11 +44,11 @@ public class App
                     {
                     // city report
                     }
-                    if (n == 2)
+                    if (n == 3)
                     {
                     // capital city report
                     }
-                    if (n == 2)
+                    if (n == 4)
                     {
                     // population report
 
@@ -62,7 +62,7 @@ public class App
                 // Create new Application
                 App a = new App();
                 // Connect to database
-                a.connect();
+                a.connect("localhost:33060");
                 char c;
                 int n = 0;
 
@@ -80,7 +80,7 @@ public class App
 
                 while (n != 7)// Exits the program when 5 is pressed
                 {
-                    System.out.print("\n Please enter option 1-5 to continue...: ");
+                    System.out.print("\n Please enter option 1-6 to continue...: ");
                     n = Integer.parseInt(System.console().readLine());
                     // Reads user input and takes them to selected code.
                     if (n > 6 || n < 1) {
@@ -135,30 +135,39 @@ public class App
                 /**
                  * Connect to the MySQL database.
                  */
-                public void connect ()
+                public void connect(String location)
                 {
-                    try {
+                    try
+                    {
                         // Load Database driver
-                        Class.forName("com.mysql.jdbc.Driver");
-                    } catch (ClassNotFoundException e) {
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                    }
+                    catch (ClassNotFoundException e)
+                    {
                         System.out.println("Could not load SQL driver");
                         System.exit(-1);
                     }
 
                     int retries = 10;
-                    for (int i = 0; i < retries; ++i) {
+                    for (int i = 0; i < retries; ++i)
+                    {
                         System.out.println("Connecting to database...");
-                        try {
+                        try
+                        {
                             // Wait a bit for db to start
                             Thread.sleep(10000);
                             // Connect to database
-                            con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                            con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
                             System.out.println("Successfully connected");
                             break;
-                        } catch (SQLException sqle) {
-                            System.out.println("Failed to connect to database attempt " + i);
+                        }
+                        catch (SQLException sqle)
+                        {
+                            System.out.println("Failed to connect to database attempt " + Integer.toString(i));
                             System.out.println(sqle.getMessage());
-                        } catch (InterruptedException ie) {
+                        }
+                        catch (InterruptedException ie)
+                        {
                             System.out.println("Thread interrupted? Should not happen.");
                         }
                     }
@@ -184,7 +193,12 @@ public class App
                  * @param countries The list of countries to display.
                  */
                 public void displayCountries (ArrayList < country > countries) {
-
+                    // Check employees is not null
+                    if (countries == null)
+                    {
+                        System.out.println("No countries");
+                        return;
+                    }
                     for (country cy : countries) {
                         System.out.println(cy);
                     }
@@ -193,7 +207,7 @@ public class App
                  * Set Methods
                  * @return An array list of all countries
                  */
-                private ArrayList<country> getCountries (Statement stmt, String strSelect) throws SQLException {
+                public ArrayList<country> getCountries (Statement stmt, String strSelect) throws SQLException {
                     ResultSet resultSet = stmt.executeQuery(strSelect);
                     // Extract country information
                     ArrayList<country> countries = new ArrayList<>();
