@@ -77,13 +77,13 @@ public class country {
     /**
      * Country Population
      */
-    private Integer Population;
+    private Long Population;
 
-    public Integer getPopulation() {
+    public Long getPopulation() {
         return Population;
     }
 
-    public void setPopulation(Integer population) {
+    public void setPopulation(Long population) {
         Population = population;
     }
 
