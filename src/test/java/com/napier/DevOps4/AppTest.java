@@ -15,6 +15,7 @@ public class AppTest
         app = new App();
     }
 
+    //country Testing
     // Null Test
     @Test
     void displayCountiesTestNull()
@@ -36,4 +37,5 @@ public class AppTest
         countries.add(null);
         app.displayCountries(countries);
     }
+    //City Testing
 }
