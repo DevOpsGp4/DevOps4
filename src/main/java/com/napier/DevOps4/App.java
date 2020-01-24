@@ -16,15 +16,15 @@ public class App
         a.connect();
 
         // Query List
-//        a.query23();
-//        a.query24();
+        a.query23();
+        a.query24();
         a.query25();
-//        a.query26();
-//        a.query27();
-//        a.query28();
-//        a.query29();
-//        a.query30();
-//        a.query31();
+        a.query26();
+        a.query27();
+        a.query28();
+        a.query29();
+        a.query30();
+        a.query31();
 
         // Disconnect from database
         a.disconnect();
@@ -95,7 +95,7 @@ public class App
         }
     }
 
-    public void query25 () {
+    public void query23 () {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -105,12 +105,14 @@ public class App
                     + "FROM country "
                     + "GROUP BY Continent "
                     + "HAVING SUM(country.Population) > 0 "
-                    + "ORDER BY Continent";
+                    + "ORDER BY Continent "
+                    + "LIMIT 10";
             String strSelect1 = "SELECT SUM(city.Population), Continent "
                     + "FROM city, country "
                     + "WHERE city.CountryCode = country.Code "
                     + "GROUP BY Continent "
-                    + "ORDER BY Continent";
+                    + "ORDER BY Continent "
+                    + "LIMIT 10";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
             ResultSet resultSet1 = stmt1.executeQuery(strSelect1);
@@ -122,6 +124,82 @@ public class App
                 Long result1 = resultSet1.getLong("SUM(city.Population)");
                 System.out.println(String.format("%-25s %-25s %-25s %-25s", con, result, result1, (result-result1)));
             }
+            System.out.println("------------------------------------------------------------------------------------------");
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
+
+    public void query24 () {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            Statement stmt1 = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(country.Population), Region "
+                    + "FROM country "
+                    + "GROUP BY Region "
+                    + "HAVING SUM(country.Population) > 0 "
+                    + "ORDER BY Region "
+                    + "LIMIT 10";
+
+            String strSelect1 = "SELECT SUM(city.Population), Region "
+                    + "FROM city, country "
+                    + "WHERE city.CountryCode = country.Code "
+                    + "GROUP BY Region "
+                    + "ORDER BY Region "
+                    + "LIMIT 10";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            ResultSet resultSet1 = stmt1.executeQuery(strSelect1);
+            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Region", "Population", "City Population", "Non-city Population"));
+            while (resultSet.next()) {
+                resultSet1.next();
+                String reg = resultSet.getString("Region");
+                Long result = resultSet.getLong("SUM(country.Population)");
+                Long result1 = resultSet1.getLong("SUM(city.Population)");
+                System.out.println(String.format("%-25s %-25s %-25s %-25s", reg, result, result1, (result-result1)));
+            }
+            System.out.println("------------------------------------------------------------------------------------------");
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
+
+    public void query25 () {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            Statement stmt1 = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(country.Population), Name "
+                    + "FROM country "
+                    + "GROUP BY Name "
+                    + "HAVING SUM(country.Population) > 0 "
+                    + "ORDER BY SUM(country.Population) DESC "
+                    + "LIMIT 10";
+            String strSelect1 = "SELECT SUM(city.Population), country.Name "
+                    + "FROM city, country "
+                    + "WHERE city.CountryCode = country.Code "
+                    + "GROUP BY country.Name "
+                    + "ORDER BY SUM(country.Population) DESC "
+                    + "LIMIT 10";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            ResultSet resultSet1 = stmt1.executeQuery(strSelect1);
+            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Country Name", "Population", "City Population", "Non-city Population"));
+            while (resultSet.next()) {
+                resultSet1.next();
+                String name = resultSet.getString("Name");
+                Long result = resultSet.getLong("SUM(country.Population)");
+                Long result1 = resultSet1.getLong("SUM(city.Population)");
+                System.out.println(String.format("%-25s %-25s %-25s %-25s", name, result, result1, (result-result1)));
+            }
+            System.out.println("------------------------------------------------------------------------------------------");
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -140,7 +218,7 @@ public class App
             ResultSet resultSet = stmt.executeQuery(strSelect);
             if (resultSet.next()) {
                 String result = resultSet.getString("SUM(Population)");
-                System.out.println("Total population of the world \n" + result + "\n------------------------------");
+                System.out.println("Total population of the world \n" + result + "\n------------------------------------------------------------------------------------------");
             }
         }
         catch (Exception e) {
@@ -166,7 +244,7 @@ public class App
                 String result = resultSet.getString("SUM(Population)");
                 System.out.println(String.format("%-25s %-25s", con, result));
             }
-            System.out.println("------------------------------");
+            System.out.println("------------------------------------------------------------------------------------------");
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -192,7 +270,7 @@ public class App
                 String result = resultSet.getString("SUM(Population)");
                 System.out.println(String.format("%-25s %-25s", reg, result));
             }
-            System.out.println("------------------------------");
+            System.out.println("------------------------------------------------------------------------------------------");
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -218,7 +296,7 @@ public class App
                 String result = resultSet.getString("SUM(Population)");
                 System.out.println(String.format("%-25s %-25s", name, result));
             }
-            System.out.println("------------------------------");
+            System.out.println("------------------------------------------------------------------------------------------");
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -244,7 +322,7 @@ public class App
                 String result = resultSet.getString("SUM(Population)");
                 System.out.println(String.format("%-25s %-25s", dname, result));
             }
-            System.out.println("------------------------------");
+            System.out.println("------------------------------------------------------------------------------------------");
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -270,7 +348,7 @@ public class App
                 String result = resultSet.getString("SUM(Population)");
                 System.out.println(String.format("%-25s %-25s", cname, result));
             }
-            System.out.println("------------------------------");
+            System.out.println("------------------------------------------------------------------------------------------");
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
