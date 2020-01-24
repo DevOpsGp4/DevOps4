@@ -20,10 +20,10 @@ public class App
 //        a.query17();
 //        a.query18();
 //        a.query19();
-       // a.query12();
+       a.query12();
 /*        ArrayList<city> cities = a.query13();
         a.displayCities(cities);*/
-        a.query13();
+       // a.query13();
 //        a.query14();
 //        a.query15();
         a.disconnect();
@@ -101,14 +101,11 @@ public class App
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount of Cities you would like to see - ");
         int input = scanner.nextInt();
-//        input += 1;
+
 
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
-
-            // Create string for SQL statement
-//            String limit = "LIMIT " + input + " ";
 
             String strSelect =
               "SELECT city.Name,country.Name,city.District,city.Population FROM city "
@@ -124,7 +121,6 @@ public class App
             return null;
         }
     }
-
     /**
      * 13 - Get the top N populated countries in a region where N is provided by the user.
      * @return A list of all countries and population, or null if there is an error.
@@ -310,24 +306,6 @@ public class App
         }
 
     }
-*/
-
-
-    /**
-     * Display a list of countries.
-     * @param cities The list of countries to display.
-     */
-    public void displayCities (ArrayList < city > cities) {
-
-       String fmt ="%1$-20s %2$-20s %3$-20s %4$-20s \n";
-        System.out.format(fmt,"City","Country","District","Population");
-
-        for (city city : cities) {
-            System.out.format(fmt,city.getName(),city.getCountryCode(),city.getDistrict(),city.getPopulation());
-//            System.out.println(city);
-
-        }
-    }
     /**
      * Set Methods
      * @return An array list of all countries
@@ -371,6 +349,11 @@ public class App
             city.setName(resultSet.getString("Name"));
             city.setPopulation(resultSet.getInt("Population"));
             country.setName(resultSet.getString("country.Name"));
+            while (resultSet.next()) {
+                System.out.println(" capital city- " + city.getName()
+                        + ", Population- " + city.getPopulation()
+                        + ", Country- " + country.getName());
+            }
         }
         return getCapitalcity;
     }
