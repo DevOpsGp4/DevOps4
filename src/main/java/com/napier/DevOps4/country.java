@@ -1,10 +1,11 @@
 package com.napier.DevOps4;
 
 public class country {
+
     /**
      * Country Code
      */
-    private String Code;
+    public String Code;
 
     public String getCode(String string) {
         return Code;
@@ -16,7 +17,7 @@ public class country {
     /**
      * Country Name
      */
-    private String Name;
+    public String Name;
 
     public String getName(String string) {
         return Name;
@@ -28,7 +29,7 @@ public class country {
     /**
      * Country Continent
      */
-    private String Continent;
+    public String Continent;
 
     public String getContinent(String string) {
         return Continent;
@@ -40,7 +41,7 @@ public class country {
     /**
      * Country Region
      */
-    private String Region;
+    public String Region;
 
     public String getRegion(String string) {
         return Region;
@@ -53,7 +54,7 @@ public class country {
     /**
      * Country SurfaceArea
      */
-    private Float SurfaceArea;
+    public Float SurfaceArea;
 
     public Float getSurfaceArea() {
         return SurfaceArea;
@@ -65,7 +66,7 @@ public class country {
     /**
      * Country IndepYear
      */
-    private Integer IndepYear;
+    public Integer IndepYear;
 
     public Integer getIndepYear() {
         return IndepYear;
@@ -77,7 +78,7 @@ public class country {
     /**
      * Country Population
      */
-    private Integer Population;
+    public Integer Population;
 
     public Integer getPopulation(String string) {
         return Population;
@@ -90,7 +91,7 @@ public class country {
     /**
      * Country LifeExpectancy
      */
-    private Float LifeExpectancy;
+    public Float LifeExpectancy;
 
     public Float getLifeExpectancy() {
         return LifeExpectancy;
@@ -102,7 +103,7 @@ public class country {
     /**
      * Country GNP
      */
-    private Float GNP;
+    public Float GNP;
 
     public Float getGNP() {
         return GNP;
@@ -114,7 +115,7 @@ public class country {
     /**
      * Country GNPOld
      */
-    private Float GNPOld;
+    public Float GNPOld;
 
     public Float getGNPOld() {
         return GNPOld;
@@ -126,7 +127,7 @@ public class country {
     /**
      * Country LocalName
      */
-    private String LocalName;
+    public String LocalName;
 
     public String getLocalName() {
         return LocalName;
@@ -138,7 +139,7 @@ public class country {
     /**
      * Country GovernmentForm
      */
-    private String GovernmentForm;
+    public String GovernmentForm;
 
     public String getGovernmentForm() {
         return GovernmentForm;
@@ -150,7 +151,7 @@ public class country {
     /**
      * Country HeadOfState
      */
-    private String HeadOfState;
+    public String HeadOfState;
 
     public String getHeadOfState() {
         return HeadOfState;
@@ -162,7 +163,7 @@ public class country {
     /**
      * Country Capital
      */
-    private String Capital;
+    public String Capital;
 
     public String getCapital(String string) {
         return Capital;
@@ -174,7 +175,7 @@ public class country {
     /**
      * Country Code2
      */
-    private String Code2;
+    public String Code2;
 
     public String getCode2() {
         return Code2;

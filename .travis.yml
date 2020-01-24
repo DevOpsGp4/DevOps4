@@ -10,7 +10,7 @@ services:
   - docker
 
 install:
-  - docker build -t database DB/.
+  - docker build -t database DEB/.
   - docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 database
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
@@ -25,8 +25,14 @@ jobs:
       script: mvn test -Dtest=com.napier.DevOps4.AppTest
     - stage: integration tests
       jdk: oraclejdk11
-      script: echo "Integration Tests"
+      script: mvn test -Dtest=com.napier.DevOps4.AppIntegrationTest
     - stage: deploy
       install: skip
       jdk: oraclejdk11
       script: echo "Deploy"
+
+stages:
+  - unit tests
+  - integration tests
+  - name: deploy
+    if: branch = master
