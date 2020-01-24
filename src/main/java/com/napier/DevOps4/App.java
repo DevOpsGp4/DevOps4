@@ -17,18 +17,17 @@ public class App
 
 
         // Quary List
-//        a.query17();
-//        a.query18();
-//        a.query19();
-       a.query12();
+
+      // a.query12();
 /*        ArrayList<city> cities = a.query13();
         a.displayCities(cities);*/
        // a.query13();
-//        a.query14();
-//        a.query15();
+     a.query14();
+       // a.query15()
+        //a.query17();
+//        a.query18();
+//        a.query19();
         a.disconnect();
-
-
     }
 
     /*** Connection to MySQL database*/
@@ -94,9 +93,8 @@ public class App
 
     /**
      * 12 - Get the top N populated cities in the world where N is provided by the user.
-     * @return A list of all countries and population, or null if there is an error.
      */
-    public ArrayList<city> query12 () {
+    public void query12 () {
         System.out.println("Query12 - The top N populated cities  in the world where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount of Cities you would like to see - ");
@@ -113,19 +111,19 @@ public class App
                     + "ORDER BY `city`.`Population` DESC LIMIT "+ input;
 
             // Execute SQL statement
-            return getcities(stmt, strSelect);
+         getcities(stmt, strSelect);
         } catch (Exception e) //Catch any errors and print error message
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get details");
-            return null;
+
         }
     }
     /**
      * 13 - Get the top N populated countries in a region where N is provided by the user.
      * @return A list of all countries and population, or null if there is an error.
      */
-    public void query13 () {
+    public ArrayList<city> query13 () {
         System.out.println("Query13 - The top N populated cities  in a continent  where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount of countries you would like to see - ");
@@ -133,7 +131,7 @@ public class App
         scanner.nextLine();
         input += 1;
 
-        System.out.println("Enter Number of populated countries in a continent - ");
+        System.out.println("Enter Name of a continent - ");
         String Ncon = scanner.nextLine();
 
         try {
@@ -157,20 +155,20 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get details");
         }
+        return null;
     }
     /**
      * 14 - Get the top N populated countries in a region where N is provided by the user.
-     * @return A list of all countries and population, or null if there is an error.
      */
-    public ArrayList<city> query14 () {
+    public void query14 () {
         System.out.println("Query14 - The top N populated cities  in a region   where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the amount of countries you would like to see - ");
+        System.out.print("Enter the amount of cities you would like to see - ");
         int input = scanner.nextInt();
         scanner.nextLine();
         input += 1;
 
-        System.out.println("Enter Number of populated cities in a region  - ");
+        System.out.println("Enter Name of region  - ");
         String Nreg = scanner.nextLine();
 
         try {
@@ -188,27 +186,34 @@ public class App
                             + "ORDER BY `city`.`Population` DESC "
                             +limit;
             // Execute SQL statement
-            return getcities(stmt, strSelect);
+      getcities(stmt, strSelect);
         } catch (Exception e) //Catch any errors and print error message
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get details");
-            return null;
+
         }
     }
-/*
-    public void query15() throws IOException {
-        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Query15 - The top N populated city in a country where N is provided by the user.\n");
-        System.out.print("Enter Number of populated cities in a region  - ");
-        int input =Integer.parseInt(br.readLine()) + 1;
-        System.out.print("Enter the country  - ");
-        String Ncou =br.readLine();
+/*    *//**
+     * 15 - Get the top N populated countries in a region where N is provided by the user.
+     * @return A list of all countries and population, or null if there is an error.
+     *//*
+    public ArrayList<city> query15 () {
+        System.out.println("Query15 - The top N populated cities in a country where N is provided by the user.\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the amount of cities you would like to see - ");
+        int input = scanner.nextInt();
+        scanner.nextLine();
+        input += 1;
+
+        System.out.println("Enter the name of country  - ");
+        String Ncou = scanner.nextLine();
+
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
 
-            // Create string for SQL statement for N populated cities in the world
+            // Create string for SQL statement
             String limit = "LIMIT " + input + " ";
 
             String strSelect =
@@ -219,22 +224,24 @@ public class App
                             + "ORDER BY `city`.`Population` DESC "
                             +limit;
             // Execute SQL statement
-            ResultSet resultSet = stmt.executeQuery(strSelect);
-            if (resultSet.next()) {
-                tcity(resultSet);
-                System.out.println("Query14 -finished\n");
-            }
-        } catch (Exception e) {
+            return getcities(stmt, strSelect);
+        } catch (Exception e) //Catch any errors and print error message
+        {
             System.out.println(e.getMessage());
             System.out.println("Failed to get details");
+            return null;
         }
-
     }*/
-/*
-    public void query17() {
+
+
+    /**
+     * Gets all the countries in a continent by largest population to smallest.
+     * @return A list of all countries and population, or null if there is an error.
+     */
+
+    public ArrayList<country> query17 () {
         System.out.println("Query17 - All the capital cities in the world organised by largest population to smallest.\n");
         try {
-
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -245,17 +252,17 @@ public class App
                             + "ORDER BY city.Population DESC";
 
             // Execute SQL statement
-            ResultSet resultSet = stmt.executeQuery(strSelect);
-            if (resultSet.next()) {
-                Capitalcity(resultSet);
-                System.out.println("Query4 -finished\n");
-            }
-        } catch (Exception e) {
+            getCapitalcity(stmt, strSelect);
+        } catch (Exception e) //Catch any errors and print error message
+        {
             System.out.println(e.getMessage());
             System.out.println("Failed to get details");
-        }
 
+        }
+        return null;
     }
+/*
+
 
     public void query18() {
         System.out.println("Query18 - All the capital cities in the Continent organised by largest population to smallest.\n");
@@ -305,12 +312,11 @@ public class App
             System.out.println("Failed to get details");
         }
 
-    }
+    }*/
     /**
      * Set Methods
-     * @return An array list of all countries
      */
-    public ArrayList<city> getcities (Statement stmt, String strSelect) throws SQLException {
+    public void getcities (Statement stmt, String strSelect) throws SQLException {
         ResultSet resultSet = stmt.executeQuery(strSelect);
         // Extract country information
         ArrayList<city> cities = new ArrayList<>();
@@ -324,22 +330,20 @@ public class App
             country.setName(resultSet.getString("country.Name"));
         /*    cities.add(city);*/
 
-        while (resultSet.next()) {
             System.out.println(" City- " + city.getName()
                     + ", Country- " + country.getName()
                     + ", Population- " + city.getPopulation()
                     + ", District - " + city.getDistrict());
-        }
+
 
         }
-        return cities;
     }
 
     /**
      * Set Methods
      * @return An array list of all countries
      */
-    private ArrayList<city> getCapitalcity (Statement stmt, String strSelect) throws SQLException {
+    private void getCapitalcity (Statement stmt, String strSelect) throws SQLException {
         ResultSet resultSet = stmt.executeQuery(strSelect);
         // Extract country information
         ArrayList<city> getCapitalcity = new ArrayList<>();
@@ -349,13 +353,13 @@ public class App
             city.setName(resultSet.getString("Name"));
             city.setPopulation(resultSet.getInt("Population"));
             country.setName(resultSet.getString("country.Name"));
-            while (resultSet.next()) {
+
                 System.out.println(" capital city- " + city.getName()
                         + ", Population- " + city.getPopulation()
                         + ", Country- " + country.getName());
-            }
+
         }
-        return getCapitalcity;
+
     }
 
 
