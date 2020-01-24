@@ -16,7 +16,7 @@ public class city {
     /**
      * City Name
      */
-    private String Name;
+    public String Name;
 
     public String getName() {
         return Name;
@@ -40,7 +40,7 @@ public class city {
     /**
      * City District
      */
-    private String District;
+    public String District;
 
     public String getDistrict() {
         return District;
@@ -52,7 +52,7 @@ public class city {
     /**
      * City Population
      */
-    private Integer Population;
+    public Integer Population;
 
     public Integer getPopulation() {
         return Population;

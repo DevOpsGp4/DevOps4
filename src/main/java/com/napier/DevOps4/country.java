@@ -16,7 +16,7 @@ public class country {
     /**
      * Country Name
      */
-    private String Name;
+    public String Name;
 
     public String getName() {
         return Name;

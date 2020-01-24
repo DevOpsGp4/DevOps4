@@ -18,13 +18,13 @@ public class App
 
         // Quary List
 
-      // a.query12();
 /*        ArrayList<city> cities = a.query13();
         a.displayCities(cities);*/
-       // a.query13();
-     a.query14();
-       // a.query15()
-        //a.query17();
+        a.query12();
+        a.query13();
+        a.query14();
+//        a.query15();
+//        a.query17();
 //        a.query18();
 //        a.query19();
         a.disconnect();
@@ -361,12 +361,6 @@ public class App
         }
 
     }
-
-
-
-
-
-
 
 }
 
