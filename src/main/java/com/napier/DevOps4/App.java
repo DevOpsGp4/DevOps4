@@ -80,7 +80,7 @@ public class App
 
                 while (n != 7)// Exits the program when 5 is pressed
                 {
-                    System.out.print("\n Please enter option 1-5 to continue...: ");
+                    System.out.print("\n Please enter option 1-6 to continue...: ");
                     n = Integer.parseInt(System.console().readLine());
                     // Reads user input and takes them to selected code.
                     if (n > 6 || n < 1) {
@@ -184,7 +184,12 @@ public class App
                  * @param countries The list of countries to display.
                  */
                 public void displayCountries (ArrayList < country > countries) {
-
+                    // Check employees is not null
+                    if (countries == null)
+                    {
+                        System.out.println("No countries");
+                        return;
+                    }
                     for (country cy : countries) {
                         System.out.println(cy);
                     }
