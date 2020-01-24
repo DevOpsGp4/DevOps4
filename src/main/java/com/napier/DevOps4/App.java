@@ -16,12 +16,15 @@ public class App
         a.connect();
 
         // Query List
-        a.query26();
-        a.query27();
-        a.query28();
-        a.query29();
-        a.query30();
-        a.query31();
+//        a.query23();
+//        a.query24();
+        a.query25();
+//        a.query26();
+//        a.query27();
+//        a.query28();
+//        a.query29();
+//        a.query30();
+//        a.query31();
 
         // Disconnect from database
         a.disconnect();
@@ -89,6 +92,40 @@ public class App
             {
                 System.out.println("Error closing connection to database");
             }
+        }
+    }
+
+    public void query25 () {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            Statement stmt1 = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(country.Population), Continent "
+                    + "FROM country "
+                    + "GROUP BY Continent "
+                    + "HAVING SUM(country.Population) > 0 "
+                    + "ORDER BY Continent";
+            String strSelect1 = "SELECT SUM(city.Population), Continent "
+                    + "FROM city, country "
+                    + "WHERE city.CountryCode = country.Code "
+                    + "GROUP BY Continent "
+                    + "ORDER BY Continent";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            ResultSet resultSet1 = stmt1.executeQuery(strSelect1);
+            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Continent", "Population", "City Population", "Non-city Population"));
+            while (resultSet.next()) {
+                resultSet1.next();
+                String con = resultSet.getString("Continent");
+                Long result = resultSet.getLong("SUM(country.Population)");
+                Long result1 = resultSet1.getLong("SUM(city.Population)");
+                System.out.println(String.format("%-25s %-25s %-25s %-25s", con, result, result1, (result-result1)));
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
         }
     }
 
