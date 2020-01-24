@@ -44,11 +44,11 @@ public class App
                     {
                     // city report
                     }
-                    if (n == 2)
+                    if (n == 3)
                     {
                     // capital city report
                     }
-                    if (n == 2)
+                    if (n == 4)
                     {
                     // population report
 
@@ -193,7 +193,7 @@ public class App
                  * Set Methods
                  * @return An array list of all countries
                  */
-                private ArrayList<country> getCountries (Statement stmt, String strSelect) throws SQLException {
+                public ArrayList<country> getCountries (Statement stmt, String strSelect) throws SQLException {
                     ResultSet resultSet = stmt.executeQuery(strSelect);
                     // Extract country information
                     ArrayList<country> countries = new ArrayList<>();
