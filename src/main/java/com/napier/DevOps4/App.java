@@ -190,13 +190,13 @@ public class App
      */
     public void displayCities (ArrayList < city > cities) {
         // Check employees is not null
-        if (cities == null)
-        {
-            System.out.println("No countries");
-            return;
-        }
+//        if (cities == null)
+//        {
+//            System.out.println("No countries");
+//            return;
+//        }
         for (city cy : cities) {
-            System.out.println(cy);
+            System.out.format("%1$-20s %2$-25s %3$-25s %4$-20s \n", cy.getName(),cy.getCountryCode(),cy.getDistrict(),cy.getPopulation());
         }
     }
     /**
@@ -206,13 +206,13 @@ public class App
     public ArrayList<city> getcities  (Statement stmt, String strSelect) throws SQLException {
         ResultSet resultSet = stmt.executeQuery(strSelect);
         // Extract country information
-        ArrayList<city> cities = new ArrayList<>();
+        ArrayList<city> cities = new ArrayList<city>();
         while (resultSet.next()) {
             city cy = new city();
-            cy.setName(resultSet.getString("Name"));
-            cy.setCountryCode(resultSet.getString("Country"));
-            cy.setPopulation(resultSet.getInt("Population"));
-            cy.setDistrict(resultSet.getString("District"));
+            cy.setName(resultSet.getString(1));
+            cy.setCountryCode(resultSet.getString(2));
+            cy.setDistrict(resultSet.getString(3));
+            cy.setPopulation(resultSet.getInt(4));
             cities.add(cy);
         }
         return cities;
@@ -226,20 +226,14 @@ public class App
         System.out.println("Query6 - The top N populated cities in the world where N is provided by the user\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount of cities - ");
-        int input = scanner.nextInt();
-        input += 1;
+        int limit = scanner.nextInt();
 
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement
-            String limit = "LIMIT " + input + " ";
-
-            String strSelect =
-                    "SELECT city.Name,country.Name,city.District,city.Population FROM city" +
-                            "INNER JOIN country ON city.ID=country.Capital ORDER BY `city`.`Population` DESC"
-                            + limit;
+            String strSelect = "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code ORDER BY Population DESC LIMIT "+limit;
 
             // Execute SQL statement
             return getcities(stmt, strSelect);
@@ -258,9 +252,8 @@ public class App
         System.out.println("Query7 - The top N populated cities in a continent where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount of  Cities - ");
-        int input = scanner.nextInt();
-        scanner.nextLine();
-        input += 1;
+        int limit = scanner.nextInt();
+
 
         System.out.println("Enter the Name of continent- ");
         String Ncon  = scanner.nextLine();
@@ -270,13 +263,8 @@ public class App
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement
-            String limit = "LIMIT " + input + " ";
-
-            String strSelect =
-                    "SELECT city.Name,city.District,city.Population,country.Name FROM city INNER JOIN country ON city.ID=country.Capital  " +
-                            "  WHERE country.Continent='"+Ncon+"'" +
-                            "ORDER BY `city`.`Population` DESC "
-                            + limit;
+                 String strSelect =
+                    "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code AND country.Continent='"+Ncon+"' ORDER BY Population DESC LIMIT "+limit;
 
             // Execute SQL statement
             return getcities(stmt, strSelect);
@@ -295,9 +283,8 @@ public class App
         System.out.println("Query8 - The top N populated cities in a region where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount of cities - ");
-        int input = scanner.nextInt();
-        scanner.nextLine();
-        input += 1;
+        int limit = scanner.nextInt();
+
 
         System.out.println("Enter the name of region - ");
         String Nreg  = scanner.nextLine();
@@ -307,13 +294,8 @@ public class App
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement
-            String limit = "LIMIT " + input + " ";
-
-            String strSelect =
-                    "SELECT city.Name,city.District,city.Population,country.Name FROM city INNER JOIN country ON city.ID=country.Capital  " +
-                            "WHERE country.Region='"+Nreg+"'"
-                            + "ORDER BY `city`.`Population` DESC "
-                            + limit;
+             String strSelect =
+                    "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code AND country.region='"+Nreg+"' ORDER BY Population DESC LIMIT "+limit;
 
             // Execute SQL statement
             return getcities(stmt, strSelect);
@@ -332,9 +314,8 @@ public class App
         System.out.println("Query9 - The top N populated cities in a country where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount of cities - ");
-        int input = scanner.nextInt();
-        scanner.nextLine();
-        input += 1;
+        int limit = scanner.nextInt();
+
 
         System.out.println("Enter the name of country - ");
         String Ncou  = scanner.nextLine();
@@ -344,13 +325,10 @@ public class App
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement
-            String limit = "LIMIT " + input + " ";
+
 
             String strSelect =
-                    "SELECT city.Name,city.District,city.Population,country.Name FROM city INNER JOIN country ON city.ID=country.Capital" +
-                            "WHERE country.Name='"+Ncou+"'"
-                            + "ORDER BY `city`.`Population` DESC "
-                            + limit;
+                    "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code AND country.Name='"+Ncou+"' ORDER BY Population DESC LIMIT "+limit;
 
             // Execute SQL statement
             return getcities(stmt, strSelect);
@@ -371,9 +349,8 @@ public class App
         System.out.println("Query9 - The top N populated cities in a district where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount of cities - ");
-        int input = scanner.nextInt();
-        scanner.nextLine();
-        input += 1;
+        int limit = scanner.nextInt();
+
 
         System.out.println("Enter the name of district - ");
         String Ndis = scanner.nextLine();
@@ -381,15 +358,8 @@ public class App
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
-
-            // Create string for SQL statement
-            String limit = "LIMIT " + input + " ";
-
-            String strSelect =
-                    "SELECT city.Name,city.District,city.Population,country.Name FROM city INNER JOIN country ON city.ID=country.Capital" +
-                            "WHERE city.district='"+Ndis+"'"
-                            + "ORDER BY Population DESC "
-                            + limit;
+             String strSelect =
+                    "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code AND city.District='"+Ndis+"' ORDER BY Population DESC LIMIT "+limit;
 
             // Execute SQL statement
             return getcities(stmt, strSelect);
