@@ -17,6 +17,9 @@ public class App
         // Quary List
         a.cityWorld();
         a.cityDistrict();
+        a.cityContinent();
+        a.cityRegion();
+        a.cityCountry();
 
         // Disconnect from database
         a.disconnect();
@@ -159,7 +162,127 @@ public class App
         }
     }
 
+    public void cityContinent() {
+        System.out.println("All the cities in a continent  organised by largest population to smallest.\n");
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name,city.Population,city.CountryCode,country.Continent "
+                            + "FROM city "
+                            + "INNER JOIN country "
+                            + "ON city.CountryCode=country.Code "
+                            + "WHERE country.Continent  = 'South America'"
+                            + "ORDER BY city.Population DESC";
 
 
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next()) {
+                city city = new city();
+                country country = new country();
+                city.Name = resultSet.getString("Name");
+                city.Population = resultSet.getInt("Population");
+                city.CountryCode = resultSet.getString("CountryCode");
+                country.Continent = resultSet.getString("Continent");
+
+                while (resultSet.next()) {
+                    System.out.println(" Name- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population")
+                            + ", CountryCode- " + resultSet.getString("CountryCode")
+                            + ", Continent- " + resultSet.getString("Continent"));
+                }
+                System.out.println("All Cities in a continent : Finished\n");
+            }
+        } catch (Exception e) //Catch any errors and print error message
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
+
+    public void cityRegion() {
+        System.out.println("All the cities in a continent  organised by largest population to smallest.\n");
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name,city.Population,city.CountryCode,country.Region "
+                            + "FROM city "
+                            + "INNER JOIN country "
+                            + "ON city.CountryCode=country.Code "
+                            + "WHERE country.Region = 'Caribbean' "
+                            + "ORDER BY city.Population DESC";
+
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next()) {
+                city city = new city();
+                country country = new country();
+                city.Name = resultSet.getString("Name");
+                city.Population = resultSet.getInt("Population");
+                city.CountryCode = resultSet.getString("CountryCode");
+                country.Region = resultSet.getString("Region");
+
+                while (resultSet.next()) {
+                    System.out.println(" Name- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population")
+                            + ", CountryCode- " + resultSet.getString("CountryCode")
+                            + ", Region - " + resultSet.getString("Region"));
+                }
+                System.out.println("All Cities in a Region : Finished\n");
+            }
+        } catch (Exception e) //Catch any errors and print error message
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
+
+    public void cityCountry() {
+        System.out.println("All the cities in a continent  organised by largest population to smallest.\n");
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name,city.Population,city.CountryCode,country.Name "
+                            + "FROM city "
+                            + "INNER JOIN country "
+                            + "ON city.CountryCode=country.Code "
+                            + "WHERE country.Name  = 'Angola' "
+                            + "ORDER BY city.Population DESC";
+
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next()) {
+                city city = new city();
+                country country = new country();
+                city.Name = resultSet.getString("Name");
+                city.Population = resultSet.getInt("Population");
+                city.CountryCode = resultSet.getString("CountryCode");
+                country.Name = resultSet.getString("Name");
+
+                while (resultSet.next()) {
+                    System.out.println(" Name- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population")
+                            + ", CountryCode- " + resultSet.getString("CountryCode")
+                            + ", Name - " + resultSet.getString("Name"));
+                }
+                System.out.println("All Cities in a Country : Finished\n");
+            }
+        } catch (Exception e) //Catch any errors and print error message
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
 
 }
