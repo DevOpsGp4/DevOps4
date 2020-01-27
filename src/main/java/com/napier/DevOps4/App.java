@@ -136,7 +136,7 @@ public class App
         try
         {
             // Load Database driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         }
         catch (ClassNotFoundException e)
         {
@@ -153,7 +153,7 @@ public class App
                 // Wait a bit for db to start
                 Thread.sleep(10000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             }
@@ -209,11 +209,10 @@ public class App
         ArrayList<city> cities = new ArrayList<>();
         while (resultSet.next()) {
             city cy = new city();
-            city.setName(resultSet.getString("Name"));
-            city.setCountryCode(resultSet.getString("Country"));
-            city.setPopulation(resultSet.getInt("Population"));
-            city.setDistrict(resultSet.getString("District"));
-            country.setName(resultSet.getString("country.Name"));
+            cy.setName(resultSet.getString("Name"));
+            cy.setCountryCode(resultSet.getString("Country"));
+            cy.setPopulation(resultSet.getInt("Population"));
+            cy.setDistrict(resultSet.getString("District"));
             cities.add(cy);
         }
         return cities;
