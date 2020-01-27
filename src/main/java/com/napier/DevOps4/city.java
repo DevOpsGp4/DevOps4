@@ -4,19 +4,19 @@ public class city {
     /**
      * City ID
      */
-    private Integer ID;
+    private String ID;
 
-    public Integer getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
     /**
      * City Name
      */
-    public String Name;
+    private String Name;
 
     public String getName() {
         return Name;
@@ -40,7 +40,7 @@ public class city {
     /**
      * City District
      */
-    public String District;
+    private String District;
 
     public String getDistrict() {
         return District;
@@ -52,7 +52,7 @@ public class city {
     /**
      * City Population
      */
-    public Integer Population;
+    private Integer Population;
 
     public Integer getPopulation() {
         return Population;
@@ -61,4 +61,4 @@ public class city {
     public void setPopulation(Integer population) {
         Population = population;
     }
-}   
+}

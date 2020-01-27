@@ -1,12 +1,13 @@
 package com.napier.DevOps4;
 
 public class country {
+
     /**
      * Country Code
      */
-    private String Code;
+    public String Code;
 
-    public String getCode() {
+    public String getCode(String string) {
         return Code;
     }
 
@@ -18,7 +19,7 @@ public class country {
      */
     public String Name;
 
-    public String getName() {
+    public String getName(String string) {
         return Name;
     }
 
@@ -28,9 +29,9 @@ public class country {
     /**
      * Country Continent
      */
-    private String Continent;
+    public String Continent;
 
-    public String getContinent() {
+    public String getContinent(String string) {
         return Continent;
     }
 
@@ -40,9 +41,9 @@ public class country {
     /**
      * Country Region
      */
-    private String Region;
+    public String Region;
 
-    public String getRegion() {
+    public String getRegion(String string) {
         return Region;
     }
 
@@ -53,7 +54,7 @@ public class country {
     /**
      * Country SurfaceArea
      */
-    private Float SurfaceArea;
+    public Float SurfaceArea;
 
     public Float getSurfaceArea() {
         return SurfaceArea;
@@ -65,7 +66,7 @@ public class country {
     /**
      * Country IndepYear
      */
-    private Integer IndepYear;
+    public Integer IndepYear;
 
     public Integer getIndepYear() {
         return IndepYear;
@@ -77,9 +78,9 @@ public class country {
     /**
      * Country Population
      */
-    private Integer Population;
+    public Integer Population;
 
-    public Integer getPopulation() {
+    public Integer getPopulation(String string) {
         return Population;
     }
 
@@ -90,7 +91,7 @@ public class country {
     /**
      * Country LifeExpectancy
      */
-    private Float LifeExpectancy;
+    public Float LifeExpectancy;
 
     public Float getLifeExpectancy() {
         return LifeExpectancy;
@@ -102,7 +103,7 @@ public class country {
     /**
      * Country GNP
      */
-    private Float GNP;
+    public Float GNP;
 
     public Float getGNP() {
         return GNP;
@@ -114,7 +115,7 @@ public class country {
     /**
      * Country GNPOld
      */
-    private Float GNPOld;
+    public Float GNPOld;
 
     public Float getGNPOld() {
         return GNPOld;
@@ -126,7 +127,7 @@ public class country {
     /**
      * Country LocalName
      */
-    private String LocalName;
+    public String LocalName;
 
     public String getLocalName() {
         return LocalName;
@@ -138,7 +139,7 @@ public class country {
     /**
      * Country GovernmentForm
      */
-    private String GovernmentForm;
+    public String GovernmentForm;
 
     public String getGovernmentForm() {
         return GovernmentForm;
@@ -150,7 +151,7 @@ public class country {
     /**
      * Country HeadOfState
      */
-    private String HeadOfState;
+    public String HeadOfState;
 
     public String getHeadOfState() {
         return HeadOfState;
@@ -162,19 +163,19 @@ public class country {
     /**
      * Country Capital
      */
-    private Integer Capital;
+    public String Capital;
 
-    public Integer getCapital() {
+    public String getCapital(String string) {
         return Capital;
     }
 
-    public void setCapital(Integer capital) {
+    public void setCapital(String capital) {
         Capital = capital;
     }
     /**
      * Country Code2
      */
-    private String Code2;
+    public String Code2;
 
     public String getCode2() {
         return Code2;
@@ -182,5 +183,15 @@ public class country {
 
     public void setCode2(String code2) {
         Code2 = code2;
+    }
+
+    @Override
+    public String toString() {
+        return "Code - '" + Code + '\'' +
+                ", Name - '" + Name + '\'' +
+                ", Continent -'" + Continent + '\'' +
+                ", Region - '" + Region + '\'' +
+                ", Population - " + Population +
+                ", Capital - " + Capital ;
     }
 }
