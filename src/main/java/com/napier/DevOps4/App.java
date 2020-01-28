@@ -267,7 +267,7 @@ public class App
 //        }
 //    }
 
-    public void query26 () {
+    public void query26() {
         ArrayList<country> world=new ArrayList<country>();
         try {
             // Create an SQL statement
