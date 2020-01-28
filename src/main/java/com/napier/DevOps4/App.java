@@ -81,9 +81,9 @@ public class App
         System.out.println("1. All the countries in the world organised by largest population to smallest");
         System.out.println("2. All the countries in a continent organised by largest population to smallest");
         System.out.println("3. All the countries in a region organised by largest population to smallest");
-        System.out.println("4. The top N populated countries in the world where N is provided by the user");
+        /*System.out.println("4. The top N populated countries in the world where N is provided by the user");
         System.out.println("5. The top N populated countries in a continent where N is provided by the user");
-        System.out.println("6. The top N populated countries in a region where N is provided by the user");
+        System.out.println("6. The top N populated countries in a region where N is provided by the user");*/
         System.out.println("===============================================");
         System.out.println("7. EXIT SUB MENU");
 
@@ -327,11 +327,11 @@ public class App
         System.out.println("3. All the cities in a region organised by largest population to smallest");
         System.out.println("4. All the cities in a country organised by largest population to smallest");
         System.out.println("5. All the cities in a district organised by largest population to smallest");
-        System.out.println("6. The top N populated cities in the world where N is provided by the user");
+/*        System.out.println("6. The top N populated cities in the world where N is provided by the user");
         System.out.println("7. The top N populated cities in a continent where N is provided by the user");
         System.out.println("8. The top N populated cities in a region where N is provided by the user");
         System.out.println("9. The top N populated cities in a country where N is provided by the user");
-        System.out.println("10. The top N populated cities in a district where N is provided by the user");
+        System.out.println("10. The top N populated cities in a district where N is provided by the user");*/
         System.out.println("===============================================");
         System.out.println("11. EXIT SUB MENU");
 
@@ -577,9 +577,9 @@ public class App
         System.out.println("1. All the capital cities in the world organised by largest population to smallest.");
         System.out.println("2. All the capital cities in a continent organised by largest population to smallest.");
         System.out.println("3. All the capital cities in a region organised by largest to smallest.");
-        System.out.println("4. The top N populated capital cities in the world where N is provided by the user.");
+        /*System.out.println("4. The top N populated capital cities in the world where N is provided by the user.");
         System.out.println("5. The top N populated capital cities in a continent where N is provided by the user.");
-        System.out.println("6. The top N populated capital cities in a region where N is provided by the user.");
+        System.out.println("6. The top N populated capital cities in a region where N is provided by the user.");*/
         System.out.println("===============================================");
         System.out.println("7. EXIT SUB MENU");
 
