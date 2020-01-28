@@ -188,13 +188,15 @@ public class App
      * @param cities The list of countries to display.
      */
     public void displayCities (ArrayList < city > cities) {
-        // Check employees is not null
-//        if (cities == null)
-//        {
-//            System.out.println("No countries");
-//            return;
-//        }
+         //Check cities is not null
+        if (cities == null)
+        {
+            System.out.println("No Cities");
+            return;
+        }
         for (city cy : cities) {
+            if (cy == null)
+                continue;
             System.out.format("%1$-20s %2$-25s %3$-25s %4$-20s \n", cy.getName(),cy.getCountryCode(),cy.getDistrict(),cy.getPopulation());
         }
     }
