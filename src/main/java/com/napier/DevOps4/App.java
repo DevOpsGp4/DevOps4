@@ -58,71 +58,6 @@ public class App
     }
 
 
-    public static void subMenu2() {
-        Scanner console = new Scanner(System.in);
-        // Create new Application
-        App a = new App();
-        // Connect to database
-        a.connect("localhost:33060");
-        char c;
-        int n = 0;
-
-        // this will be the sub menu that gets displayed.
-        System.out.println("  Country Report ");
-        System.out.println("===============================================");
-        System.out.println("1. All the countries in the world organised by largest population to smallest");
-        System.out.println("2. All the countries in a continent organised by largest population to smallest");
-        System.out.println("3. All the countries in a region organised by largest population to smallest");
-        System.out.println("4. The top N populated countries in the world where N is provided by the user");
-        System.out.println("5. The top N populated countries in a continent where N is provided by the user");
-        System.out.println("6. The top N populated countries in a region where N is provided by the user");
-        System.out.println("===============================================");
-        System.out.println("7. EXIT SUB MENU");
-
-        while (n != 11)// Exits the program when 5 is pressed
-        {
-            System.out.print("\n Please enter option 1-10 to continue...: ");
-            n = Integer.parseInt(System.console().readLine());
-            // Reads user input and takes them to selected code.
-            if (n > 10 || n < 1) {
-                System.out.print("Invalid input, please try again...");
-            }
-            if (n == 6)
-            {
-                ArrayList<city> cities = a.query6();
-                a.displayCities(cities);
-                continue;
-            }
-
-            if (n == 7)
-            {
-                ArrayList<city> cities = a.query7();
-                a.displayCities(cities);
-                continue;
-            }
-            if (n == 8)
-            {
-                ArrayList<city> cities = a.query8();
-                a.displayCities(cities);
-                continue;
-            }
-            if (n == 9)
-            {
-                ArrayList<city> cities = a.query9();
-                a.displayCities(cities);
-                continue;
-            }
-            if (n == 10)
-            {
-                ArrayList<city> cities = a.query10();
-                a.displayCities(cities);
-                continue;
-            }
-
-        }
-    }
-
-
     /**
      * Connection to MySQL database.
      */
@@ -183,6 +118,70 @@ public class App
             }
         }
     }
+
+    public static void subMenu2() {
+        Scanner console = new Scanner(System.in);
+        // Create new Application
+        App a = new App();
+        // Connect to database
+        a.connect("localhost:33060");
+        char c;
+        int n = 0;
+
+        // this will be the sub menu that gets displayed.
+        System.out.println("  Country Report ");
+        System.out.println("===============================================");
+        System.out.println("6. All the countries in the world organised by largest population to smallest");
+        System.out.println("7. All the countries in a continent organised by largest population to smallest");
+        System.out.println("8. All the countries in a region organised by largest population to smallest");
+        System.out.println("9. The top N populated countries in the world where N is provided by the user");
+        System.out.println("10. The top N populated countries in a continent where N is provided by the user");
+         System.out.println("===============================================");
+        System.out.println("7. EXIT SUB MENU");
+
+        while (n != 11)// Exits the program when 5 is pressed
+        {
+            System.out.print("\n Please enter option 1-10 to continue...: ");
+            n = Integer.parseInt(System.console().readLine());
+            // Reads user input and takes them to selected code.
+            if (n > 10 || n < 1) {
+                System.out.print("Invalid input, please try again...");
+            }
+            if (n == 6)
+            {
+                ArrayList<city> cities = a.query6();
+                a.displayCities(cities);
+                continue;
+            }
+
+            if (n == 7)
+            {
+                ArrayList<city> cities = a.query7();
+                a.displayCities(cities);
+                continue;
+            }
+            if (n == 8)
+            {
+                ArrayList<city> cities = a.query8();
+                a.displayCities(cities);
+                continue;
+            }
+            if (n == 9)
+            {
+                ArrayList<city> cities = a.query9();
+                a.displayCities(cities);
+                continue;
+            }
+            if (n == 10)
+            {
+                ArrayList<city> cities = a.query10();
+                a.displayCities(cities);
+                continue;
+            }
+
+        }
+    }
+
 
     /**
      * Display a list of countries.
@@ -252,8 +251,8 @@ public class App
         System.out.println("Query7 - The top N populated cities in a continent where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount of  Cities - ");
-        int limit = scanner.nextInt();
-
+        int input = scanner.nextInt();
+        scanner.nextLine();
 
         System.out.println("Enter the Name of continent- ");
         String Ncon  = scanner.nextLine();
@@ -262,9 +261,12 @@ public class App
             // Create an SQL statement
             Statement stmt = con.createStatement();
 
+
             // Create string for SQL statement
+            String limit = "LIMIT " + input + " ";
+
                  String strSelect =
-                    "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code AND country.Continent='"+Ncon+"' ORDER BY Population DESC LIMIT "+limit;
+                    "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code AND country.Continent='"+Ncon+"' ORDER BY Population DESC  "+limit;
 
             // Execute SQL statement
             return getcities(stmt, strSelect);
@@ -283,8 +285,8 @@ public class App
         System.out.println("Query8 - The top N populated cities in a region where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount of cities - ");
-        int limit = scanner.nextInt();
-
+        int input = scanner.nextInt();
+        scanner.nextLine();
 
         System.out.println("Enter the name of region - ");
         String Nreg  = scanner.nextLine();
@@ -294,8 +296,9 @@ public class App
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement
+            String limit = "LIMIT " + input + " ";
              String strSelect =
-                    "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code AND country.region='"+Nreg+"' ORDER BY Population DESC LIMIT "+limit;
+                    "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code AND country.region='"+Nreg+"' ORDER BY Population DESC   "+limit;
 
             // Execute SQL statement
             return getcities(stmt, strSelect);
@@ -314,7 +317,8 @@ public class App
         System.out.println("Query9 - The top N populated cities in a country where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount of cities - ");
-        int limit = scanner.nextInt();
+        int input = scanner.nextInt();
+        scanner.nextLine();
 
 
         System.out.println("Enter the name of country - ");
@@ -325,10 +329,9 @@ public class App
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement
-
-
+            String limit = "LIMIT " + input + " ";
             String strSelect =
-                    "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code AND country.Name='"+Ncou+"' ORDER BY Population DESC LIMIT "+limit;
+                    "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code AND country.Name='"+Ncou+"' ORDER BY Population DESC  "+limit;
 
             // Execute SQL statement
             return getcities(stmt, strSelect);
@@ -349,7 +352,8 @@ public class App
         System.out.println("Query9 - The top N populated cities in a district where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount of cities - ");
-        int limit = scanner.nextInt();
+        int input = scanner.nextInt();
+        scanner.nextLine();
 
 
         System.out.println("Enter the name of district - ");
@@ -358,8 +362,11 @@ public class App
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String limit = "LIMIT " + input + " ";
              String strSelect =
-                    "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code AND city.District='"+Ndis+"' ORDER BY Population DESC LIMIT "+limit;
+                    "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code AND city.District='"+Ndis+"' ORDER BY Population DESC  "+limit;
 
             // Execute SQL statement
             return getcities(stmt, strSelect);
