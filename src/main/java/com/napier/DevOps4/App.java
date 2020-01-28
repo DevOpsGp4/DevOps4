@@ -143,7 +143,7 @@ public class App
         System.out.println("9. The top N populated cities in a country where N is provided by the user");
         System.out.println("10. The top N populated cities in a district where N is provided by the user");
          System.out.println("===============================================");
-        System.out.println("7. EXIT SUB MENU");
+        System.out.println("11. EXIT SUB MENU");
 
         while (n != 11)// Exits the program when 5 is pressed
         {
@@ -208,12 +208,12 @@ public class App
         System.out.println("===============================================");
         System.out.println("7. EXIT SUB MENU");
 
-        while (n != 11)// Exits the program when 5 is pressed
+        while (n != 7)// Exits the program when 5 is pressed
         {
             System.out.print("\n Please enter option 1-10 to continue...: ");
             n = Integer.parseInt(System.console().readLine());
             // Reads user input and takes them to selected code.
-            if (n > 10 || n < 1) {
+            if (n > 6 || n < 1) {
                 System.out.print("Invalid input, please try again...");
             }
             if (n == 1)
