@@ -50,4 +50,37 @@ public class AppTest
         app.displayCities(cities);
     }
 
-}
+
+    @Test
+    void displayCapitalCitiesTestNull()
+    {
+        app.displayCCities(null);
+    }
+    // Empty Test
+    @Test
+    void displayCapitalCitiesTestEmpty()
+    {
+        ArrayList<city> cities = new ArrayList<city>();
+        app.displayCCities(cities);
+    }
+    // Contain  NUll Test
+    @Test
+    void displayCapitalCitiesContainsNull()
+    {
+        ArrayList<city> cities = new ArrayList<city>();
+        cities.add(null);
+        app.displayCCities(cities);
+    }
+
+    @Test
+    void displayCapitalCities()
+    {
+        ArrayList<city> cities = new ArrayList<city>();
+        city ccy = new city();
+        ccy.setName("Adana");
+        ccy.setCountryCode("Turkey");
+        ccy.setPopulation(12);
+        cities.add(ccy);
+        app.displayCCities(cities);
+    }
+ }

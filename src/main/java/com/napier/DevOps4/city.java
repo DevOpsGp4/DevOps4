@@ -1,6 +1,17 @@
 package com.napier.DevOps4;
 
 public class city {
+    @Override
+    public String toString() {
+        return "city{" +
+                "ID='" + ID + '\'' +
+                ", Name='" + Name + '\'' +
+                ", CountryCode='" + CountryCode + '\'' +
+                ", District='" + District + '\'' +
+                ", Population=" + Population +
+                '}';
+    }
+
     /**
      * City ID
      */
