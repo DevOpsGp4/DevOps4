@@ -1,29 +1,176 @@
 package com.napier.DevOps4;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * This class
  */
 public class App
 {
-    public static void main(String[] args)
-    {
+    public static void main(String args[]) {
+        // disconnect to database
+        Menus();
+        }
+
+    public static void Menus() {
+        Scanner console = new Scanner(System.in);
+        char c;
+        int n = 0;
+
+        //This is the main menu that will be displayed first.
+        System.out.println("  World Population ");
+        System.out.println("===============================================");
+        System.out.println("1. Country Report");
+        System.out.println("2. City Report");
+        System.out.println("3. Capital City Report");
+        System.out.println("4. Population ");
+        System.out.println("5. EXIT PROGRAM");
+        System.out.println("===============================================");
+
+        while (n != 5)// Exits the program when 4 is pressed
+        {
+            System.out.print("\n Please enter option 1-4 to continue or 5 to exit...: ");
+            n = Integer.parseInt(System.console().readLine());
+            // Reads user input and takes them to selected code.
+            if (n > 6 || n < 1) {
+                //invalid input
+                System.out.print("Invalid input, please try again...");
+                continue;
+            }
+            if (n == 5) {
+                // Exit output
+                System.out.print("Thank for using the Program...");
+                System.exit(0);
+            }
+            if (n == 1) {
+                // country report
+                //subMenu1();
+            }
+
+            if (n == 2) {
+                // city report
+                subMenu2();
+            }
+            if (n == 3) {
+                // capital city report
+            }
+            if (n == 4) {
+                // population report
+
+            }
+
+        }
+    }
+
+    public static void subMenu2() {
+        Scanner console = new Scanner(System.in);
         // Create new Application
         App a = new App();
-
         // Connect to database
-        a.connect();
-        // Quary List
-        a.cityWorld();
-        a.cityDistrict();
-        a.cityContinent();
-        a.cityRegion();
-        a.cityCountry();
+        a.connect("localhost:33060");
+        char c;
+        int n = 0;
 
-        // Disconnect from database
-        a.disconnect();
+        // this will be the sub menu that gets displayed.
+        System.out.println("  City Report ");
+        System.out.println("===============================================");
+        System.out.println("1. All the cities in the world organised by largest population to smallest");
+        System.out.println("2. All the cities in a continent organised by largest population to smallest");
+        System.out.println("3. All the cities in a region organised by largest population to smallest");
+        System.out.println("4. All the cities in a country organised by largest population to smallest");
+        System.out.println("5. All the cities in a district organised by largest population to smallest");
+        System.out.println("6. The top N populated cities in the world where N is provided by the user");
+        System.out.println("7. The top N populated cities in a continent where N is provided by the user");
+        System.out.println("8. The top N populated cities in a region where N is provided by the user");
+        System.out.println("9. The top N populated cities in a country where N is provided by the user");
+        System.out.println("10. The top N populated cities in a district where N is provided by the user");
+        System.out.println("===============================================");
+        System.out.println("11. EXIT SUB MENU");
+
+        while (n != 11)// Exits the program when 5 is pressed
+        {
+            System.out.print("\n Please enter option 1-10 to continue or 11 to exit...: ");
+            n = Integer.parseInt(System.console().readLine());
+            // Reads user input and takes them to selected code.
+
+            if (n > 11 || n < 1) {
+                //Invalid input
+                System.out.print("Invalid input, please try again...");
+            }
+            if (n == 11){
+                // Exit output
+                System.out.print("Back to Menus...");
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+                Menus();
+            }
+            if (n == 1)
+            {
+                ArrayList<city> cities = a.query1();
+                a.displayCities(cities);
+                continue;
+            }
+            if (n == 2)
+            {
+                ArrayList<city> cities = a.query2();
+                a.displayCities(cities);
+                continue;
+            }
+            if (n == 3)
+            {
+                ArrayList<city> cities = a.query3();
+                a.displayCities(cities);
+                continue;
+            }
+            if (n == 4)
+            {
+                ArrayList<city> cities = a.query4();
+                a.displayCities(cities);
+                continue;
+            }
+            if (n == 5)
+            {
+                ArrayList<city> cities = a.query5();
+                a.displayCities(cities);
+                continue;
+            }
+            if (n == 6)
+            {
+                ArrayList<city> cities = a.query6();
+                a.displayCities(cities);
+                continue;
+            }
+
+            if (n == 7)
+            {
+                ArrayList<city> cities = a.query7();
+                a.displayCities(cities);
+                continue;
+            }
+            if (n == 8)
+            {
+                ArrayList<city> cities = a.query8();
+                a.displayCities(cities);
+                continue;
+            }
+            if (n == 9)
+            {
+                ArrayList<city> cities = a.query9();
+                a.displayCities(cities);
+                continue;
+            }
+            if (n == 10)
+            {
+                ArrayList<city> cities = a.query10();
+                a.displayCities(cities);
+                continue;
+            }
+
+        }
     }
+
 
     /**
      * Connection to MySQL database.
@@ -33,7 +180,7 @@ public class App
     /**
      * Connect to the MySQL database.
      */
-    public void connect()
+    public void connect(String location)
     {
         try
         {
@@ -61,7 +208,7 @@ public class App
             }
             catch (SQLException sqle)
             {
-                System.out.println("Failed to connect to database attempt " + i);
+                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
                 System.out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
@@ -74,214 +221,312 @@ public class App
     /**
      * Disconnect from the MySQL database.
      */
-    public void disconnect()
+    public void disconnect ()
     {
-        if (con != null)
-        {
-            try
-            {
+        if (con != null) {
+            try {
                 // Close connection
                 con.close();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 System.out.println("Error closing connection to database");
             }
         }
     }
 
-    public void cityWorld() {
-        System.out.println("All the cities in the World organised by largest population to smallest.\n");
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                        "SELECT *"
-                            + "FROM city "
-                            + "ORDER BY Population DESC";
-
-            // Execute SQL statement
-            ResultSet resultSet = stmt.executeQuery(strSelect);
-
-            if (resultSet.next()) {
-                city city = new city();
-                city.Name = resultSet.getString("Name");
-                city.Population = resultSet.getInt("Population");
-                city.CountryCode = resultSet.getString("CountryCode");
-
-                while (resultSet.next()) {
-                    System.out.println(" Name- " + resultSet.getString("Name")
-                            + ", Population- " + resultSet.getInt("Population")
-                            + ", CountryCode- " + resultSet.getString("CountryCode"));
-                }
-                System.out.println("All Cities in the World : Finished\n");
-            }
-        } catch (Exception e) //Catch any errors and print error message
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get details");
+    /**
+     * Display a list of countries.
+     * @param cities The list of countries to display.
+     */
+    public void displayCities (ArrayList < city > cities) {
+        // Check employees is not null
+//        if (cities == null)
+//        {
+//            System.out.println("No countries");
+//            return;
+//        }
+        for (city cy : cities) {
+            System.out.format("%1$-20s %2$-25s %3$-25s %4$-20s \n", cy.getName(),cy.getCountryCode(),cy.getDistrict(),cy.getPopulation());
         }
     }
+    /**
+     * Set Methods
+     * @return An array list of all countries
+     */
+    public ArrayList<city> getcities  (Statement stmt, String strSelect) throws SQLException {
+        ResultSet resultSet = stmt.executeQuery(strSelect);
+        // Extract country information
+        ArrayList<city> cities = new ArrayList<city>();
+        while (resultSet.next()) {
+            city cy = new city();
+            cy.setName(resultSet.getString(1));
+            cy.setCountryCode(resultSet.getString(2));
+            cy.setDistrict(resultSet.getString(3));
+            cy.setPopulation(resultSet.getInt(4));
+            cities.add(cy);
+        }
+        return cities;
+    }
+    /**
+     * Gets all the cities in the world by largest population to smallest.
+     * @return A list of all cities and population, or null if there is an error.
+     */
 
-    public void cityDistrict() {
-        System.out.println("All the cities in a district organised by largest population to smallest.\n");
+    public ArrayList<city> query1 () {
+        System.out.println("1 - All the cities in the world organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT *"
-                            + "FROM city "
-                            + "WHERE District = 'Adana'"
-                            + "ORDER BY Population DESC";
-
+                    "SELECT city.Name, country.Name,city.District, city.Population FROM city, country WHERE city.CountryCode=country.Code ORDER BY city.Population DESC";
             // Execute SQL statement
-            ResultSet resultSet = stmt.executeQuery(strSelect);
-
-            if (resultSet.next()) {
-                city city = new city();
-                city.Name = resultSet.getString("Name");
-                city.Population = resultSet.getInt("Population");
-                city.CountryCode = resultSet.getString("CountryCode");
-                city.District = resultSet.getString("District");
-
-                while (resultSet.next()) {
-                    System.out.println(" Name- " + resultSet.getString("Name")
-                            + ", Population- " + resultSet.getInt("Population")
-                            + ", CountryCode- " + resultSet.getString("CountryCode")
-                            + ", District- " + resultSet.getString("District"));
-                }
-                System.out.println("All Cities in a district : Finished\n");
-            }
+            return getcities(stmt, strSelect);
         } catch (Exception e) //Catch any errors and print error message
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get details");
+            return null;
         }
     }
 
-    public void cityContinent() {
-        System.out.println("All the cities in a continent  organised by largest population to smallest.\n");
+    /**
+     * Gets all the cities in a continent by largest population to smallest.
+     * @return A list of all cities and population, or null if there is an error.
+     */
+    public ArrayList<city> query2 () {
+        System.out.println("2 - All the cities in a continent organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.Name,city.Population,city.CountryCode,country.Continent "
-                            + "FROM city "
-                            + "INNER JOIN country "
-                            + "ON city.CountryCode=country.Code "
-                            + "WHERE country.Continent  = 'South America'"
-                            + "ORDER BY city.Population DESC";
-
-
+                    "SELECT city.Name, country.Name,city.District, city.Population FROM city INNER JOIN country ON city.CountryCode=country.Code WHERE country.Continent  = 'South America' ORDER BY city.Population DESC";
             // Execute SQL statement
-            ResultSet resultSet = stmt.executeQuery(strSelect);
-
-            if (resultSet.next()) {
-                city city = new city();
-                country country = new country();
-                city.Name = resultSet.getString("Name");
-                city.Population = resultSet.getInt("Population");
-                city.CountryCode = resultSet.getString("CountryCode");
-                country.Continent = resultSet.getString("Continent");
-
-                while (resultSet.next()) {
-                    System.out.println(" Name- " + resultSet.getString("Name")
-                            + ", Population- " + resultSet.getInt("Population")
-                            + ", CountryCode- " + resultSet.getString("CountryCode")
-                            + ", Continent- " + resultSet.getString("Continent"));
-                }
-                System.out.println("All Cities in a continent : Finished\n");
-            }
+            return getcities(stmt, strSelect);
         } catch (Exception e) //Catch any errors and print error message
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get details");
+            return null;
         }
     }
 
-    public void cityRegion() {
-        System.out.println("All the cities in a continent  organised by largest population to smallest.\n");
+    /**
+     * Gets all the cities in a region  by largest population to smallest.
+     * @return A list of all cities and population, or null if there is an error.
+     */
+    public ArrayList<city> query3 () {
+        System.out.println("3 - All the cities in a region  organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.Name,city.Population,city.CountryCode,country.Region "
-                            + "FROM city "
-                            + "INNER JOIN country "
-                            + "ON city.CountryCode=country.Code "
-                            + "WHERE country.Region = 'Caribbean' "
-                            + "ORDER BY city.Population DESC";
-
-
+                    "SELECT city.Name, country.Name,city.District, city.Population FROM city INNER JOIN country ON city.CountryCode=country.Code WHERE country.Region = 'Caribbean' ORDER BY city.Population DESC";
             // Execute SQL statement
-            ResultSet resultSet = stmt.executeQuery(strSelect);
-
-            if (resultSet.next()) {
-                city city = new city();
-                country country = new country();
-                city.Name = resultSet.getString("Name");
-                city.Population = resultSet.getInt("Population");
-                city.CountryCode = resultSet.getString("CountryCode");
-                country.Region = resultSet.getString("Region");
-
-                while (resultSet.next()) {
-                    System.out.println(" Name- " + resultSet.getString("Name")
-                            + ", Population- " + resultSet.getInt("Population")
-                            + ", CountryCode- " + resultSet.getString("CountryCode")
-                            + ", Region - " + resultSet.getString("Region"));
-                }
-                System.out.println("All Cities in a Region : Finished\n");
-            }
+            return getcities(stmt, strSelect);
         } catch (Exception e) //Catch any errors and print error message
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get details");
+            return null;
         }
     }
 
-    public void cityCountry() {
-        System.out.println("All the cities in a continent  organised by largest population to smallest.\n");
+    /**
+     * Gets all the cities in a country by largest population to smallest.
+     * @return A list of all cities and population, or null if there is an error.
+     */
+    public ArrayList<city> query4 () {
+        System.out.println("4 - All the cities in a country organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.Name,city.Population,city.CountryCode,country.Name "
-                            + "FROM city "
-                            + "INNER JOIN country "
-                            + "ON city.CountryCode=country.Code "
-                            + "WHERE country.Name  = 'Angola' "
-                            + "ORDER BY city.Population DESC";
-
-
+                    "SELECT city.Name, country.Name,city.District, city.Population FROM city INNER JOIN country ON city.CountryCode=country.Code WHERE country.Name  = 'Angola' ORDER BY city.Population DESC";
             // Execute SQL statement
-            ResultSet resultSet = stmt.executeQuery(strSelect);
-
-            if (resultSet.next()) {
-                city city = new city();
-                country country = new country();
-                city.Name = resultSet.getString("Name");
-                city.Population = resultSet.getInt("Population");
-                city.CountryCode = resultSet.getString("CountryCode");
-                country.Name = resultSet.getString("Name");
-
-                while (resultSet.next()) {
-                    System.out.println(" Name- " + resultSet.getString("Name")
-                            + ", Population- " + resultSet.getInt("Population")
-                            + ", CountryCode- " + resultSet.getString("CountryCode")
-                            + ", Name - " + resultSet.getString("Name"));
-                }
-                System.out.println("All Cities in a Country : Finished\n");
-            }
+            return getcities(stmt, strSelect);
         } catch (Exception e) //Catch any errors and print error message
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get details");
+            return null;
+        }
+    }
+
+    /**
+     * Gets all the cities in a district by largest population to smallest.
+     * @return A list of all cities and population, or null if there is an error.
+     */
+    public ArrayList<city> query5 () {
+        System.out.println("5 - All the cities in a district organised by largest population to smallest.\n");
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name, country.Name,city.District, city.Population FROM city INNER JOIN country ON city.CountryCode=country.Code WHERE city.District = 'Adana' ORDER BY city.Population DESC";
+            // Execute SQL statement
+            return getcities(stmt, strSelect);
+        } catch (Exception e) //Catch any errors and print error message
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+            return null;
+        }
+    }
+
+    /**
+     * Get the The top N populated cities in the world where N is provided by the user
+     * @return A list of all cities and population, or null if there is an error.
+     */
+    public ArrayList<city> query6 () {
+        System.out.println("6 - The top N populated cities in the world where N is provided by the user\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the amount of cities - ");
+        int limit = scanner.nextInt();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code ORDER BY Population DESC LIMIT "+limit;
+
+            // Execute SQL statement
+            return getcities(stmt, strSelect);
+        } catch (Exception e) //Catch any errors and print error message
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+            return null;
+        }
+    }
+    /**
+     * Get theThe top N populated cities in a continent where N is provided by the user.
+     * @return A list of all cities and population, or null if there is an error.
+     */
+    public ArrayList<city> query7 () {
+        System.out.println("7 - The top N populated cities in a continent where N is provided by the user.\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the amount of  Cities - ");
+        int limit = scanner.nextInt();
+
+
+        System.out.println("Enter the Name of continent- ");
+        String Ncon  = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code AND country.Continent='"+Ncon+"' ORDER BY Population DESC LIMIT "+limit;
+
+            // Execute SQL statement
+            return getcities(stmt, strSelect);
+        } catch (Exception e) //Catch any errors and print error message
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+            return null;
+        }
+    }
+    /**
+     * Get The top N populated cities in a region where N is provided by the user.
+     * @return A list of all cities and population, or null if there is an error.
+     */
+    public ArrayList<city> query8 () {
+        System.out.println("8 - The top N populated cities in a region where N is provided by the user.\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the amount of cities - ");
+        int limit = scanner.nextInt();
+
+
+        System.out.println("Enter the name of region - ");
+        String Nreg  = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code AND country.region='"+Nreg+"' ORDER BY Population DESC LIMIT "+limit;
+
+            // Execute SQL statement
+            return getcities(stmt, strSelect);
+        } catch (Exception e) //Catch any errors and print error message
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+            return null;
+        }
+    }
+    /**
+     * Get The top N populated cities in a country where N is provided by the user.
+     * @return A list of all cities and population, or null if there is an error.
+     */
+    public ArrayList<city> query9 () {
+        System.out.println("9 - The top N populated cities in a country where N is provided by the user.\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the amount of cities - ");
+        int limit = scanner.nextInt();
+
+
+        System.out.println("Enter the name of country - ");
+        String Ncou  = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+
+
+            String strSelect =
+                    "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code AND country.Name='"+Ncou+"' ORDER BY Population DESC LIMIT "+limit;
+
+            // Execute SQL statement
+            return getcities(stmt, strSelect);
+        } catch (Exception e) //Catch any errors and print error message
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+            return null;
+        }
+    }
+
+
+    /**
+     * Get The top N populated cities in a district where N is provided by the user.
+     * @return A list of all cities and population, or null if there is an error.
+     */
+    public ArrayList<city> query10 () {
+        System.out.println("10 - The top N populated cities in a district where N is provided by the user.\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the amount of cities - ");
+        int limit = scanner.nextInt();
+
+
+        System.out.println("Enter the name of district - ");
+        String Ndis = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            String strSelect =
+                    "SELECT city.Name, country.Name,city.District, city.Population from city, country WHERE city.CountryCode=country.Code AND city.District='"+Ndis+"' ORDER BY Population DESC LIMIT "+limit;
+
+            // Execute SQL statement
+            return getcities(stmt, strSelect);
+        } catch (Exception e) //Catch any errors and print error message
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+            return null;
         }
     }
 
