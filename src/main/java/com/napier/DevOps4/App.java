@@ -2,7 +2,6 @@ package com.napier.DevOps4;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * This class
@@ -18,14 +17,14 @@ public class App
         a.connect();
 
         // Query output List
-//        ArrayList<country> popContinent = new ArrayList<country>();
-//        popContinent = a.query25();
-//        System.out.println(String.format("%-25s %-25s %-25s %-25s", "Continent Name", "Continent Population", "Living in Cities", "Not living in Cities"));
-//        for (country popCon:popContinent)
-//        {
-//            System.out.println(String.format("%-25s %-25s %-25s %-25s", popCon.getName(), a, b, (a-b)));
-//        }
-//        System.out.println("====================================================================================================");
+        a.query23();
+        System.out.println("====================================================================================================");
+
+        a.query24();
+        System.out.println("====================================================================================================");
+
+        a.query25();
+        System.out.println("====================================================================================================");
 
         a.query26();
         System.out.println("====================================================================================================");
@@ -145,127 +144,115 @@ public class App
         }
     }
 
-//    public void query23 () {
-//        try {
-//            // Create an SQL statement
-//            Statement stmt = con.createStatement();
-//            Statement stmt1 = con.createStatement();
-//            // Create string for SQL statement
-//            String strSelect = "SELECT SUM(country.Population), Continent "
-//                    + "FROM country "
-//                    + "GROUP BY Continent "
-//                    + "HAVING SUM(country.Population) > 0 "
-//                    + "ORDER BY Continent "
-//                    + "LIMIT 10";
-//            String strSelect1 = "SELECT SUM(city.Population), Continent "
-//                    + "FROM city, country "
-//                    + "WHERE city.CountryCode = country.Code "
-//                    + "GROUP BY Continent "
-//                    + "ORDER BY Continent "
-//                    + "LIMIT 10";
-//            // Execute SQL statement
-//            ResultSet resultSet = stmt.executeQuery(strSelect);
-//            ResultSet resultSet1 = stmt1.executeQuery(strSelect1);
-//            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Continent", "Population", "City Population", "Non-city Population"));
-//            while (resultSet.next()) {
-//                resultSet1.next();
-//                String con = resultSet.getString("Continent");
-//                Long result = resultSet.getLong("SUM(country.Population)");
-//                Long result1 = resultSet1.getLong("SUM(city.Population)");
-//                System.out.println(String.format("%-25s %-25s %-25s %-25s", con, result, result1, (result-result1)));
-//            }
-//            System.out.println("------------------------------------------------------------------------------------------");
-//        }
-//        catch (Exception e) {
-//            System.out.println(e.getMessage());
-//            System.out.println("Failed to get details");
-//        }
-//    }
-//
-//    public void query24 () {
-//        try {
-//            // Create an SQL statement
-//            Statement stmt = con.createStatement();
-//            Statement stmt1 = con.createStatement();
-//            // Create string for SQL statement
-//            String strSelect = "SELECT SUM(country.Population), Region "
-//                    + "FROM country "
-//                    + "GROUP BY Region "
-//                    + "HAVING SUM(country.Population) > 0 "
-//                    + "ORDER BY Region "
-//                    + "LIMIT 10";
-//
-//            String strSelect1 = "SELECT SUM(city.Population), Region "
-//                    + "FROM city, country "
-//                    + "WHERE city.CountryCode = country.Code "
-//                    + "GROUP BY Region "
-//                    + "ORDER BY Region "
-//                    + "LIMIT 10";
-//            // Execute SQL statement
-//            ResultSet resultSet = stmt.executeQuery(strSelect);
-//            ResultSet resultSet1 = stmt1.executeQuery(strSelect1);
-//            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Region", "Population", "City Population", "Non-city Population"));
-//            while (resultSet.next()) {
-//                resultSet1.next();
-//                String reg = resultSet.getString("Region");
-//                Long result = resultSet.getLong("SUM(country.Population)");
-//                Long result1 = resultSet1.getLong("SUM(city.Population)");
-//                System.out.println(String.format("%-25s %-25s %-25s %-25s", reg, result, result1, (result-result1)));
-//            }
-//            System.out.println("------------------------------------------------------------------------------------------");
-//        }
-//        catch (Exception e) {
-//            System.out.println(e.getMessage());
-//            System.out.println("Failed to get details");
-//        }
-//    }
-//
-//    public ArrayList<country> query25 () {
-//        ArrayList<country> popContinent=new ArrayList<country>();
-//        try {
-//            // Create an SQL statement
-//            Statement stmt = con.createStatement();
-//            Statement stmt1 = con.createStatement();
-//            // Create string for SQL statement
-//            String strSelect = "SELECT SUM(country.Population), Name "
-//                    + "FROM country "
-//                    + "GROUP BY Name "
-//                    + "HAVING SUM(country.Population) > 0 "
-//                    + "ORDER BY SUM(country.Population) DESC "
-//                    + "LIMIT 10";
-//            String strSelect1 = "SELECT SUM(city.Population), country.Name "
-//                    + "FROM city, country "
-//                    + "WHERE city.CountryCode = country.Code "
-//                    + "GROUP BY country.Name "
-//                    + "ORDER BY SUM(country.Population) DESC "
-//                    + "LIMIT 10";
-//            // Execute SQL statement
-//            ResultSet resultSet = stmt.executeQuery(strSelect);
-//            ResultSet resultSet1 = stmt1.executeQuery(strSelect1);
-////            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Country Name", "Population", "City Population", "Non-city Population"));
-//            while (resultSet.next()) {
-//                resultSet1.next();
-//                country popCon = new country();
-////                String name = resultSet.getString("Name");
-////                Long result = resultSet.getLong("SUM(country.Population)");
-////                Long result1 = resultSet1.getLong("SUM(city.Population)");
-////                System.out.println(String.format("%-25s %-25s %-25s %-25s", name, result, result1, (result-result1)));
-//                popCon.setName(resultSet.getString("Name"));
-//                long a;
-//                long b;
-//                a = resultSet.getLong("SUM(country.Population)");
-////                popCon.setPopulation(resultSet1.getLong("SUM(city.Population)"));
-//                b = resultSet1.getLong("SUM(city.Population)");
-//                popContinent.add(popCon);
-//            }
-//            return popContinent;
-//        }
-//        catch (Exception e) {
-//            System.out.println(e.getMessage());
-//            System.out.println("Failed to get details");
-//            return null;
-//        }
-//    }
+    public void query23 () {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            Statement stmt1 = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(country.Population), Continent "
+                    + "FROM country "
+                    + "GROUP BY Continent "
+                    + "HAVING SUM(country.Population) > 0 "
+                    + "ORDER BY Continent "
+                    + "LIMIT 10";
+            String strSelect1 = "SELECT SUM(city.Population), Continent "
+                    + "FROM city, country "
+                    + "WHERE city.CountryCode = country.Code "
+                    + "GROUP BY Continent "
+                    + "ORDER BY Continent "
+                    + "LIMIT 10";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            ResultSet resultSet1 = stmt1.executeQuery(strSelect1);
+            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Continent", "Population", "City Population", "Non-city Population"));
+            while (resultSet.next()) {
+                resultSet1.next();
+                String con = resultSet.getString("Continent");
+                Long result = resultSet.getLong("SUM(country.Population)");
+                Long result1 = resultSet1.getLong("SUM(city.Population)");
+                System.out.println(String.format("%-25s %-25s %-25s %-25s", con, result, result1, (result-result1)));
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
+
+    public void query24 () {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            Statement stmt1 = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(country.Population), Region "
+                    + "FROM country "
+                    + "GROUP BY Region "
+                    + "HAVING SUM(country.Population) > 0 "
+                    + "ORDER BY Region "
+                    + "LIMIT 10";
+
+            String strSelect1 = "SELECT SUM(city.Population), Region "
+                    + "FROM city, country "
+                    + "WHERE city.CountryCode = country.Code "
+                    + "GROUP BY Region "
+                    + "ORDER BY Region "
+                    + "LIMIT 10";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            ResultSet resultSet1 = stmt1.executeQuery(strSelect1);
+            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Region", "Population", "City Population", "Non-city Population"));
+            while (resultSet.next()) {
+                resultSet1.next();
+                String reg = resultSet.getString("Region");
+                Long result = resultSet.getLong("SUM(country.Population)");
+                Long result1 = resultSet1.getLong("SUM(city.Population)");
+                System.out.println(String.format("%-25s %-25s %-25s %-25s", reg, result, result1, (result-result1)));
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
+
+    public void query25 () {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            Statement stmt1 = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(country.Population), Name "
+                    + "FROM country "
+                    + "GROUP BY Name "
+                    + "HAVING SUM(country.Population) > 0 "
+                    + "ORDER BY SUM(country.Population) DESC "
+                    + "LIMIT 10";
+            String strSelect1 = "SELECT SUM(city.Population), country.Name "
+                    + "FROM city, country "
+                    + "WHERE city.CountryCode = country.Code "
+                    + "GROUP BY country.Name "
+                    + "ORDER BY SUM(country.Population) DESC "
+                    + "LIMIT 10";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            ResultSet resultSet1 = stmt1.executeQuery(strSelect1);
+            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Country Name", "Population", "City Population", "Non-city Population"));
+            while (resultSet.next()) {
+                resultSet1.next();
+                country popCon = new country();
+                String name = resultSet.getString("Name");
+                Long result = resultSet.getLong("SUM(country.Population)");
+                Long result1 = resultSet1.getLong("SUM(city.Population)");
+                System.out.println(String.format("%-25s %-25s %-25s %-25s", name, result, result1, (result-result1)));
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
 
     public void query26() {
         ArrayList<country> world=new ArrayList<country>();
