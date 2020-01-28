@@ -4,13 +4,13 @@ sudo: false
 
 addons:
   hosts:
-    - db
+    - DB
 
 services:
   - docker
 
 install:
-  - docker build -t database db/.
+  - docker build -t database DB/.
   - docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 database
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
@@ -22,10 +22,10 @@ jobs:
     - stage: unit tests
       install: skip
       jdk: oraclejdk11
-      script: mvn test -Dtest=com.napier.sem.AppTest
+      script: mvn test -Dtest=com.napier.DevOps4.AppTest
     - stage: integration tests
       jdk: oraclejdk11
-      script: mvn test -Dtest=com.napier.sem.AppIntegrationTest
+      script: mvn test -Dtest=com.napier.DevOps4.AppIntegrationTest
     - stage: deploy
       install: skip
       jdk: oraclejdk11
@@ -50,8 +50,8 @@ stage: GitHub Release
     - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
   before_deploy:
     # Set up git user name and tag this commit
-    - git config --local user.name "Kevin Chalmers"
-    - git config --local user.email "k.chalmers@napier.ac.uk"
+    - git config --local user.name "Kyaw Zaw Lynn"
+    - git config --local user.email "40437522@live.napier.ac.uk"
     # Create temporary tag from date and Git log.
     - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y-%m-%d')-$(git log --format=%h -1)}
     # Set tag
@@ -61,7 +61,7 @@ stage: GitHub Release
     # This is the token we set before
     api_key: $GITHUB_OAUTH_TOKEN
     # Copy built JAR file to release.  JAR built in $TRAVIS_BUILD_DIR/target
-    file: $TRAVIS_BUILD_DIR/target/seMethods.jar
+    file: $TRAVIS_BUILD_DIR/target/DevOps4-0.1.0.1-jar-with-dependencies.jar
     skip_cleanup: true
 
 after_success:
