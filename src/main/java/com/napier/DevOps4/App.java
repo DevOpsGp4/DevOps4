@@ -601,21 +601,21 @@ public class App
             }
             if (n == 1)
             {
-                ArrayList<city> cities = a.queryCC1();
-                a.displayCCities(cities);
+                ArrayList<city> Ccities = a.queryCC1();
+                a.displayCCities(Ccities);
                 continue;
             }
 
             if (n == 2)
             {
-                ArrayList<city> cities = a.queryCC2();
-                a.displayCCities(cities);
+                ArrayList<city> Ccities = a.queryCC2();
+                a.displayCCities(Ccities);
                 continue;
             }
             if (n == 3)
             {
-                ArrayList<city> cities = a.queryCC3();
-                a.displayCCities(cities);
+                ArrayList<city> Ccities = a.queryCC3();
+                a.displayCCities(Ccities);
                 continue;
             }
         }
