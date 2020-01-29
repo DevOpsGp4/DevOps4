@@ -25,7 +25,7 @@ public class App
         System.out.println("1. Country Report");
         System.out.println("2. City Report");
         System.out.println("3. Capital City Report");
-        /*System.out.println("4. Population ");*/
+        System.out.println("4. Population ");
         System.out.println("5. EXIT PROGRAM");
         System.out.println("===============================================");
 
@@ -851,7 +851,7 @@ public class App
 
         while (n != 7)// Exits the program when 5 is pressed
         {
-            System.out.print("\n Please enter option 1-6 to continue or 7 to exit...: ");
+            System.out.print("\n Please enter option 1-7 to continue...: ");
             n = Integer.parseInt(System.console().readLine());
             // Reads user input and takes them to selected code.
             if (n > 7 || n < 1) {
