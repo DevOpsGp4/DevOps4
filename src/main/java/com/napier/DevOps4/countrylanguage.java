@@ -4,7 +4,7 @@ public class countrylanguage {
     /**
      * CountryLanguage CountryCode
      */
-    private String CountryCode;
+    public String CountryCode;
 
     public String getCountryCode() {
         return CountryCode;
@@ -28,7 +28,7 @@ public class countrylanguage {
     /**
      * CountryLanguage IsOfficial
      */
-    private Enum IsOfficial;
+    public Enum IsOfficial;
 
     public Enum getIsOfficial() {
         return IsOfficial;
@@ -40,7 +40,7 @@ public class countrylanguage {
     /**
      * CountryLanguage Percentage
      */
-    private Float Percentage;
+    public Float Percentage;
 
     public Float getPercentage() {
         return Percentage;

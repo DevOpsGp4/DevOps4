@@ -2,9 +2,7 @@ package com.napier.DevOps4;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import java.util.ArrayList;
-import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.ArrayList;
 
 public class AppTest
@@ -17,6 +15,7 @@ public class AppTest
         app = new App();
     }
 
+    //country Testing
     // Null Test
     @Test
     void displayCountiesTestNull()
@@ -38,4 +37,6 @@ public class AppTest
         countries.add(null);
         app.displayCountries(countries);
     }
+    //City Testing
+
 }
