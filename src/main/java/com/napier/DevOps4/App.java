@@ -25,7 +25,7 @@ public class App
         System.out.println("1. Country Report");
         System.out.println("2. City Report");
         System.out.println("3. Capital City Report");
-        System.out.println("4. Population ");
+        System.out.println("4. Population Report");
         System.out.println("5. EXIT PROGRAM");
         System.out.println("===============================================");
 
@@ -46,16 +46,16 @@ public class App
             }
             if (n == 1) {
                 // country report
-                subMenu1();
+                CountryReport();
             }
 
             if (n == 2) {
                 // city report
-                subMenu2();
+                CityReport();
             }
             if (n == 3) {
                 // capital city report
-                subMenu3();
+                CapitalCityReport();
             }
             if (n == 4) {
                 // population report
@@ -66,7 +66,7 @@ public class App
     }
 
 
-    public static void subMenu1() {
+    public static void CountryReport() {
         Scanner console = new Scanner(System.in);
         // Create new Application
         App a = new App();
@@ -310,7 +310,7 @@ public class App
     }
 
     /*Sub Menus2*/
-    public static void subMenu2() {
+    public static void CityReport() {
         Scanner console = new Scanner(System.in);
         // Create new Application
         App a = new App();
@@ -562,7 +562,7 @@ public class App
     }
 
     /*Sub Menus3*/
-    public static void subMenu3() {
+    public static void CapitalCityReport() {
         Scanner console = new Scanner(System.in);
         // Create new Application
         App a = new App();
