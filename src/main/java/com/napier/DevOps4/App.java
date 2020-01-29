@@ -214,7 +214,7 @@ public class App
             countrylanguage cl = new countrylanguage();
             cl.setName(resultSet.getString(1));
             cl.setCountryCode(resultSet.getString(2));
-            cl.setLanguage(resultSet.getString(3));
+            cl.setPopulation(resultSet.getString(3));
             cl.setIsOfficial(resultSet.getString(4));
             cl.setPercentage(resultSet.getFloat(5));
             languages.add(cl);
@@ -236,7 +236,7 @@ public class App
         for (countrylanguage cl : languages) {
             if (cl == null)
                 continue;
-            System.out.format("%1$-20s %2$-25s %3$-25s %4$-25s %5$-25s\n", cl.getName(),cl.getCountryCode(),cl.getLanguage(),cl.getIsOfficial(),cl.getPercentage());
+            System.out.format("%1$-20s %2$-25s %3$-25s %4$-25s %5$-25s\n", cl.getName(),cl.getCountryCode(),cl.getPopulation(),cl.getIsOfficial(),cl.getPercentage());
         }
     }
     /**
@@ -251,7 +251,7 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT country.Name, countrylanguage.CountryCode, countrylanguage.Language, countrylanguage.IsOfficial, countrylanguage.Percentage FROM `countrylanguage`,`country` WHERE countrylanguage.CountryCode=country.Code AND countrylanguage.Language='Chinese' ORDER BY `countrylanguage`.`Percentage` DESC";
+                    "SELECT country.Name, countrylanguage.CountryCode, country.Population, countrylanguage.IsOfficial, countrylanguage.Percentage FROM `countrylanguage`,`country` WHERE countrylanguage.CountryCode=country.Code AND countrylanguage.Language='Chinese' ORDER BY `countrylanguage`.`Percentage` DESC";
             // Execute SQL statement
             return getLanguage(stmt, strSelect);
         } catch (Exception e) //Catch any errors and print error message

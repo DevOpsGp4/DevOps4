@@ -1,15 +1,13 @@
 package com.napier.DevOps4;
 
+import sun.font.TrueTypeFont;
+
+import static java.lang.Boolean.TYPE;
+import static java.lang.Boolean.valueOf;
+import static java.util.jar.Pack200.Packer.TRUE;
+
 public class countrylanguage {
-    @Override
-    public String toString() {
-        return "countrylanguage{" +
-                "CountryCode='" + CountryCode + '\'' +
-                ", Language='" + Language + '\'' +
-                ", IsOfficial=" + IsOfficial +
-                ", Percentage=" + Percentage +
-                '}';
-    }
+
 
     public String getCountryCode() {
         return CountryCode;
@@ -19,15 +17,12 @@ public class countrylanguage {
         CountryCode = countryCode;
     }
 
-    public String getLanguage() {
-        return Language;
-    }
-
-    public void setLanguage(String language) {
-        Language = language;
-    }
-
     public String getIsOfficial() {
+        if (IsOfficial.equals("T")){
+            IsOfficial = "Official";
+        }else {
+            IsOfficial = "Not Official";
+        }
         return IsOfficial;
     }
 
@@ -51,8 +46,19 @@ public class countrylanguage {
         Name = name;
     }
 
+    @Override
+    public String toString() {
+        return "countrylanguage{" +
+                "Name='" + Name + '\'' +
+                ", CountryCode='" + CountryCode + '\'' +
+                ", Population='" + Population + '\'' +
+                ", IsOfficial='" + IsOfficial + '\'' +
+                ", Percentage=" + Percentage +
+                '}';
+    }
+
     /**
-     * CountryLanguage CountryCode
+     * Country Name
      */
     public String Name;
 
@@ -61,10 +67,18 @@ public class countrylanguage {
      */
     public String CountryCode;
 
+    public String getPopulation() {
+        return Population;
+    }
+
+    public void setPopulation(String population) {
+        Population = population;
+    }
+
     /**
-     * CountryLanguage Language
+     * Country Population
      */
-    public String Language;
+    public String Population;
 
     /**
      * CountryLanguage IsOfficial
