@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class App
 {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         // disconnect to database
         Menus();
     }
@@ -105,20 +105,20 @@ public class App
             }
             if (n == 1)
             {
-                ArrayList<country> countries = a.countryWorld();
+                ArrayList<Country> countries = a.countryWorld();
                 a.displayCountries(countries);
                 continue;
             }
 
             if (n == 2)
             {
-                ArrayList<country> countries = a.countryContinent();
+                ArrayList<Country> countries = a.countryContinent();
                 a.displayCountries(countries);
                 continue;
             }
             if (n == 3)
             {
-                ArrayList<country> countries = a.countryRegion();
+                ArrayList<Country> countries = a.countryRegion();
                 a.displayCountries(countries);
                 continue;
             }
@@ -180,7 +180,7 @@ public class App
             }
             catch (SQLException sqle)
             {
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
+                System.out.println("Failed to connect to database attempt " + i);
                 System.out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
@@ -209,14 +209,14 @@ public class App
      * Display a list of countries.
      * @param countries The list of countries to display.
      */
-    public void displayCountries (ArrayList < country > countries) {
+    public void displayCountries (ArrayList < Country > countries) {
         // Check employees is not null
         if (countries == null)
         {
             System.out.println("No countries");
             return;
         }
-        for (country cy : countries) {
+        for (Country cy : countries) {
             System.out.println(cy);
         }
     }
@@ -224,12 +224,12 @@ public class App
      * Set Methods
      * @return An array list of all countries
      */
-    public ArrayList<country> getCountries (Statement stmt, String strSelect) throws SQLException {
+    public ArrayList<Country> getCountries (Statement stmt, String strSelect) throws SQLException {
         ResultSet resultSet = stmt.executeQuery(strSelect);
         // Extract country information
-        ArrayList<country> countries = new ArrayList<>();
+        ArrayList<Country> countries = new ArrayList<>();
         while (resultSet.next()) {
-            country cy = new country();
+            Country cy = new Country();
             cy.setCode(resultSet.getString("country.Code"));
             cy.setName(resultSet.getString("country.Name"));
             cy.setContinent(resultSet.getString("country.Continent"));
@@ -246,7 +246,7 @@ public class App
      * @return A list of all countries and population, or null if there is an error.
      */
 
-    public ArrayList<country> countryContinent () {
+    public ArrayList<Country> countryContinent () {
         System.out.println("1 - All the countries in a continent organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
@@ -268,7 +268,7 @@ public class App
  * Get all the countries in a region organised by largest population to smallest
  * @return A list of all countries and population, or null if there is an error.
  */
-    public ArrayList<country> countryRegion () {
+    public ArrayList<Country> countryRegion () {
         System.out.println("2 - All the countries in a region organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
@@ -290,7 +290,7 @@ public class App
  * Get the countries in the world organised by largest population to smallest
  * @return A list of all countries and population, or null if there is an error.
  */
-    public ArrayList<country> countryWorld () {
+    public ArrayList<Country> countryWorld () {
         System.out.println("3 - All the countries in the world organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
@@ -354,31 +354,31 @@ public class App
             }
             if (n == 1)
             {
-                ArrayList<city> cities = a.cityWorld();
+                ArrayList<City> cities = a.cityWorld();
                 a.displayCities(cities);
                 continue;
             }
             if (n == 2)
             {
-                ArrayList<city> cities = a.cityContinent();
+                ArrayList<City> cities = a.cityContinent();
                 a.displayCities(cities);
                 continue;
             }
             if (n == 3)
             {
-                ArrayList<city> cities = a.cityRegion();
+                ArrayList<City> cities = a.cityRegion();
                 a.displayCities(cities);
                 continue;
             }
             if (n == 4)
             {
-                ArrayList<city> cities = a.cityCountry();
+                ArrayList<City> cities = a.cityCountry();
                 a.displayCities(cities);
                 continue;
             }
             if (n == 5)
             {
-                ArrayList<city> cities = a.cityDistrict();
+                ArrayList<City> cities = a.cityDistrict();
                 a.displayCities(cities);
                 continue;
             }
@@ -421,14 +421,14 @@ public class App
      * Display a list of countries.
      * @param cities The list of countries to display.
      */
-    public void displayCities (ArrayList < city > cities) {
+    public void displayCities (ArrayList < City > cities) {
         // Check employees is not null
 //        if (cities == null)
 //        {
 //            System.out.println("No countries");
 //            return;
 //        }
-        for (city cy : cities) {
+        for (City cy : cities) {
             System.out.format("%1$-20s %2$-25s %3$-25s %4$-20s \n", cy.getName(),cy.getCountryCode(),cy.getDistrict(),cy.getPopulation());
         }
     }
@@ -436,12 +436,12 @@ public class App
      * Set Methods
      * @return An array list of all countries
      */
-    public ArrayList<city> getcities  (Statement stmt, String strSelect) throws SQLException {
+    public ArrayList<City> getcities  (Statement stmt, String strSelect) throws SQLException {
         ResultSet resultSet = stmt.executeQuery(strSelect);
         // Extract country information
-        ArrayList<city> cities = new ArrayList<city>();
+        ArrayList<City> cities = new ArrayList<>();
         while (resultSet.next()) {
-            city cy = new city();
+            City cy = new City();
             cy.setName(resultSet.getString(1));
             cy.setCountryCode(resultSet.getString(2));
             cy.setDistrict(resultSet.getString(3));
@@ -455,7 +455,7 @@ public class App
      * Gets all the cities in the world by largest population to smallest.
      * @return A list of all cities and population, or null if there is an error.
      */
-    public ArrayList<city> cityWorld () {
+    public ArrayList<City> cityWorld () {
         System.out.println("1 - All the cities in the world organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
@@ -477,7 +477,7 @@ public class App
      * Gets all the cities in a continent by largest population to smallest.
      * @return A list of all cities and population, or null if there is an error.
      */
-    public ArrayList<city> cityContinent () {
+    public ArrayList<City> cityContinent () {
         System.out.println("2 - All the cities in a continent organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
@@ -499,7 +499,7 @@ public class App
      * Gets all the cities in a region  by largest population to smallest.
      * @return A list of all cities and population, or null if there is an error.
      */
-    public ArrayList<city> cityRegion () {
+    public ArrayList<City> cityRegion () {
         System.out.println("3 - All the cities in a region  organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
@@ -521,7 +521,7 @@ public class App
      * Gets all the cities in a country by largest population to smallest.
      * @return A list of all cities and population, or null if there is an error.
      */
-    public ArrayList<city> cityCountry () {
+    public ArrayList<City> cityCountry () {
         System.out.println("4 - All the cities in a country organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
@@ -543,7 +543,7 @@ public class App
      * Gets all the cities in a district by largest population to smallest.
      * @return A list of all cities and population, or null if there is an error.
      */
-    public ArrayList<city> cityDistrict () {
+    public ArrayList<City> cityDistrict () {
         System.out.println("5 - All the cities in a district organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
@@ -601,20 +601,20 @@ public class App
             }
             if (n == 1)
             {
-                ArrayList<city> Ccities = a.queryCC1();
+                ArrayList<City> Ccities = a.queryCC1();
                 a.displayCCities(Ccities);
                 continue;
             }
 
             if (n == 2)
             {
-                ArrayList<city> Ccities = a.queryCC2();
+                ArrayList<City> Ccities = a.queryCC2();
                 a.displayCCities(Ccities);
                 continue;
             }
             if (n == 3)
             {
-                ArrayList<city> Ccities = a.queryCC3();
+                ArrayList<City> Ccities = a.queryCC3();
                 a.displayCCities(Ccities);
                 continue;
             }
@@ -624,12 +624,12 @@ public class App
      * Set Methods
      * @return An array list of all countries
      */
-    public ArrayList<city> getCcities  (Statement stmt, String strSelect) throws SQLException {
+    public ArrayList<City> getCcities  (Statement stmt, String strSelect) throws SQLException {
         ResultSet resultSet = stmt.executeQuery(strSelect);
         // Extract country information
-        ArrayList<city> Ccities = new ArrayList<city>();
+        ArrayList<City> Ccities = new ArrayList<City>();
         while (resultSet.next()) {
-            city ccy = new city();
+            City ccy = new City();
             ccy.setName(resultSet.getString(1));
             ccy.setCountryCode(resultSet.getString(2));
             ccy.setPopulation(resultSet.getInt(3));
@@ -641,14 +641,14 @@ public class App
      * Display a list of Capital Cities.
      //* @param Capital Cities The list of countries to display.
      */
-    public void displayCCities (ArrayList < city > Ccities) {
+    public void displayCCities (ArrayList < City > Ccities) {
         //Check cities is not null
         if (Ccities == null)
         {
             System.out.println("No Capital Cities");
             return;
         }
-        for (city ccy : Ccities) {
+        for (City ccy : Ccities) {
             if (ccy == null)
                 continue;
             System.out.format("%1$-20s %2$-25s %3$-25s \n", ccy.getName(),ccy.getCountryCode(),ccy.getPopulation());
@@ -659,7 +659,7 @@ public class App
      * @return A list of all cities and population, or null if there is an error.
      */
 
-    public ArrayList<city> queryCC1 () {
+    public ArrayList<City> queryCC1 () {
         System.out.println("1 - All the Captialcities in the world organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
@@ -677,7 +677,7 @@ public class App
         }
     }
 
-    public ArrayList<city> queryCC2 () {
+    public ArrayList<City> queryCC2 () {
         System.out.println("2 - All the capital cities in the Continent organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
@@ -695,7 +695,7 @@ public class App
         }
     }
 
-    public ArrayList<city> queryCC3 () {
+    public ArrayList<City> queryCC3 () {
         System.out.println("3 - All the capital cities in the region  organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
