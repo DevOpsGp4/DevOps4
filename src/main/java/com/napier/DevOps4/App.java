@@ -1178,7 +1178,7 @@ public class App
             Countrylanguage cl = new Countrylanguage();
             cl.setName(resultSet.getString(1));
             cl.setCountryCode(resultSet.getString(2));
-            cl.Population(resultSet.getString(3));
+            cl.setPopulation(resultSet.getString(3));
             cl.setIsOfficial(resultSet.getString(4));
             cl.setPercentage(resultSet.getFloat(5));
             languages.add(cl);
