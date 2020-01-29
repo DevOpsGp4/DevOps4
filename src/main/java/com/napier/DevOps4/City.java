@@ -1,10 +1,26 @@
 package com.napier.DevOps4;
 
-public class city {
+public class City {
     /**
      * City ID
      */
-    private String ID;
+    public String ID;
+    /**
+     * City Name
+     */
+    public String Name;
+    /**
+     * City CountryCode
+     */
+    public String CountryCode;
+    /**
+     * City District
+     */
+    public String District;
+    /**
+     * City Population
+     */
+    public Integer Population;
 
     public String getID() {
         return ID;
@@ -13,10 +29,6 @@ public class city {
     public void setID(String ID) {
         this.ID = ID;
     }
-    /**
-     * City Name
-     */
-    private String Name;
 
     public String getName() {
         return Name;
@@ -25,10 +37,6 @@ public class city {
     public void setName(String name) {
         Name = name;
     }
-    /**
-     * City CountryCode
-     */
-    private String CountryCode;
 
     public String getCountryCode() {
         return CountryCode;
@@ -37,10 +45,6 @@ public class city {
     public void setCountryCode(String countryCode) {
         CountryCode = countryCode;
     }
-    /**
-     * City District
-     */
-    private String District;
 
     public String getDistrict() {
         return District;
@@ -49,10 +53,6 @@ public class city {
     public void setDistrict(String district) {
         District = district;
     }
-    /**
-     * City Population
-     */
-    private Integer Population;
 
     public Integer getPopulation() {
         return Population;

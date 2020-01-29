@@ -6,6 +6,6 @@ services:
 
   # db is is database folder
   db:
-    build: DB/.
+    build: db/.
     command: --default-authentication-plugin=mysql_native_password
     restart: always

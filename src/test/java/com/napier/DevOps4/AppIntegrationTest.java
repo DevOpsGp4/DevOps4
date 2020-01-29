@@ -2,11 +2,8 @@ package com.napier.DevOps4;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class AppIntegrationTest {
     static App app;
@@ -14,18 +11,35 @@ public class AppIntegrationTest {
     @BeforeAll
     static void init() {
         app = new App();
-        app.connect("localhost:33060");
+        app.connect();
     }
 
     @Test
     void getCountryTest() {
 
-        ArrayList<country> countries = new ArrayList<country>();
-        country myCountry = new country();
-        myCountry.Code = "ABW";
-        myCountry.Name = "Aruba";
-        myCountry.Continent = "North America";
-        myCountry.Region = "Caribbean";
+        ArrayList<Country> countries = new ArrayList<>();
+        Country Country = new Country();
+        Country.Code = "ABW";
+        Country.Name = "Aruba";
+        Country.Continent = "North America";
+        Country.Region = "Caribbean";
+    }
+
+    @Test
+    void getcityTest() {
+        ArrayList<City> cities = new ArrayList<>();
+        City City = new City();
+        City.Name = "Kabul";
+        City.CountryCode = "AFG";
+        City.Population = 1780000;
+    }
+
+    @Test
+    void getcountrylanguageTest() {
+        ArrayList<Countrylanguage> countrylanguage = new ArrayList<>();
+        Countrylanguage Countrylanguage = new Countrylanguage();
+        Countrylanguage.CountryCode = "ABW";
+        Countrylanguage.Language = "Dutch";
     }
 }
 
