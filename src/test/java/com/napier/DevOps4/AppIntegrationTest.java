@@ -17,8 +17,8 @@ public class AppIntegrationTest {
     @Test
     void getCountryTest() {
 
-        ArrayList<country> countries = new ArrayList<>();
-        country myCountry = new country();
+        ArrayList<Country> countries = new ArrayList<>();
+        Country myCountry = new Country();
         myCountry.Code = "ABW";
         myCountry.Name = "Aruba";
         myCountry.Continent = "North America";
@@ -36,8 +36,8 @@ public class AppIntegrationTest {
 
     @Test
     void getcountrylanguageTest() {
-        ArrayList<countrylanguage> countrylanguage = new ArrayList<>();
-        countrylanguage myCountrylanguage = new countrylanguage();
+        ArrayList<Countrylanguage> countrylanguage = new ArrayList<>();
+        Countrylanguage myCountrylanguage = new Countrylanguage();
         myCountrylanguage.CountryCode = "ABW";
         myCountrylanguage.Language = "Dutch";
     }

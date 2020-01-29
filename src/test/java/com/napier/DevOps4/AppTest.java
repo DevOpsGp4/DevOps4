@@ -23,14 +23,14 @@ public class AppTest {
     // Empty Test
     @Test
     void displayCountiesTestEmpty() {
-        ArrayList<country> countries = new ArrayList<country>();
+        ArrayList<Country> countries = new ArrayList<Country>();
         app.displayCountries(countries);
     }
 
     // Contain  NUll Test
     @Test
     void displayCountiesContainsNull() {
-        ArrayList<country> countries = new ArrayList<country>();
+        ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
         app.displayCountries(countries);
     }
