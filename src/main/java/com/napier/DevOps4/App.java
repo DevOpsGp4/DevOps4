@@ -46,26 +46,30 @@ public class App
             }
             if (n == 1) {
                 // country report
+                //Submenu Function Call
                 CountryReport();
             }
 
             if (n == 2) {
                 // city report
+                //Submenu Function Call
                 CityReport();
             }
             if (n == 3) {
                 // capital city report
+                //Submenu Function Call
                 CapitalCityReport();
             }
             if (n == 4) {
                 // population report
+                //Submenu Function Call
 
             }
 
         }
     }
 
-
+    // Submenu for CountryReport
     public static void CountryReport() {
         Scanner console = new Scanner(System.in);
         // Create new Application
@@ -85,11 +89,11 @@ public class App
         System.out.println("5. The top N populated countries in a continent where N is provided by the user");
         System.out.println("6. The top N populated countries in a region where N is provided by the user");*/
         System.out.println("===============================================");
-        System.out.println("7. EXIT SUB MENU");
+        System.out.println("7. Goto Main Menu");
 
         while (n != 7)// Exits the program when 5 is pressed
         {
-            System.out.print("\n Please enter option 1-6 to continue to 7 exit...: ");
+            System.out.print("\n Please enter option 1-6 to continue to 7 Main Menu...: ");
             n = Integer.parseInt(System.console().readLine());
             // Reads user input and takes them to selected code.
             if (n > 7 || n < 1) {
@@ -333,11 +337,11 @@ public class App
         System.out.println("9. The top N populated cities in a country where N is provided by the user");
         System.out.println("10. The top N populated cities in a district where N is provided by the user");*/
         System.out.println("===============================================");
-        System.out.println("11. EXIT SUB MENU");
+        System.out.println("11. Goto Main Menu");
 
         while (n != 11)// Exits the program when 5 is pressed
         {
-            System.out.print("\n Please enter option 1-10 to continue or 11 to exit...: ");
+            System.out.print("\n Please enter option 1-10 to continue or 11 to Main Menu...: ");
             n = Integer.parseInt(System.console().readLine());
             // Reads user input and takes them to selected code.
 
@@ -581,11 +585,11 @@ public class App
         System.out.println("5. The top N populated capital cities in a continent where N is provided by the user.");
         System.out.println("6. The top N populated capital cities in a region where N is provided by the user.");*/
         System.out.println("===============================================");
-        System.out.println("7. EXIT SUB MENU");
+        System.out.println("7. Goto Main Menu");
 
         while (n != 7)// Exits the program when 5 is pressed
         {
-            System.out.print("\n Please enter option 1-7 to continue...: ");
+            System.out.print("\n Please enter option 1-6 to continue...: ");
             n = Integer.parseInt(System.console().readLine());
             // Reads user input and takes them to selected code.
             if (n > 7 || n < 1) {
