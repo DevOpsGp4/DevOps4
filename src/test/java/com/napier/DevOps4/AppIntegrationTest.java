@@ -24,21 +24,22 @@ public class AppIntegrationTest {
         myCountry.Continent = "North America";
         myCountry.Region = "Caribbean";
     }
+
     @Test
-    void getcityTest()
- {
-    ArrayList<city> cities  = new ArrayList<>();
-    city mycity = new city();
-    mycity.Name = "Kabul";
-    mycity.CountryCode = "AFG";
-    mycity.Population = 1780000;
- }
-  @Test void getcountrylanguageTest()
-  {
-     ArrayList<countrylanguage> countrylanguage  = new ArrayList<>();
-    countrylanguage myCountrylanguage = new countrylanguage();
-    myCountrylanguage.CountryCode = "ABW";
-    myCountrylanguage.Language = "Dutch";
-  }
+    void getcityTest() {
+        ArrayList<city> cities = new ArrayList<>();
+        city mycity = new city();
+        mycity.Name = "Kabul";
+        mycity.CountryCode = "AFG";
+        mycity.Population = 1780000;
+    }
+
+    @Test
+    void getcountrylanguageTest() {
+        ArrayList<countrylanguage> countrylanguage = new ArrayList<>();
+        countrylanguage myCountrylanguage = new countrylanguage();
+        myCountrylanguage.CountryCode = "ABW";
+        myCountrylanguage.Language = "Dutch";
+    }
 }
 
