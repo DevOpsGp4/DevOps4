@@ -12,7 +12,7 @@ public class Countrylanguage {
     /**
      * CountryLanguage IsOfficial
      */
-    public Enum IsOfficial;
+    public String IsOfficial;
     /**
      * CountryLanguage Percentage
      */
@@ -34,11 +34,11 @@ public class Countrylanguage {
         Language = language;
     }
 
-    public Enum getIsOfficial() {
+    public String getIsOfficial() {
         return IsOfficial;
     }
 
-    public void setIsOfficial(Enum isOfficial) {
+    public void setIsOfficial(String isOfficial) {
         IsOfficial = isOfficial;
     }
 
