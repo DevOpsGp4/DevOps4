@@ -47,10 +47,6 @@ Primary task.
 9. All the capital cities in the world organised by largest population to smallest.
 10. All the capital cities in a continent organised by largest population to smallest.
 11. All the capital cities in a region organised by largest to smallest.
-12. The population of people, people living in cities, and people not living in cities in each continent.
-13. The population of people, people living in cities, and people not living in cities in each region.
-14. The population of people, people living in cities, and people not living in cities in each country.
-
 
 ## EXTENSIONS
 
