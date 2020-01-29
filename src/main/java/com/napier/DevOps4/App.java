@@ -20,59 +20,59 @@ public class App
         a.query23();
         System.out.println("====================================================================================================");
 
-        a.query24();
-        System.out.println("====================================================================================================");
-
-        a.query25();
-        System.out.println("====================================================================================================");
-
-        a.query26();
-        System.out.println("====================================================================================================");
-
-        ArrayList<country> continents = new ArrayList<country>();
-        continents = a.query27();
-        System.out.println(String.format("%-25s %-25s", "Continent Name", "Continent Population"));
-        for (country cont:continents)
-        {
-            System.out.println(String.format("%-25s %-25s", cont.getContinent(), cont.getPopulation()));
-        }
-        System.out.println("====================================================================================================");
-
-        ArrayList<country> regions = new ArrayList<country>();
-        regions = a.query28();
-        System.out.println(String.format("%-25s %-25s", "Region Name", "Region Population"));
-        for (country reg:regions)
-        {
-            System.out.println(String.format("%-25s %-25s", reg.getRegion(), reg.getPopulation()));
-        }
-        System.out.println("====================================================================================================");
-
-        ArrayList<country> countries = new ArrayList<country>();
-        countries = a.query29();
-        System.out.println(String.format("%-25s %-25s", "Country Name", "Country Population"));
-        for (country cs:countries)
-        {
-            System.out.println(String.format("%-25s %-25s", cs.getName(), cs.getPopulation()));
-        }
-        System.out.println("====================================================================================================");
-
-        ArrayList<city> districts = new ArrayList<city>();
-        districts = a.query30();
-        System.out.println(String.format("%-25s %-25s", "District Name", "City Population"));
-        for (city d:districts)
-        {
-            System.out.println(String.format("%-25s %-25s", d.getDistrict(), d.getPopulation()));
-        }
-        System.out.println("====================================================================================================");
-
-        ArrayList<city> cities = new ArrayList<city>();
-        cities = a.query31();
-        System.out.println(String.format("%-25s %-25s", "City Name", "City Population"));
-        for (city c:cities)
-        {
-          System.out.println(String.format("%-25s %-25s", c.getName(), c.getPopulation()));
-        }
-        System.out.println("====================================================================================================");
+//        a.query24();
+//        System.out.println("====================================================================================================");
+//
+//        a.query25();
+//        System.out.println("====================================================================================================");
+//
+//        a.query26();
+//        System.out.println("====================================================================================================");
+//
+//        ArrayList<country> continents = new ArrayList<country>();
+//        continents = a.query27();
+//        System.out.println(String.format("%-25s %-25s", "Continent Name", "Continent Population"));
+//        for (country cont:continents)
+//        {
+//            System.out.println(String.format("%-25s %-25s", cont.getContinent(), cont.getPopulation()));
+//        }
+//        System.out.println("====================================================================================================");
+//
+//        ArrayList<country> regions = new ArrayList<country>();
+//        regions = a.query28();
+//        System.out.println(String.format("%-25s %-25s", "Region Name", "Region Population"));
+//        for (country reg:regions)
+//        {
+//            System.out.println(String.format("%-25s %-25s", reg.getRegion(), reg.getPopulation()));
+//        }
+//        System.out.println("====================================================================================================");
+//
+//        ArrayList<country> countries = new ArrayList<country>();
+//        countries = a.query29();
+//        System.out.println(String.format("%-25s %-25s", "Country Name", "Country Population"));
+//        for (country cs:countries)
+//        {
+//            System.out.println(String.format("%-25s %-25s", cs.getName(), cs.getPopulation()));
+//        }
+//        System.out.println("====================================================================================================");
+//
+//        ArrayList<city> districts = new ArrayList<city>();
+//        districts = a.query30();
+//        System.out.println(String.format("%-25s %-25s", "District Name", "City Population"));
+//        for (city d:districts)
+//        {
+//            System.out.println(String.format("%-25s %-25s", d.getDistrict(), d.getPopulation()));
+//        }
+//        System.out.println("====================================================================================================");
+//
+//        ArrayList<city> cities = new ArrayList<city>();
+//        cities = a.query31();
+//        System.out.println(String.format("%-25s %-25s", "City Name", "City Population"));
+//        for (city c:cities)
+//        {
+//          System.out.println(String.format("%-25s %-25s", c.getName(), c.getPopulation()));
+//        }
+//        System.out.println("====================================================================================================");
 
 
         // Disconnect from database
@@ -144,34 +144,67 @@ public class App
         }
     }
 
+//    public void query23 () {
+//        try {
+//            // Create an SQL statement
+//            Statement stmt = con.createStatement();
+//            Statement stmt1 = con.createStatement();
+//            // Create string for SQL statement
+//            String strSelect = "SELECT SUM(country.Population), Continent "
+//                    + "FROM country "
+//                    + "GROUP BY Continent "
+//                    + "HAVING SUM(country.Population) > 0 "
+//                    + "ORDER BY Continent "
+//                    + "LIMIT 10";
+//            String strSelect1 = "SELECT SUM(city.Population), Continent "
+//                    + "FROM city, country "
+//                    + "WHERE city.CountryCode = country.Code "
+//                    + "GROUP BY Continent "
+//                    + "ORDER BY Continent "
+//                    + "LIMIT 10";
+//            // Execute SQL statement
+//            ResultSet resultSet = stmt.executeQuery(strSelect);
+//            ResultSet resultSet1 = stmt1.executeQuery(strSelect1);
+//            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Continent", "Population", "City Population", "(%)", "Non-city Population"));
+//            while (resultSet.next()) {
+//                resultSet1.next();
+//                String con = resultSet.getString("Continent");
+//                Long result = resultSet.getLong("SUM(country.Population)");
+//                Long result1 = resultSet1.getLong("SUM(city.Population)");
+//                Float perResult = resultSet1.getFloat("SUM(city.Population)*100/SUM(country.Population)");
+//
+//                System.out.println(String.format("%-25s %-25s %-25s %-25s", con, result, result1, perResult, (result-result1)));
+//            }
+//        }
+//        catch (Exception e) {
+//            System.out.println(e.getMessage());
+//            System.out.println("Failed to get details");
+//        }
+//    }
+
     public void query23 () {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             Statement stmt1 = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "SELECT SUM(country.Population), Continent "
-                    + "FROM country "
-                    + "GROUP BY Continent "
-                    + "HAVING SUM(country.Population) > 0 "
-                    + "ORDER BY Continent "
-                    + "LIMIT 10";
-            String strSelect1 = "SELECT SUM(city.Population), Continent "
-                    + "FROM city, country "
-                    + "WHERE city.CountryCode = country.Code "
-                    + "GROUP BY Continent "
-                    + "ORDER BY Continent "
-                    + "LIMIT 10";
+            String strSelect = "SELECT country.Continent AS name, " +
+                    "country.Population AS total, " +
+                    "SUM(city.Population) AS yeslive, " +
+                    "(SUM(city.Population) * 100 / country.Population) AS yesper, " +
+                    "(country.Population - SUM(city.Population)) AS nolive, " +
+                    "((country.Population - SUM(city.Population)) * 100 / country.Population) AS noper " +
+                    "FROM country " +
+                    "INNER JOIN city " +
+                    "ON city.CountryCode = country.Code " +
+                    "GROUP BY country.Name,country.Population " +
+                    "ORDER BY country.Population " +
+                    "DESC LIMIT 10";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
-            ResultSet resultSet1 = stmt1.executeQuery(strSelect1);
-            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Continent", "Population", "City Population", "Non-city Population"));
+            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Continent", "Population", "City Population", "(%)", "Non-city Population"));
             while (resultSet.next()) {
-                resultSet1.next();
-                String con = resultSet.getString("Continent");
-                Long result = resultSet.getLong("SUM(country.Population)");
-                Long result1 = resultSet1.getLong("SUM(city.Population)");
-                System.out.println(String.format("%-25s %-25s %-25s %-25s", con, result, result1, (result-result1)));
+                System.out.println(String.format("%-25s %-25s %-25s %-25s", "conName", "total"));
             }
         }
         catch (Exception e) {
@@ -221,31 +254,30 @@ public class App
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
-            Statement stmt1 = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "SELECT SUM(country.Population), Name "
-                    + "FROM country "
-                    + "GROUP BY Name "
-                    + "HAVING SUM(country.Population) > 0 "
-                    + "ORDER BY SUM(country.Population) DESC "
-                    + "LIMIT 10";
-            String strSelect1 = "SELECT SUM(city.Population), country.Name "
-                    + "FROM city, country "
-                    + "WHERE city.CountryCode = country.Code "
-                    + "GROUP BY country.Name "
-                    + "ORDER BY SUM(country.Population) DESC "
-                    + "LIMIT 10";
+            String strSelect = "SELECT country.Name as name, country.Population as total, " +
+                    "SUM(city.Population) as yeslive, " +
+                    "(SUM(city.Population)*100/country.Population) as yesper, " +
+                    "(country.Population-SUM(city.Population)) as nolive, " +
+                    "((country.Population-SUM(city.Population))*100/country.Population) as noper " +
+                    "FROM country " +
+                    "INNER JOIN city " +
+                    "ON city.CountryCode=country.Code " +
+                    "GROUP BY country.Name, country.Population " +
+                    "ORDER BY country.Population DESC " +
+                    "LIMIT 10";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
-            ResultSet resultSet1 = stmt1.executeQuery(strSelect1);
-            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Country Name", "Population", "City Population", "Non-city Population"));
+            System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Country Name", "Total Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
             while (resultSet.next()) {
-                resultSet1.next();
                 country popCon = new country();
-                String name = resultSet.getString("Name");
-                Long result = resultSet.getLong("SUM(country.Population)");
-                Long result1 = resultSet1.getLong("SUM(city.Population)");
-                System.out.println(String.format("%-25s %-25s %-25s %-25s", name, result, result1, (result-result1)));
+                String name = resultSet.getString("name");
+                Long result = resultSet.getLong("total");
+                Long result1 = resultSet.getLong("yeslive");
+                Float result2 = resultSet.getFloat("yesper");
+                Long result3 = resultSet.getLong("nolive");
+                Float result4 = resultSet.getFloat("noper");
+                System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", name, result, result1, result2, result3, result4));
             }
         }
         catch (Exception e) {
