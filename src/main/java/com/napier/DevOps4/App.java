@@ -17,11 +17,11 @@ public class App
         a.connect();
 
         // Query output List
-        a.query23();
-        System.out.println("====================================================================================================");
-
-//        a.query24();
+//        a.query23();
 //        System.out.println("====================================================================================================");
+
+        a.query24();
+        System.out.println("====================================================================================================");
 //
 //        a.query25();
 //        System.out.println("====================================================================================================");
@@ -144,67 +144,33 @@ public class App
         }
     }
 
-//    public void query23 () {
-//        try {
-//            // Create an SQL statement
-//            Statement stmt = con.createStatement();
-//            Statement stmt1 = con.createStatement();
-//            // Create string for SQL statement
-//            String strSelect = "SELECT SUM(country.Population), Continent "
-//                    + "FROM country "
-//                    + "GROUP BY Continent "
-//                    + "HAVING SUM(country.Population) > 0 "
-//                    + "ORDER BY Continent "
-//                    + "LIMIT 10";
-//            String strSelect1 = "SELECT SUM(city.Population), Continent "
-//                    + "FROM city, country "
-//                    + "WHERE city.CountryCode = country.Code "
-//                    + "GROUP BY Continent "
-//                    + "ORDER BY Continent "
-//                    + "LIMIT 10";
-//            // Execute SQL statement
-//            ResultSet resultSet = stmt.executeQuery(strSelect);
-//            ResultSet resultSet1 = stmt1.executeQuery(strSelect1);
-//            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Continent", "Population", "City Population", "(%)", "Non-city Population"));
-//            while (resultSet.next()) {
-//                resultSet1.next();
-//                String con = resultSet.getString("Continent");
-//                Long result = resultSet.getLong("SUM(country.Population)");
-//                Long result1 = resultSet1.getLong("SUM(city.Population)");
-//                Float perResult = resultSet1.getFloat("SUM(city.Population)*100/SUM(country.Population)");
-//
-//                System.out.println(String.format("%-25s %-25s %-25s %-25s", con, result, result1, perResult, (result-result1)));
-//            }
-//        }
-//        catch (Exception e) {
-//            System.out.println(e.getMessage());
-//            System.out.println("Failed to get details");
-//        }
-//    }
-
     public void query23 () {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
-            Statement stmt1 = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "SELECT country.Continent AS name, " +
-                    "country.Population AS total, " +
+            String strSelect = "SELECT country.Continent AS NAME, " +
+                    "SUM(DISTINCT country.Population) AS total, " +
                     "SUM(city.Population) AS yeslive, " +
-                    "(SUM(city.Population) * 100 / country.Population) AS yesper, " +
-                    "(country.Population - SUM(city.Population)) AS nolive, " +
-                    "((country.Population - SUM(city.Population)) * 100 / country.Population) AS noper " +
-                    "FROM country " +
-                    "INNER JOIN city " +
-                    "ON city.CountryCode = country.Code " +
-                    "GROUP BY country.Name,country.Population " +
-                    "ORDER BY country.Population " +
-                    "DESC LIMIT 10";
+                    "( (SUM(city.Population) / SUM(DISTINCT country.Population)) * 100 ) AS yesper, " +
+                    "SUM(DISTINCT country.Population) - SUM(city.Population) AS nolive, " +
+                    "( ((SUM(DISTINCT country.Population) - SUM(city.Population)) / SUM(DISTINCT country.Population)) * 100 ) AS noper " +
+                    "FROM city, country " +
+                    "WHERE city.CountryCode = country.Code " +
+                    "GROUP BY country.Continent " +
+                    "ORDER BY total DESC " +
+                    "LIMIT 10";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
-            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Continent", "Population", "City Population", "(%)", "Non-city Population"));
+            System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Continent", "Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
             while (resultSet.next()) {
-                System.out.println(String.format("%-25s %-25s %-25s %-25s", "conName", "total"));
+                String name = resultSet.getString("name");
+                Long result = resultSet.getLong("total");
+                Long result1 = resultSet.getLong("yeslive");
+                Float result2 = resultSet.getFloat("yesper");
+                Long result3 = resultSet.getLong("nolive");
+                Float result4 = resultSet.getFloat("noper");
+                System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", name, result, result1, result2, result3, result4));
             }
         }
         catch (Exception e) {
@@ -213,35 +179,70 @@ public class App
         }
     }
 
+//    public void query24 () {
+//        try {
+//            // Create an SQL statement
+//            Statement stmt = con.createStatement();
+//            Statement stmt1 = con.createStatement();
+//            // Create string for SQL statement
+//            String strSelect = "SELECT SUM(country.Population), Region "
+//                    + "FROM country "
+//                    + "GROUP BY Region "
+//                    + "HAVING SUM(country.Population) > 0 "
+//                    + "ORDER BY Region "
+//                    + "LIMIT 10";
+//
+//            String strSelect1 = "SELECT SUM(city.Population), Region "
+//                    + "FROM city, country "
+//                    + "WHERE city.CountryCode = country.Code "
+//                    + "GROUP BY Region "
+//                    + "ORDER BY Region "
+//                    + "LIMIT 10";
+//            // Execute SQL statement
+//            ResultSet resultSet = stmt.executeQuery(strSelect);
+//            ResultSet resultSet1 = stmt1.executeQuery(strSelect1);
+//            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Region", "Population", "City Population", "Non-city Population"));
+//            while (resultSet.next()) {
+//                resultSet1.next();
+//                String reg = resultSet.getString("Region");
+//                Long result = resultSet.getLong("SUM(country.Population)");
+//                Long result1 = resultSet1.getLong("SUM(city.Population)");
+//                System.out.println(String.format("%-25s %-25s %-25s %-25s", reg, result, result1, (result-result1)));
+//            }
+//        }
+//        catch (Exception e) {
+//            System.out.println(e.getMessage());
+//            System.out.println("Failed to get details");
+//        }
+//    }
+
     public void query24 () {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
-            Statement stmt1 = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "SELECT SUM(country.Population), Region "
-                    + "FROM country "
-                    + "GROUP BY Region "
-                    + "HAVING SUM(country.Population) > 0 "
-                    + "ORDER BY Region "
-                    + "LIMIT 10";
-
-            String strSelect1 = "SELECT SUM(city.Population), Region "
-                    + "FROM city, country "
-                    + "WHERE city.CountryCode = country.Code "
-                    + "GROUP BY Region "
-                    + "ORDER BY Region "
-                    + "LIMIT 10";
+            String strSelect = "SELECT country.Region AS name, " +
+                    "SUM(DISTINCT country.Population) AS total, " +
+                    "SUM(city.Population) AS yeslive, " +
+                    "( ( SUM(city.Population) / SUM(DISTINCT country.Population) ) * 100 ) AS yesper, " +
+                    "SUM(DISTINCT country.Population) - SUM(city.Population) AS nolive, " +
+                    "( ( ( SUM(DISTINCT country.Population) - SUM(city.Population) ) / SUM(DISTINCT country.Population) ) * 100 ) AS noper " +
+                    "FROM city, country " +
+                    "WHERE city.CountryCode = country.Code " +
+                    "GROUP BY country.Region " +
+                    "ORDER BY yeslive DESC " +
+                    "LIMIT 10";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
-            ResultSet resultSet1 = stmt1.executeQuery(strSelect1);
-            System.out.println(String.format("%-25s %-25s %-25s %-25s", "Region", "Population", "City Population", "Non-city Population"));
+            System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Region", "Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
             while (resultSet.next()) {
-                resultSet1.next();
-                String reg = resultSet.getString("Region");
-                Long result = resultSet.getLong("SUM(country.Population)");
-                Long result1 = resultSet1.getLong("SUM(city.Population)");
-                System.out.println(String.format("%-25s %-25s %-25s %-25s", reg, result, result1, (result-result1)));
+                String name = resultSet.getString("name");
+                Long result = resultSet.getLong("total");
+                Long result1 = resultSet.getLong("yeslive");
+                Float result2 = resultSet.getFloat("yesper");
+                Long result3 = resultSet.getLong("nolive");
+                Float result4 = resultSet.getFloat("noper");
+                System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", name, result, result1, result2, result3, result4));
             }
         }
         catch (Exception e) {
@@ -263,14 +264,14 @@ public class App
                     "FROM country " +
                     "INNER JOIN city " +
                     "ON city.CountryCode=country.Code " +
-                    "GROUP BY country.Name, country.Population " +
+                    "GROUP BY country.Name " +
                     "ORDER BY country.Population DESC " +
                     "LIMIT 10";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
             System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Country Name", "Total Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
             while (resultSet.next()) {
-                country popCon = new country();
+//                country popCon = new country();
                 String name = resultSet.getString("name");
                 Long result = resultSet.getLong("total");
                 Long result1 = resultSet.getLong("yeslive");
