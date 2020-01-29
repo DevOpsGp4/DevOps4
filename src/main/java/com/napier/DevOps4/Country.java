@@ -1,6 +1,6 @@
 package com.napier.DevOps4;
 
-public class country {
+public class Country {
 
     /**
      * Country Code

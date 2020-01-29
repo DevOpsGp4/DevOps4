@@ -27,8 +27,8 @@ public class AppIntegrationTest {
 
     @Test
     void getcityTest() {
-        ArrayList<city> cities = new ArrayList<>();
-        city mycity = new city();
+        ArrayList<City> cities = new ArrayList<>();
+        City mycity = new City();
         mycity.Name = "Kabul";
         mycity.CountryCode = "AFG";
         mycity.Population = 1780000;
