@@ -1,10 +1,22 @@
 package com.napier.DevOps4;
 
-public class countrylanguage {
+public class Countrylanguage {
     /**
      * CountryLanguage CountryCode
      */
-    private String CountryCode;
+    public String CountryCode;
+    /**
+     * CountryLanguage Language
+     */
+    public String Language;
+    /**
+     * CountryLanguage IsOfficial
+     */
+    public Enum IsOfficial;
+    /**
+     * CountryLanguage Percentage
+     */
+    public Float Percentage;
 
     public String getCountryCode() {
         return CountryCode;
@@ -13,10 +25,6 @@ public class countrylanguage {
     public void setCountryCode(String countryCode) {
         CountryCode = countryCode;
     }
-    /**
-     * CountryLanguage Language
-     */
-    public String Language;
 
     public String getLanguage() {
         return Language;
@@ -25,10 +33,6 @@ public class countrylanguage {
     public void setLanguage(String language) {
         Language = language;
     }
-    /**
-     * CountryLanguage IsOfficial
-     */
-    private Enum IsOfficial;
 
     public Enum getIsOfficial() {
         return IsOfficial;
@@ -37,10 +41,6 @@ public class countrylanguage {
     public void setIsOfficial(Enum isOfficial) {
         IsOfficial = isOfficial;
     }
-    /**
-     * CountryLanguage Percentage
-     */
-    private Float Percentage;
 
     public Float getPercentage() {
         return Percentage;

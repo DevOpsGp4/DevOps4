@@ -1,11 +1,67 @@
 package com.napier.DevOps4;
 
-public class country {
+public class Country {
 
     /**
      * Country Code
      */
     public String Code;
+    /**
+     * Country Name
+     */
+    public String Name;
+    /**
+     * Country Continent
+     */
+    public String Continent;
+    /**
+     * Country Region
+     */
+    public String Region;
+    /**
+     * Country SurfaceArea
+     */
+    public Float SurfaceArea;
+    /**
+     * Country IndepYear
+     */
+    public Integer IndepYear;
+    /**
+     * Country Population
+     */
+    public Integer Population;
+    /**
+     * Country LifeExpectancy
+     */
+    public Float LifeExpectancy;
+    /**
+     * Country GNP
+     */
+    public Float GNP;
+    /**
+     * Country GNPOld
+     */
+    public Float GNPOld;
+    /**
+     * Country LocalName
+     */
+    public String LocalName;
+    /**
+     * Country GovernmentForm
+     */
+    public String GovernmentForm;
+    /**
+     * Country HeadOfState
+     */
+    public String HeadOfState;
+    /**
+     * Country Capital
+     */
+    public String Capital;
+    /**
+     * Country Code2
+     */
+    public String Code2;
 
     public String getCode(String string) {
         return Code;
@@ -14,10 +70,6 @@ public class country {
     public void setCode(String code) {
         Code = code;
     }
-    /**
-     * Country Name
-     */
-    public String Name;
 
     public String getName(String string) {
         return Name;
@@ -26,10 +78,6 @@ public class country {
     public void setName(String name) {
         Name = name;
     }
-    /**
-     * Country Continent
-     */
-    public String Continent;
 
     public String getContinent(String string) {
         return Continent;
@@ -38,10 +86,6 @@ public class country {
     public void setContinent(String continent) {
         Continent = continent;
     }
-    /**
-     * Country Region
-     */
-    public String Region;
 
     public String getRegion(String string) {
         return Region;
@@ -51,11 +95,6 @@ public class country {
         Region = region;
     }
 
-    /**
-     * Country SurfaceArea
-     */
-    public Float SurfaceArea;
-
     public Float getSurfaceArea() {
         return SurfaceArea;
     }
@@ -63,10 +102,6 @@ public class country {
     public void setSurfaceArea(Float surfaceArea) {
         SurfaceArea = surfaceArea;
     }
-    /**
-     * Country IndepYear
-     */
-    public Integer IndepYear;
 
     public Integer getIndepYear() {
         return IndepYear;
@@ -75,10 +110,6 @@ public class country {
     public void setIndepYear(Integer indepYear) {
         IndepYear = indepYear;
     }
-    /**
-     * Country Population
-     */
-    public Integer Population;
 
     public Integer getPopulation(String string) {
         return Population;
@@ -88,11 +119,6 @@ public class country {
         Population = population;
     }
 
-    /**
-     * Country LifeExpectancy
-     */
-    public Float LifeExpectancy;
-
     public Float getLifeExpectancy() {
         return LifeExpectancy;
     }
@@ -100,10 +126,6 @@ public class country {
     public void setLifeExpectancy(Float lifeExpectancy) {
         LifeExpectancy = lifeExpectancy;
     }
-    /**
-     * Country GNP
-     */
-    public Float GNP;
 
     public Float getGNP() {
         return GNP;
@@ -112,10 +134,6 @@ public class country {
     public void setGNP(Float GNP) {
         this.GNP = GNP;
     }
-    /**
-     * Country GNPOld
-     */
-    public Float GNPOld;
 
     public Float getGNPOld() {
         return GNPOld;
@@ -124,10 +142,6 @@ public class country {
     public void setGNPOld(Float GNPOld) {
         this.GNPOld = GNPOld;
     }
-    /**
-     * Country LocalName
-     */
-    public String LocalName;
 
     public String getLocalName() {
         return LocalName;
@@ -136,10 +150,6 @@ public class country {
     public void setLocalName(String localName) {
         LocalName = localName;
     }
-    /**
-     * Country GovernmentForm
-     */
-    public String GovernmentForm;
 
     public String getGovernmentForm() {
         return GovernmentForm;
@@ -148,10 +158,6 @@ public class country {
     public void setGovernmentForm(String governmentForm) {
         GovernmentForm = governmentForm;
     }
-    /**
-     * Country HeadOfState
-     */
-    public String HeadOfState;
 
     public String getHeadOfState() {
         return HeadOfState;
@@ -160,10 +166,6 @@ public class country {
     public void setHeadOfState(String headOfState) {
         HeadOfState = headOfState;
     }
-    /**
-     * Country Capital
-     */
-    public String Capital;
 
     public String getCapital(String string) {
         return Capital;
@@ -172,10 +174,6 @@ public class country {
     public void setCapital(String capital) {
         Capital = capital;
     }
-    /**
-     * Country Code2
-     */
-    public String Code2;
 
     public String getCode2() {
         return Code2;
@@ -192,6 +190,6 @@ public class country {
                 ", Continent -'" + Continent + '\'' +
                 ", Region - '" + Region + '\'' +
                 ", Population - " + Population +
-                ", Capital - " + Capital ;
+                ", Capital - " + Capital;
     }
 }
