@@ -13,7 +13,7 @@ public class AppTest {
         app = new App();
     }
 
-    //country Testing
+    //Country Testing
     // Null Test
     @Test
     void displayCountiesTestNull() {
@@ -27,13 +27,33 @@ public class AppTest {
         app.displayCountries(countries);
     }
 
-    // Contain  NUll Test
+    // Contain  Null Test
     @Test
     void displayCountiesContainsNull() {
         ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
         app.displayCountries(countries);
     }
-    //City Testing
 
+    //City Testing
+    // Null Test
+    @Test
+    void displayCitiesTestNull(){
+        app.displayCCities(null);
+    }
+
+    //Empty Test
+    @Test
+    void displayCitiesTestEmpty(){
+        ArrayList<City> cities = new ArrayList<City>();
+        app.displayCCities(cities);
+    }
+
+    //Contain Null Test
+    @Test
+    void displayCitiesContainsNull() {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.displayCCities(cities);
+    }
 }
