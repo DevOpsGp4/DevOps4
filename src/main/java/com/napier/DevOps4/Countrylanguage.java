@@ -74,7 +74,10 @@ public class Countrylanguage {
     public void setPopulation(String population) {
         Population = population;
     }
-
+    /**
+     * CountryLanguage Language
+     */
+    public String Language;
     /**
      * Country Population
      */

@@ -536,7 +536,7 @@ public class App
         // Check search data is not null
         if (cities == null)
         {
-            System.out.println("No countries");
+            System.out.println("No Cities");
             return;
         }
         for (City cy : cities) {
@@ -1095,6 +1095,292 @@ public class App
             return null;
         }
     }
+
+    /*sub Menus5 Population Report*/
+    public static void PopulationReport() {
+        Scanner console = new Scanner(System.in);
+        // Create new Application
+        App a = new App();
+        // Connect to database
+        a.connect("localhost:33060");
+        char c;
+        int n = 0;
+
+        // this will be the sub menu that gets displayed.
+        System.out.println("  Population Report ");
+        System.out.println("===============================================");
+        System.out.println("1. The population of the world");
+        System.out.println("2. The population of a continent");
+        System.out.println("3. The population of a region");
+        System.out.println("4. The population of a country");
+        System.out.println("5. The population of a district");
+        System.out.println("===============================================");
+        System.out.println("6. EXIT SUB MENU");
+
+        while (n != 6)// Exits the program when 5 is pressed
+        {
+            System.out.print("\n Please enter option 1-5 to continue or 6 to exit...: ");
+            n = Integer.parseInt(System.console().readLine());
+            // Reads user input and takes them to selected code.
+            if (n > 6 || n < 1) {
+                //Invalid input
+                System.out.print("Invalid input, please try again...");
+            }
+            if (n == 6){
+                // Exit output
+                System.out.print("Back to Menus...");
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+                Menus();
+            }
+            if (n == 1)
+            {
+
+                continue;
+            }
+
+            if (n == 2)
+            {
+
+                continue;
+            }
+            if (n == 3)
+            {
+
+            continue;
+            }
+            if (n == 4)
+            {
+                a.query26();
+                System.out.println("====================================================================================================");
+                continue;
+            }
+            if (n == 5)
+            {
+                ArrayList<Country> continents = new ArrayList<Country>();
+                continents = a.query27();
+                System.out.println(String.format("%-25s %-25s", "Continent Name", "Continent Population"));
+                for (Country cont:continents)
+                {
+                    System.out.println(String.format("%-25s %-25s", cont.getContinent(), cont.getPopulation()));
+                }
+                System.out.println("====================================================================================================");
+                continue;
+            }
+            if (n == 6)
+            {
+                ArrayList<Country> regions = new ArrayList<Country>();
+                regions = a.query28();
+                System.out.println(String.format("%-25s %-25s", "Region Name", "Region Population"));
+                for (Country reg:regions)
+                {
+                    System.out.println(String.format("%-25s %-25s", reg.getRegion(), reg.getPopulation()));
+                }
+                System.out.println("====================================================================================================");
+                continue;
+            }
+            if (n == 7)
+            {
+                ArrayList<Country> countries = new ArrayList<Country>();
+                countries = a.query29();
+                System.out.println(String.format("%-25s %-25s", "Country Name", "Country Population"));
+                for (Country cs:countries)
+                {
+                    System.out.println(String.format("%-25s %-25s", cs.getName(), cs.getPopulation()));
+                }
+                System.out.println("====================================================================================================");
+                continue;
+            }
+            if (n == 8)
+            {
+                ArrayList<City> districts = new ArrayList<City>();
+                districts = a.query30();
+                System.out.println(String.format("%-25s %-25s", "District Name", "City Population"));
+                for (City d:districts)
+                {
+                System.out.println(String.format("%-25s %-25s", d.getDistrict(), d.getPopulation()));
+                }
+                System.out.println("====================================================================================================");
+                continue;
+            }
+            if (n == 9)
+            {
+                ArrayList<City> cities = new ArrayList<City>();
+                cities = a.query31();
+                System.out.println(String.format("%-25s %-25s", "City Name", "City Population"));
+                for (City cc:cities)
+                {
+                    System.out.println(String.format("%-25s %-25s", cc.getName(), cc.getPopulation()));
+                }
+                System.out.println("====================================================================================================");
+                continue;
+            }
+        }
+    }
+
+    public void query26() {
+        ArrayList<Country> world=new ArrayList<Country>();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(Population) "
+                    + "FROM country";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            System.out.println("The World Total Population");
+            if (resultSet.next()) {
+                System.out.println(resultSet.getLong("SUM(Population)"));
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
+
+    /**
+     * Display a list of Population of the world
+     //* @param Population of the world The list of countries to display.
+     */
+    public ArrayList<Country> query27 () {
+        ArrayList<Country> continents=new ArrayList<Country>();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(Population), Continent "
+                    + "FROM country "
+                    + "Group By Continent "
+                    + "Order By SUM(Population) DESC";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            while (resultSet.next()) {
+                Country cont = new Country();
+                cont.setContinent(resultSet.getString("Continent"));
+                cont.setPopulation((int) resultSet.getLong("SUM(Population)"));
+                continents.add(cont);
+            }
+            return continents;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+            return null;
+        }
+    }
+
+    public ArrayList<Country> query28 () {
+        ArrayList<Country> regions=new ArrayList<Country>();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(Population), Region "
+                    + "FROM country "
+                    + "Group By Region "
+                    + "Order By SUM(Population) DESC "
+                    + "LIMIT 10";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            while (resultSet.next()) {
+                Country reg = new Country();
+                reg.setRegion(resultSet.getString("Region"));
+                reg.setPopulation((int) resultSet.getLong("SUM(Population)"));
+                regions.add(reg);
+            }
+            return regions;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+            return null;
+        }
+    }
+
+    public ArrayList<Country> query29 () {
+        ArrayList<Country> countries=new ArrayList<Country>();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT Population, Name "
+                    + "FROM country "
+                    + "Order By Population DESC "
+                    + "LIMIT 10";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            while (resultSet.next()) {
+                Country cs = new Country();
+                cs.setName(resultSet.getString("Name"));
+                cs.setPopulation((int) resultSet.getLong("Population"));
+                countries.add(cs);
+            }
+            return countries;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+            return null;
+        }
+    }
+
+    public ArrayList<City> query30 () {
+        ArrayList<City> districts=new ArrayList<City>();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(Population), district "
+                    + "FROM city "
+                    + "Group By district "
+                    + "Order By SUM(Population) DESC "
+                    + "LIMIT 10";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            while (resultSet.next()) {
+                City d = new City();
+                d.setDistrict(resultSet.getString("district"));
+                d.setPopulation(resultSet.getInt("SUM(Population)"));
+                districts.add(d);
+            }
+            return districts;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+            return null;
+        }
+    }
+
+    public ArrayList<City> query31 () {
+        ArrayList<City> cities=new ArrayList<City>();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT Population, name "
+                    + "FROM city "
+                    + "Order By Population DESC "
+                    + "LIMIT 10";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            while (resultSet.next()) {
+                City cc = new City();
+                cc.setName(resultSet.getString("name"));
+                cc.setPopulation(resultSet.getInt("Population"));
+                cities.add(cc);
+            }
+            return cities;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+            return null;
+        }
+    }
+
+
 
     /*sub Menus5 Language Report*/
     public static void LanguageReport() {
