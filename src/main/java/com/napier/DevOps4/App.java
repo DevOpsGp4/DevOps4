@@ -17,16 +17,28 @@ public class App
         a.connect();
 
         // Query output List
-        a.query23();
-        System.out.println("====================================================================================================");
-
-        a.query24();
-        System.out.println("====================================================================================================");
-
-        ArrayList<PopulationPercent> populationPer = new ArrayList<PopulationPercent>();
-        populationPer = a.query25();
+        ArrayList<PopulationPercent> populationPerCon = new ArrayList<PopulationPercent>();
+        populationPerCon = a.query23();
         System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Country Name", "Total Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
-        for (PopulationPercent per:populationPer)
+        for (PopulationPercent per:populationPerCon)
+        {
+            System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", per.getContinentName(), per.getCountryPopulation(), per.getLiveInCity(), per.getLiveInCityPercent(), per.getNoLiveInCity(), per.getNoLiveInCityPercent()));
+        }
+        System.out.println("====================================================================================================");
+
+        ArrayList<PopulationPercent> populationPerReg = new ArrayList<PopulationPercent>();
+        populationPerReg = a.query24();
+        System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Country Name", "Total Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
+        for (PopulationPercent per:populationPerReg)
+        {
+            System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", per.getRegionName(), per.getCountryPopulation(), per.getLiveInCity(), per.getLiveInCityPercent(), per.getNoLiveInCity(), per.getNoLiveInCityPercent()));
+        }
+        System.out.println("====================================================================================================");
+
+        ArrayList<PopulationPercent> populationPerCou = new ArrayList<PopulationPercent>();
+        populationPerCou = a.query25();
+        System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Country Name", "Total Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
+        for (PopulationPercent per:populationPerCou)
         {
             System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", per.getCountryName(), per.getCountryPopulation(), per.getLiveInCity(), per.getLiveInCityPercent(), per.getNoLiveInCity(), per.getNoLiveInCityPercent()));
         }
@@ -150,8 +162,9 @@ public class App
         }
     }
 
-    public void query23 () {
+    public ArrayList<PopulationPercent> query23 () {
         try {
+            ArrayList<PopulationPercent> populationPerCon=new ArrayList<>();
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -168,24 +181,27 @@ public class App
                     "LIMIT 10";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
-            System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Continent", "Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
             while (resultSet.next()) {
-                String name = resultSet.getString("name");
-                Long result = resultSet.getLong("total");
-                Long result1 = resultSet.getLong("yeslive");
-                Float result2 = resultSet.getFloat("yesper");
-                Long result3 = resultSet.getLong("nolive");
-                Float result4 = resultSet.getFloat("noper");
-                System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", name, result, result1, result2, result3, result4));
+                PopulationPercent popPer = new PopulationPercent();
+                popPer.setContinentName(resultSet.getString("name"));
+                popPer.setCountryPopulation(resultSet.getLong("total"));
+                popPer.setLiveInCity(resultSet.getLong("yeslive"));
+                popPer.setLiveInCityPercent(resultSet.getFloat("yesper"));
+                popPer.setNoLiveInCity(resultSet.getLong("nolive"));
+                popPer.setNoLiveInCityPercent(resultSet.getFloat("noper"));
+                populationPerCon.add(popPer);
             }
+            return populationPerCon;
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get details");
+            return null;
         }
     }
 
-    public void query24 () {
+    public ArrayList<PopulationPercent> query24 () {
+        ArrayList<PopulationPercent> populationPerReg=new ArrayList<PopulationPercent>();
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -203,25 +219,27 @@ public class App
                     "LIMIT 10";
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
-            System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Region", "Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
             while (resultSet.next()) {
-                String name = resultSet.getString("name");
-                Long result = resultSet.getLong("total");
-                Long result1 = resultSet.getLong("yeslive");
-                Float result2 = resultSet.getFloat("yesper");
-                Long result3 = resultSet.getLong("nolive");
-                Float result4 = resultSet.getFloat("noper");
-                System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", name, result, result1, result2, result3, result4));
+                PopulationPercent popPer = new PopulationPercent();
+                popPer.setRegionName(resultSet.getString("name"));
+                popPer.setCountryPopulation(resultSet.getLong("total"));
+                popPer.setLiveInCity(resultSet.getLong("yeslive"));
+                popPer.setLiveInCityPercent(resultSet.getFloat("yesper"));
+                popPer.setNoLiveInCity(resultSet.getLong("nolive"));
+                popPer.setNoLiveInCityPercent(resultSet.getFloat("noper"));
+                populationPerReg.add(popPer);
             }
+            return populationPerReg;
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get details");
+            return null;
         }
     }
 
     public ArrayList<PopulationPercent> query25 () {
-        ArrayList<PopulationPercent> populationPer=new ArrayList<PopulationPercent>();
+        ArrayList<PopulationPercent> populationPerCou=new ArrayList<PopulationPercent>();
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -247,9 +265,9 @@ public class App
                 popPer.setLiveInCityPercent(resultSet.getFloat("yesper"));
                 popPer.setNoLiveInCity(resultSet.getLong("nolive"));
                 popPer.setNoLiveInCityPercent(resultSet.getFloat("noper"));
-                populationPer.add(popPer);
+                populationPerCou.add(popPer);
             }
-            return populationPer;
+            return populationPerCou;
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
