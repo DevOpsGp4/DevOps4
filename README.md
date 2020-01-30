@@ -11,7 +11,13 @@ Name - Aung Htet Myat Kyaw (Developer, Metriculation Number 40437509)
 
 Name - Han Tun Zaw (Developer, Metriculation Number 40437506)
 
+# Software Engineering Methods
 
+- Master Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travis-ci.com/DevOpsGp4/DevOps4)
+- Develop Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travisci.com/DevOpsGp4/DevOps4)
+- License [![LICENSE](https://img.shields.io/github/license/DevOpsGp4/DevOps4.svg?style=flat-square)](https://img.shields.io/github/license/DevOpsGp4/DevOps4)
+- Release [![Releases](https://img.shields.io/github/release/DevOpsGp4/DevOps4/all.svg?style=flat-square)](https://github.com/DevOpsGp4/DevOps4/releases)
+- Codecov [![codecov](https://codecov.io/gh/DevOpsGp4/DevOps4/branch/master/graph/badge.svg)](https://codecov.io/gh/DevOpsGp4/DevOps4)
 
 # Product Backlog
  
@@ -50,11 +56,9 @@ Name - Han Tun Zaw (Developer, Metriculation Number 40437506)
 |<ul><li> Act Harrased a team member or the whole team</li></ul>| Rule 5 | Apologise and Buy coffee for the whole team |
 |<ul><li> Absent at meeting </li><li> Late Meeting Day </li></ul>| Rule 3 | Apologise and Buy a juice for the whole team |
 
-
- # Software Engineering Methods
-
-- Master Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travis-ci.com/DevOpsGp4/DevOps4)
-- Develop Build Status [![Build Status](https://travis-ci.com/DevOpsGp4/DevOps4.svg?branch=master)](https://travisci.com/DevOpsGp4/DevOps4)
-- License [![LICENSE](https://img.shields.io/github/license/DevOpsGp4/DevOps4.svg?style=flat-square)](https://img.shields.io/github/license/DevOpsGp4/DevOps4)
-- Release [![Releases](https://img.shields.io/github/release/DevOpsGp4/DevOps4/all.svg?style=flat-square)](https://github.com/DevOpsGp4/DevOps4/releases)
-- Codecov [![codecov](https://codecov.io/gh/DevOpsGp4/DevOps4/branch/master/graph/badge.svg)](https://codecov.io/gh/DevOpsGp4/DevOps4)
+| Name | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable | Average |
+|------|---------------|---------------|---------------|---------------|-------------------|-------|
+| Kyaw Zaw Lynn (40437522) | 25 | 25 | 25 | 25 | 25 | 25 |
+| Aung Htet Myat Kyaw (40437509) | 25 | 25 | 25 | 25 | 25 | 25 |
+| Khant Sithu Aung (40437529) | 25 | 25 | 25 | 25 | 25 | 25 |
+| Han Tun Zaw (40437506) | 25 | 25 | 25| 25 | 25 | 25 |
