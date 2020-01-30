@@ -9,10 +9,6 @@ addons:
 services:
   - docker
 
-env:
-  global:
-    - CODECOV_TOKEN=:uuid-repo-token
-
 install:
   - docker build -t database db/.
   - docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 database
@@ -50,6 +46,7 @@ jobs:
         # Copy built JAR file.  JAR built in $TRAVIS_BUILD_DIR/
         file: $TRAVIS_BUILD_DIR/target/DevOps4-0.1.0.1-jar-with-dependencies.jar
         skip_cleanup: true
+          edge: true
 
 stages:
   - unit tests
