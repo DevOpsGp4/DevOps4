@@ -9,8 +9,7 @@ import java.util.Scanner;
  */
 public class App
 {
-    public static void main(String args[]) {
-        // disconnect to database
+    public static void main(String[] args) {
         Menus();
     }
 
@@ -60,7 +59,7 @@ public class App
             }
             if (n == 4) {
                 // population report
-
+                PopulationReport();
             }
             if (n == 5) {
                 // Language report
@@ -92,7 +91,7 @@ public class App
         System.out.println("===============================================");
         System.out.println("7. EXIT SUB MENU");
 
-        while (n != 7)// Exits the program when 5 is pressed
+        while (n != 7)// Exits the program when 7 is pressed
         {
             System.out.print("\n Please enter option 1-6 to continue to 7 exit...: ");
             n = Integer.parseInt(System.console().readLine());
@@ -162,7 +161,7 @@ public class App
         try
         {
             // Load Database driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         }
         catch (ClassNotFoundException e)
         {
@@ -185,7 +184,7 @@ public class App
             }
             catch (SQLException sqle)
             {
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
+                System.out.println("Failed to connect to database attempt " + i);
                 System.out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
@@ -1109,24 +1108,28 @@ public class App
         // this will be the sub menu that gets displayed.
         System.out.println("  Population Report ");
         System.out.println("===============================================");
-        System.out.println("1. The population of the world");
-        System.out.println("2. The population of a continent");
-        System.out.println("3. The population of a region");
-        System.out.println("4. The population of a country");
-        System.out.println("5. The population of a district");
+        System.out.println("1. Population of people, people living in cities, and people not living in cities in each continent");
+        System.out.println("2. Population of people, people living in cities, and people not living in cities in each region.");
+        System.out.println("3. Population of people, people living in cities, and people not living in cities in each country");
+        System.out.println("4. The population of the world");
+        System.out.println("5. The population of a continent");
+        System.out.println("6. The population of a region");
+        System.out.println("7. The population of a country");
+        System.out.println("8. The population of a district");
+        System.out.println("9. The population of a city");
         System.out.println("===============================================");
-        System.out.println("6. EXIT SUB MENU");
+        System.out.println("10. EXIT SUB MENU");
 
-        while (n != 6)// Exits the program when 5 is pressed
+        while (n != 10)// Exits the program when 10 is pressed
         {
-            System.out.print("\n Please enter option 1-5 to continue or 6 to exit...: ");
+            System.out.print("\n Please enter option 1-9 to continue or 10 to exit...: ");
             n = Integer.parseInt(System.console().readLine());
             // Reads user input and takes them to selected code.
-            if (n > 6 || n < 1) {
+            if (n > 9 || n < 1) {
                 //Invalid input
                 System.out.print("Invalid input, please try again...");
             }
-            if (n == 6){
+            if (n == 10){
                 // Exit output
                 System.out.print("Back to Menus...");
                 System.out.print("\033[H\033[2J");
@@ -1152,7 +1155,6 @@ public class App
             if (n == 4)
             {
                 a.query26();
-                System.out.println("====================================================================================================");
                 continue;
             }
             if (n == 5)
@@ -1164,7 +1166,6 @@ public class App
                 {
                     System.out.println(String.format("%-25s %-25s", cont.getContinent(), cont.getPopulation()));
                 }
-                System.out.println("====================================================================================================");
                 continue;
             }
             if (n == 6)
@@ -1176,7 +1177,6 @@ public class App
                 {
                     System.out.println(String.format("%-25s %-25s", reg.getRegion(), reg.getPopulation()));
                 }
-                System.out.println("====================================================================================================");
                 continue;
             }
             if (n == 7)
@@ -1188,7 +1188,6 @@ public class App
                 {
                     System.out.println(String.format("%-25s %-25s", cs.getName(), cs.getPopulation()));
                 }
-                System.out.println("====================================================================================================");
                 continue;
             }
             if (n == 8)
@@ -1200,7 +1199,6 @@ public class App
                 {
                 System.out.println(String.format("%-25s %-25s", d.getDistrict(), d.getPopulation()));
                 }
-                System.out.println("====================================================================================================");
                 continue;
             }
             if (n == 9)
@@ -1212,7 +1210,6 @@ public class App
                 {
                     System.out.println(String.format("%-25s %-25s", cc.getName(), cc.getPopulation()));
                 }
-                System.out.println("====================================================================================================");
                 continue;
             }
         }
@@ -1239,10 +1236,6 @@ public class App
         }
     }
 
-    /**
-     * Display a list of Population of the world
-     //* @param Population of the world The list of countries to display.
-     */
     public ArrayList<Country> query27 () {
         ArrayList<Country> continents=new ArrayList<Country>();
         try {
@@ -1258,7 +1251,7 @@ public class App
             while (resultSet.next()) {
                 Country cont = new Country();
                 cont.setContinent(resultSet.getString("Continent"));
-                cont.setPopulation((int) resultSet.getLong("SUM(Population)"));
+                cont.setPopulation(resultSet.getLong("SUM(Population)"));
                 continents.add(cont);
             }
             return continents;
