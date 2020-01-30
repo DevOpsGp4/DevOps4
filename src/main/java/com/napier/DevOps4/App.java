@@ -1138,19 +1138,40 @@ public class App
             }
             if (n == 1)
             {
-
-                continue;
+                ArrayList<PopulationPercent> populationPerCon = new ArrayList<PopulationPercent>();
+                populationPerCon = a.query23();
+                System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Country Name", "Total Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
+                for (PopulationPercent per:populationPerCon)
+                {
+                    System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", per.getContinentName(), per.getCountryPopulation(), per.getLiveInCity(), per.getLiveInCityPercent(), per.getNoLiveInCity(), per.getNoLiveInCityPercent()));
+                }
+                System.out.println("====================================================================================================");
+                PopulationReport();
             }
 
             if (n == 2)
             {
-
-                continue;
+                ArrayList<PopulationPercent> populationPerReg = new ArrayList<PopulationPercent>();
+                populationPerReg = a.query24();
+                System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Country Name", "Total Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
+                for (PopulationPercent per:populationPerReg)
+                {
+                    System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", per.getRegionName(), per.getCountryPopulation(), per.getLiveInCity(), per.getLiveInCityPercent(), per.getNoLiveInCity(), per.getNoLiveInCityPercent()));
+                }
+                System.out.println("====================================================================================================");
+                PopulationReport();
             }
             if (n == 3)
             {
-
-            continue;
+                ArrayList<PopulationPercent> populationPerCou = new ArrayList<PopulationPercent>();
+                populationPerCou = a.query25();
+                System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Country Name", "Total Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
+                for (PopulationPercent per:populationPerCou)
+                {
+                    System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", per.getCountryName(), per.getCountryPopulation(), per.getLiveInCity(), per.getLiveInCityPercent(), per.getNoLiveInCity(), per.getNoLiveInCityPercent()));
+                }
+                System.out.println("====================================================================================================");
+                continue;
             }
             if (n == 4)
             {
@@ -1215,6 +1236,134 @@ public class App
         }
     }
 
+    /**
+     * The population of people, people living in cities, and people not living in cities in each continent.
+     * */
+    public ArrayList<PopulationPercent> query23 () {
+        try {
+            ArrayList<PopulationPercent> populationPerCon=new ArrayList<>();
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT country.Continent AS NAME, " +
+                    "SUM(DISTINCT country.Population) AS total, " +
+                    "SUM(city.Population) AS yeslive, " +
+                    "( (SUM(city.Population) / SUM(DISTINCT country.Population)) * 100 ) AS yesper, " +
+                    "SUM(DISTINCT country.Population) - SUM(city.Population) AS nolive, " +
+                    "( ((SUM(DISTINCT country.Population) - SUM(city.Population)) / SUM(DISTINCT country.Population)) * 100 ) AS noper " +
+                    "FROM city, country " +
+                    "WHERE city.CountryCode = country.Code " +
+                    "GROUP BY country.Continent " +
+                    "ORDER BY total DESC " +
+                    "LIMIT 10";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            while (resultSet.next()) {
+                PopulationPercent popPer = new PopulationPercent();
+                popPer.setContinentName(resultSet.getString("name"));
+                popPer.setCountryPopulation(resultSet.getLong("total"));
+                popPer.setLiveInCity(resultSet.getLong("yeslive"));
+                popPer.setLiveInCityPercent(resultSet.getFloat("yesper"));
+                popPer.setNoLiveInCity(resultSet.getLong("nolive"));
+                popPer.setNoLiveInCityPercent(resultSet.getFloat("noper"));
+                populationPerCon.add(popPer);
+            }
+            return populationPerCon;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+            return null;
+        }
+    }
+
+    /**
+     * The population of people, people living in cities, and people not living in cities in each region.
+     * @return populationPerReg
+     */
+    public ArrayList<PopulationPercent> query24 () {
+        ArrayList<PopulationPercent> populationPerReg=new ArrayList<PopulationPercent>();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT country.Region AS name, " +
+                    "SUM(DISTINCT country.Population) AS total, " +
+                    "SUM(city.Population) AS yeslive, " +
+                    "( ( SUM(city.Population) / SUM(DISTINCT country.Population) ) * 100 ) AS yesper, " +
+                    "SUM(DISTINCT country.Population) - SUM(city.Population) AS nolive, " +
+                    "( ( ( SUM(DISTINCT country.Population) - SUM(city.Population) ) / SUM(DISTINCT country.Population) ) * 100 ) AS noper " +
+                    "FROM city, country " +
+                    "WHERE city.CountryCode = country.Code " +
+                    "GROUP BY country.Region " +
+                    "ORDER BY yeslive DESC " +
+                    "LIMIT 10";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            while (resultSet.next()) {
+                PopulationPercent popPer = new PopulationPercent();
+                popPer.setRegionName(resultSet.getString("name"));
+                popPer.setCountryPopulation(resultSet.getLong("total"));
+                popPer.setLiveInCity(resultSet.getLong("yeslive"));
+                popPer.setLiveInCityPercent(resultSet.getFloat("yesper"));
+                popPer.setNoLiveInCity(resultSet.getLong("nolive"));
+                popPer.setNoLiveInCityPercent(resultSet.getFloat("noper"));
+                populationPerReg.add(popPer);
+            }
+            return populationPerReg;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+            return null;
+        }
+    }
+
+    /**
+     * The population of people, people living in cities, and people not living in cities in each country.
+     * @return populationPerCou
+     */
+    public ArrayList<PopulationPercent> query25 () {
+        ArrayList<PopulationPercent> populationPerCou=new ArrayList<PopulationPercent>();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT country.Name as name, country.Population as total, " +
+                    "SUM(city.Population) as yeslive, " +
+                    "(SUM(city.Population)*100/country.Population) as yesper, " +
+                    "(country.Population-SUM(city.Population)) as nolive, " +
+                    "((country.Population-SUM(city.Population))*100/country.Population) as noper " +
+                    "FROM country " +
+                    "INNER JOIN city " +
+                    "ON city.CountryCode=country.Code " +
+                    "GROUP BY country.Name, country.Population " +
+                    "ORDER BY country.Population DESC " +
+                    "LIMIT 10";
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+            while (resultSet.next()) {
+                PopulationPercent popPer = new PopulationPercent();
+                popPer.setCountryName(resultSet.getString("name"));
+                popPer.setCountryPopulation(resultSet.getLong("total"));
+                popPer.setLiveInCity(resultSet.getLong("yeslive"));
+                popPer.setLiveInCityPercent(resultSet.getFloat("yesper"));
+                popPer.setNoLiveInCity(resultSet.getLong("nolive"));
+                popPer.setNoLiveInCityPercent(resultSet.getFloat("noper"));
+                populationPerCou.add(popPer);
+            }
+            return populationPerCou;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+            return null;
+        }
+    }
+
+    /**
+     * The population of the world.
+     */
     public void query26() {
         ArrayList<Country> world=new ArrayList<Country>();
         try {
@@ -1236,6 +1385,10 @@ public class App
         }
     }
 
+    /**
+     * The population of a continent.
+     * @return continents
+     */
     public ArrayList<Country> query27 () {
         ArrayList<Country> continents=new ArrayList<Country>();
         try {
@@ -1263,6 +1416,10 @@ public class App
         }
     }
 
+    /**
+     * The population of a region.
+     * @return regions
+     */
     public ArrayList<Country> query28 () {
         ArrayList<Country> regions=new ArrayList<Country>();
         try {
@@ -1291,6 +1448,10 @@ public class App
         }
     }
 
+    /**
+     * The population of a country.
+     * @return countries
+     */
     public ArrayList<Country> query29 () {
         ArrayList<Country> countries=new ArrayList<Country>();
         try {
@@ -1318,6 +1479,10 @@ public class App
         }
     }
 
+    /**
+     * The population of a district.
+     * @return districts
+     */
     public ArrayList<City> query30 () {
         ArrayList<City> districts=new ArrayList<City>();
         try {
@@ -1346,6 +1511,10 @@ public class App
         }
     }
 
+    /**
+     * The population of a city.
+     * @return cities
+     */
     public ArrayList<City> query31 () {
         ArrayList<City> cities=new ArrayList<City>();
         try {
@@ -1373,9 +1542,9 @@ public class App
         }
     }
 
-
-
-    /*sub Menus5 Language Report*/
+    /**
+     * sub Menus5 Language Report
+     * */
     public static void LanguageReport() {
         Scanner console = new Scanner(System.in);
         // Create new Application
