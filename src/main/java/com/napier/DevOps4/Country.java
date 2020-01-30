@@ -29,7 +29,7 @@ public class Country {
     /**
      * Country Population
      */
-    public Integer Population;
+    public long Population;
     /**
      * Country LifeExpectancy
      */
@@ -71,7 +71,7 @@ public class Country {
         Code = code;
     }
 
-    public String getName(String string) {
+    public String getName() {
         return Name;
     }
 
@@ -79,7 +79,7 @@ public class Country {
         Name = name;
     }
 
-    public String getContinent(String string) {
+    public String getContinent() {
         return Continent;
     }
 
@@ -87,7 +87,7 @@ public class Country {
         Continent = continent;
     }
 
-    public String getRegion(String string) {
+    public String getRegion() {
         return Region;
     }
 
@@ -111,11 +111,11 @@ public class Country {
         IndepYear = indepYear;
     }
 
-    public Integer getPopulation(String string) {
+    public long getPopulation() {
         return Population;
     }
 
-    public void setPopulation(Integer population) {
+    public void setPopulation(long population) {
         Population = population;
     }
 
@@ -192,4 +192,5 @@ public class Country {
                 ", Population - " + Population +
                 ", Capital - " + Capital;
     }
+
 }
