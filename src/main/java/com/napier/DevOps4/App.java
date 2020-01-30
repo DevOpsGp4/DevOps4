@@ -19,36 +19,40 @@ public class App
         // Query output List
         ArrayList<PopulationPercent> populationPerCon = new ArrayList<PopulationPercent>();
         populationPerCon = a.query23();
-        System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Country Name", "Total Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
+        System.out.println("All continents of the world including both population numbers and percent");
+        System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Continent Name", "Total Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
         for (PopulationPercent per:populationPerCon)
         {
             System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", per.getContinentName(), per.getCountryPopulation(), per.getLiveInCity(), per.getLiveInCityPercent(), per.getNoLiveInCity(), per.getNoLiveInCityPercent()));
         }
-        System.out.println("====================================================================================================");
+        System.out.println("========================================================================================================================================================================================================");
 
         ArrayList<PopulationPercent> populationPerReg = new ArrayList<PopulationPercent>();
         populationPerReg = a.query24();
-        System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Country Name", "Total Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
+        System.out.println("Top 10 populated regions including both population numbers and percent");
+        System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Region Name", "Total Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
         for (PopulationPercent per:populationPerReg)
         {
             System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", per.getRegionName(), per.getCountryPopulation(), per.getLiveInCity(), per.getLiveInCityPercent(), per.getNoLiveInCity(), per.getNoLiveInCityPercent()));
         }
-        System.out.println("====================================================================================================");
+        System.out.println("========================================================================================================================================================================================================");
 
         ArrayList<PopulationPercent> populationPerCou = new ArrayList<PopulationPercent>();
         populationPerCou = a.query25();
+        System.out.println("Top 10 populated countries including both population numbers and percent");
         System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", "Country Name", "Total Population", "City Population", "City Population (%)", "Non-city Population", "Non-city Population (%)"));
         for (PopulationPercent per:populationPerCou)
         {
             System.out.println(String.format("%-25s %-25s %-25s %-25s %-25s %-25s", per.getCountryName(), per.getCountryPopulation(), per.getLiveInCity(), per.getLiveInCityPercent(), per.getNoLiveInCity(), per.getNoLiveInCityPercent()));
         }
-        System.out.println("====================================================================================================");
+        System.out.println("========================================================================================================================================================================================================");
 
         a.query26();
         System.out.println("====================================================================================================");
 
         ArrayList<country> continents = new ArrayList<country>();
         continents = a.query27();
+        System.out.println("Population of all continents");
         System.out.println(String.format("%-25s %-25s", "Continent Name", "Continent Population"));
         for (country cont:continents)
         {
@@ -58,6 +62,7 @@ public class App
 
         ArrayList<country> regions = new ArrayList<country>();
         regions = a.query28();
+        System.out.println("Top 10 populated regions");
         System.out.println(String.format("%-25s %-25s", "Region Name", "Region Population"));
         for (country reg:regions)
         {
@@ -67,6 +72,7 @@ public class App
 
         ArrayList<country> countries = new ArrayList<country>();
         countries = a.query29();
+        System.out.println("Top 10 populated countries");
         System.out.println(String.format("%-25s %-25s", "Country Name", "Country Population"));
         for (country cs:countries)
         {
@@ -76,6 +82,7 @@ public class App
 
         ArrayList<city> districts = new ArrayList<city>();
         districts = a.query30();
+        System.out.println("Top 10 populated districts");
         System.out.println(String.format("%-25s %-25s", "District Name", "City Population"));
         for (city d:districts)
         {
@@ -85,6 +92,7 @@ public class App
 
         ArrayList<city> cities = new ArrayList<city>();
         cities = a.query31();
+        System.out.println("Top 10 populated cities");
         System.out.println(String.format("%-25s %-25s", "City Name", "City Population"));
         for (city c:cities)
         {
