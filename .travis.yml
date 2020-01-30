@@ -9,6 +9,10 @@ addons:
 services:
   - docker
 
+env:
+  global:
+    - CODECOV_TOKEN=:uuid-repo-token
+
 install:
   - docker build -t database db/.
   - docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 database
