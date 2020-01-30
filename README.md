@@ -52,8 +52,8 @@ Name - Han Tun Zaw (Developer, Metriculation Number 40437506)
 
  # Software Engineering Methods
 
-- Master Build Status [![Build Status](https://travis-ci.org/DevOpsGp4/DevOps4.svg?branch=develop)](https://travis-ci.org/DevOpsGp4/DevOps4)
-- Develop Build Status [![Build Status](https://travis-ci.org/DevOpsGp4/DevOps4.svg?branch=develop)](https://travisci.org/DevOpsGp4/DevOps4)
+- Master Build Status [![Build Status](https://travis-ci.org/DevOpsGp4/DevOps4.svg?branch=Devops4-patch-1)](https://travis-ci.org/DevOpsGp4/DevOps4)
+- Develop Build Status [![Build Status](https://travis-ci.org/DevOpsGp4/DevOps4.svg?branch=Devops4-patch-1)](https://travisci.org/DevOpsGp4/DevOps4)
 - License [![LICENSE](https://img.shields.io/github/license/DevOpsGp4/DevOps4.svg?style=flat-square)](https://img.shields.io/github/license/DevOpsGp4/DevOps4)
 - Release [![Releases](https://img.shields.io/github/release/DevOpsGp4/DevOps4/all.svg?style=flat-square)](https://github.com/DevOpsGp4/DevOps4/releases)
-- Codecov [![codecov](https://codecov.io/gh/DevOpsGp4/DevOps4/branch/develop/graph/badge.svg)](https://codecov.io/gh/DevOpsGp4/DevOps4)
+- Codecov [![codecov](https://codecov.io/gh/DevOpsGp4/DevOps4/branch/Devops4-patch-1/graph/badge.svg)](https://codecov.io/gh/DevOpsGp4/DevOps4)
