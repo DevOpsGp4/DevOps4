@@ -1,5 +1,7 @@
 language: java
 
+sudo: false # faster builds
+
 os: linux
 
 addons:
@@ -12,7 +14,6 @@ services:
 install:
   - docker build -t database db/.
   - docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 database
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
 before_script:
   - mvn clean
@@ -31,7 +32,6 @@ jobs:
       jdk: oraclejdk11
       script:
         - echo "Deploying to GitHub Releases"
-        - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
       before_deploy:
         # Set up git user name and tag this commit
         - git config --local user.name "Kyaw Zaw Lynn"
