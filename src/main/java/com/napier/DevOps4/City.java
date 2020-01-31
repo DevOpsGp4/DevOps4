@@ -1,6 +1,6 @@
 package com.napier.DevOps4;
 
-public class city {
+public class City {
     /**
      * City ID
      */
