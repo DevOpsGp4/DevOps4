@@ -2,6 +2,8 @@ language: java
 
 sudo: false # faster builds
 
+os: linux
+
 addons:
   hosts:
     - db
