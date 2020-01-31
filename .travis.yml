@@ -1,7 +1,5 @@
 language: java
 
-os: linux
-
 addons:
   hosts:
     - db
