@@ -8,13 +8,13 @@ assignees: caster082, Boo555, HanTun-dev, KyawZawLynn
 ---
 
 **Describe the bug**
-A clear and concise description of what the bug is.
+These bug happen where user type wrong variable type in the input. 
 
 **To Reproduce**
 Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
+1. Go to 'TOP N ....featuers'
+2. Click on 'RUN'
+3. INPUT 'String input' to "a number"
 4. See error
 
 **Expected behavior**
