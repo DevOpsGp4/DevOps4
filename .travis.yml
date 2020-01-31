@@ -12,7 +12,7 @@ services:
 install:
   - docker build -t database db/.
   - docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 database
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+#  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
 before_script:
   - mvn clean
@@ -34,8 +34,8 @@ jobs:
         - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
       before_deploy:
         # Set up git user name and tag this commit
-        - git config --local user.name "Kyaw Zaw Lynn"
-        - git config --local user.email "40437522@live.napier.ac.uk"
+        - git config --local user.name "Nightmare"
+        - git config --local user.email "nightmare51379@gmail.com"
         # Create temporary tag from date and Git log.
         - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y-%m-%d')-$(git log --format=%h -1)}
         # Set tag
