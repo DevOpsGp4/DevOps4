@@ -33,7 +33,6 @@ jobs:
       jdk: oraclejdk11
       script:
         - echo "Deploying to GitHub Releases"
-        - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
       before_deploy:
         # Set up git user name and tag this commit
         - git config --local user.name "Kyaw Zaw Lynn"
