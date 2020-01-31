@@ -54,4 +54,4 @@ Primary task.
 
 ## SCHEDULE
 
-**DUE DATE**: Release v0.1-alpha-1.5
+**DUE DATE**: Release v0.1-alpha-1.3
