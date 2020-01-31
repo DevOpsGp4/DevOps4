@@ -1,7 +1,7 @@
 ---
 name: Bug report(Input)
 about: User input variables are not validate
-title: ''
+title: 'Input error'
 labels: bug
 assignees: caster082, KyawZawLynn, Boo555, HanTun-dev, 
 
