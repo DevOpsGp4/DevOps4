@@ -48,13 +48,13 @@ Name - Han Tun Zaw (Developer, Metriculation Number 40437506)
 | 23 | The population of people, people living in cities, and people not living in cities in each continent. | YES |  |
 | 24 | The population of people, people living in cities, and people not living in cities in each region. | YES  |  |
 | 25 | The population of people, people living in cities, and people not living in cities in each country. | YES |  |
-| 26 | The population of the world. | YES (Have)  |  |
-| 27 | The population of a continent. | YES (Have) |  |
-| 28 | The population of a region. | YES (Have) |  |
-| 29 | The population of a country. | YES (Have) |  |
-| 30 | The population of a district. | YES (Have) |  |
-| 31 | The population of a city. | YES (Have) | |
-| 32 | The number of people who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest, including the percentage of the world population. | No |  |
+| 26 | The population of the world. | YES  |  |
+| 27 | The population of a continent. | YES |  |
+| 28 | The population of a region. | YES  |  |
+| 29 | The population of a country. | YES  |  |
+| 30 | The population of a district. | YES |  |
+| 31 | The population of a city. | YES  | |
+| 32 | The number of people who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest, including the percentage of the world population. | Yes | ![alt text](https://github.com/DevOpsGp4/DevOps4/blob/master/images/32.PNG)  |
 
 
 | Name | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable | Average |
