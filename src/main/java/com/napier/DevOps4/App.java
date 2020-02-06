@@ -569,7 +569,7 @@ public class App {
      */
 
     public ArrayList<Country> countryContinent() {
-        System.out.println("1 - All the countries in a continent organised by largest population to smallest.\n");
+        System.out.println("2 - All the countries in a continent organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -593,7 +593,7 @@ public class App {
      * @return A list of all countries and population, or null if there is an error.
      */
     public ArrayList<Country> countryRegion() {
-        System.out.println("2 - All the countries in a region organised by largest population to smallest.\n");
+        System.out.println("3 - All the countries in a region organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -617,7 +617,7 @@ public class App {
      * @return A list of all countries and population, or null if there is an error.
      */
     public ArrayList<Country> countryWorld() {
-        System.out.println("3 - All the countries in the world organised by largest population to smallest.\n");
+        System.out.println("1 - All the countries in the world organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -673,7 +673,7 @@ public class App {
      * @return A list of all countries and population, or null if there is an error.
      */
     public ArrayList<Country> topRegionCountry() {
-        System.out.println("5 - The top N populated countries in a region where N is provided by the user.\n");
+        System.out.println("6 - The top N populated countries in a region where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount of countries you would like to see - ");
         int input = scanner.nextInt();
@@ -709,7 +709,7 @@ public class App {
      * @return A list of all countries and population, or null if there is an error.
      */
     public ArrayList<Country> topContinentCountry() {
-        System.out.println("6 - The top N populated countries in a continent where N is provided by the user.\n");
+        System.out.println("5 - The top N populated countries in a continent where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount of countries you would like to see - ");
         int input = scanner.nextInt();
