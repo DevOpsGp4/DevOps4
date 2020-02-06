@@ -21,7 +21,7 @@ Name - Han Tun Zaw (Developer, Metriculation Number 40437506)
 
 # Product Backlog
  
-| Task ID | Team Memmebrs | Deliverables features |    Description   | Priority   | Status  |
+| ID | Team Memmebrs | Deliverables features |    Description   | Priority   | Status  |
 | --------| :--------------|:------------- | :----------| ---------:|---------:|
 |  1 | <ul><li> 40437522 </li><li> 40437529 </li><li> 40437509 </li><li> 40437506 </li></ul> | Setup And creating database|Set up Git repository and creating product backlog and develop branches and release | Must | Done |
 |  2 |<ul><li> 40437522 </li><li> 40437529 </li><li> 40437509 </li><li> 40437506 </li></ul> | Project Planning and user story| Creating User story and using Kanban board and sprint board to manage the tasks | Must | Done |
