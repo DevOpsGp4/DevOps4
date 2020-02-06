@@ -38,13 +38,13 @@ public class AppTest {
     //City Testing
     // Null Test
     @Test
-    void displayCitiesTestNull(){
+    void displayCitiesTestNull() {
         app.displayCCities(null);
     }
 
     //Empty Test
     @Test
-    void displayCitiesTestEmpty(){
+    void displayCitiesTestEmpty() {
         ArrayList<City> cities = new ArrayList<City>();
         app.displayCCities(cities);
     }

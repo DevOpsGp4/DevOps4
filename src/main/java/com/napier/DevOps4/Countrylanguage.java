@@ -2,6 +2,30 @@ package com.napier.DevOps4;
 
 public class Countrylanguage {
 
+    /**
+     * Country Name
+     */
+    public String Name;
+    /**
+     * CountryLanguage CountryCode
+     */
+    public String CountryCode;
+    /**
+     * Country Population
+     */
+    public String Population;
+    /**
+     * CountryLanguage IsOfficial
+     */
+    public String IsOfficial;
+    /**
+     * CountryLanguage Percentage
+     */
+    public Float Percentage;
+    /**
+     * CountryLanguage Language
+     */
+    public String Language;
 
     public String getCountryCode() {
         return CountryCode;
@@ -12,9 +36,9 @@ public class Countrylanguage {
     }
 
     public String getIsOfficial() {
-        if (IsOfficial.equals("T")){
+        if (IsOfficial.equals("T")) {
             IsOfficial = "Official";
-        }else {
+        } else {
             IsOfficial = "Not Official";
         }
         return IsOfficial;
@@ -51,16 +75,6 @@ public class Countrylanguage {
                 '}';
     }
 
-    /**
-     * Country Name
-     */
-    public String Name;
-
-    /**
-     * CountryLanguage CountryCode
-     */
-    public String CountryCode;
-
     public String getPopulation() {
         return Population;
     }
@@ -68,21 +82,6 @@ public class Countrylanguage {
     public void setPopulation(String population) {
         Population = population;
     }
-
-    /**
-     * Country Population
-     */
-    public String Population;
-
-    /**
-     * CountryLanguage IsOfficial
-     */
-    public String IsOfficial;
-
-    /**
-     * CountryLanguage Percentage
-     */
-    public Float Percentage;
 
     public String getLanguage() {
         return Language;
@@ -92,8 +91,4 @@ public class Countrylanguage {
         Language = language;
     }
 
-    /**
-     * CountryLanguage Language
-     */
-    public String Language;
 }

@@ -44,7 +44,7 @@ jobs:
         provider: releases
         api_key: $GITHUB_OAUTH_TOKEN
         # Copy built JAR file.  JAR built in $TRAVIS_BUILD_DIR/
-        file: $TRAVIS_BUILD_DIR/target/DevOps4-0.1.0.1-jar-with-dependencies.jar
+        file: $TRAVIS_BUILD_DIR/target/DevOps4.jar
         skip_cleanup: true
 
 stages:
