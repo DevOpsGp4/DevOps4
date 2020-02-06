@@ -23,12 +23,12 @@ Name - Han Tun Zaw (Developer, Metriculation Number 40437506)
  
 | ID | Name | Met | Screenshot |
 | --- | --- | --- | --- |
-| 1 | All the countries in the world organised by largest population to smallest. | YES | ![alt text](images/1.png) |
-| 2 | All the countries in a continent organised by largest population to smallest. | YES | ![alt text](images/2.png) |
-| 3 | All the countries in a region organised by largest population to smallest. | YES | ![alt text](images/3.png) |
-| 4 | The top N populated countries in the world where N is provided by the user. | YES  | ![alt text](images/4.png)  |
-| 5 | The top N populated countries in a continent where N is provided by the user. | YES  | ![alt text](images/5.png) |
-| 6 | The top N populated countries in a region where N is provided by the user. | YES  | ![alt text](images/6.png)  |
+| 1 | All the countries in the world organised by largest population to smallest. | YES | ![alt text](https://github.com/DevOpsGp4/DevOps4/blob/master/images/1.PNG) |
+| 2 | All the countries in a continent organised by largest population to smallest. | YES | ![alt text](https://github.com/DevOpsGp4/DevOps4/blob/master/images/2.PNG)|
+| 3 | All the countries in a region organised by largest population to smallest. | YES | ![alt text](https://github.com/DevOpsGp4/DevOps4/blob/master/images/3.PNG) |
+| 4 | The top N populated countries in the world where N is provided by the user. | YES  | ![alt text](https://github.com/DevOpsGp4/DevOps4/blob/master/images/4.PNG)  |
+| 5 | The top N populated countries in a continent where N is provided by the user. | YES  | ![alt text](https://github.com/DevOpsGp4/DevOps4/blob/master/images/5.PNG) |
+| 6 | The top N populated countries in a region where N is provided by the user. | YES  | ![alt text](https://github.com/DevOpsGp4/DevOps4/blob/master/images/6.PNG)  |
 | 7 | All the cities in the world organised by largest population to smallest. | YES  |  |
 | 8 | All the cities in a continent organised by largest population to smallest. | YES  |  |
 | 9 | All the cities in a region organised by largest population to smallest. | YES  |  |
