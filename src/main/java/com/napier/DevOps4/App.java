@@ -427,7 +427,7 @@ public class App {
     public void connect(String location) {
         try {
             // Load Database driver
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             System.out.println("Could not load SQL driver");
             System.exit(-1);
@@ -691,6 +691,7 @@ public class App {
             System.out.println("No Cities");
             return;
         }
+        System.out.println(String.format("%1$-20s %2$-25s %3$-25s %4$-20s", "Name", "Country","District","Population"));
         for (City cy : cities) {
             System.out.format("%1$-20s %2$-25s %3$-25s %4$-20s \n", cy.getName(), cy.getCountryCode(), cy.getDistrict(), cy.getPopulation());
         }
@@ -1015,6 +1016,7 @@ public class App {
             System.out.println("No Capital Cities");
             return;
         }
+        System.out.println(String.format("%1$-20s %2$-25s %3$-25s", "Name", "Country","Population"));
         for (City ccy : Ccities) {
             if (ccy == null)
                 continue;
@@ -1541,9 +1543,9 @@ public class App {
             return;
         }
         // Print header
-        System.out.println("a number of people that used following languages with percentage");
+        System.out.println("Number of people that used following languages with percentage");
+        System.out.println("Number of Languages - " + language.size());
         System.out.println(String.format("%-40s %-40s %-20s", "Language Name", "Total number of people","Percentage of world"));
-        System.out.println("number of Languages - " + language.size());
         // Loop over all the answer in the list
         for (Countrylanguage langs : language)
         {
