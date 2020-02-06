@@ -15,28 +15,28 @@ public class AppIntegrationTest {
     }
 
     @Test
-    void getCountryTest() {
-
-        ArrayList<Country> countries = new ArrayList<>();
+    void getCountryTest()
+    {
+        ArrayList<Country> countries  = new ArrayList<Country>();
         Country Country = new Country();
         Country.Code = "ABW";
         Country.Name = "Aruba";
         Country.Continent = "North America";
         Country.Region = "Caribbean";
     }
-
     @Test
-    void getcityTest() {
-        ArrayList<City> cities = new ArrayList<>();
-        City City = new City();
-        City.Name = "Kabul";
-        City.CountryCode = "AFG";
-        City.Population = 1780000;
+    void getCitiesTest()
+    {
+        ArrayList<City> cities  = new ArrayList<City>();
+        City city = new City();
+        city.Name = "Kabul";
+        city.CountryCode = "AFG";
+        city.Population = 1780000;
     }
-
     @Test
-    void getcountrylanguageTest() {
-        ArrayList<Countrylanguage> countrylanguage = new ArrayList<>();
+    void getCountrylanguagesTest()
+    {
+        ArrayList<Countrylanguage> countrylanguages  = new ArrayList<Countrylanguage>();
         Countrylanguage Countrylanguage = new Countrylanguage();
         Countrylanguage.CountryCode = "ABW";
         Countrylanguage.Language = "Dutch";
