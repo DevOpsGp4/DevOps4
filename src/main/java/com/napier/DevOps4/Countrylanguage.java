@@ -1,11 +1,5 @@
 package com.napier.DevOps4;
 
-import sun.font.TrueTypeFont;
-
-import static java.lang.Boolean.TYPE;
-import static java.lang.Boolean.valueOf;
-import static java.util.jar.Pack200.Packer.TRUE;
-
 public class Countrylanguage {
 
 
@@ -89,4 +83,17 @@ public class Countrylanguage {
      * CountryLanguage Percentage
      */
     public Float Percentage;
+
+    public String getLanguage() {
+        return Language;
+    }
+
+    public void setLanguage(String language) {
+        Language = language;
+    }
+
+    /**
+     * CountryLanguage Language
+     */
+    private String Language;
 }
