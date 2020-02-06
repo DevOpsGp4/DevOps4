@@ -259,9 +259,9 @@ public class App {
         System.out.println("===============================================");
         System.out.println("7. EXIT SUB MENU");
 
-        while (n != 7)// Exits the program when 5 is pressed
+        while (n != 7)// Exits the program when 7 is pressed
         {
-            System.out.print("\n Please enter option 1-7 to continue...: ");
+            System.out.print("\n Please enter option 1-6 to continue or 7 to exit...: ");
             n = Integer.parseInt(System.console().readLine());
             // Reads user input and takes them to selected code.
             if (n > 7 || n < 1) {
@@ -278,32 +278,32 @@ public class App {
             if (n == 1) {
                 ArrayList<City> Ccities = a.queryCC1();
                 a.displayCCities(Ccities);
-                CapitalCityReport();
+
             }
             if (n == 2) {
                 ArrayList<City> Ccities = a.queryCC2();
                 a.displayCCities(Ccities);
-                CapitalCityReport();
+
             }
             if (n == 3) {
                 ArrayList<City> Ccities = a.queryCC3();
                 a.displayCCities(Ccities);
-                CapitalCityReport();
+
             }
             if (n == 4) {
                 ArrayList<City> Ccities = a.queryCC4();
                 a.displayCCities(Ccities);
-                CapitalCityReport();
+
             }
             if (n == 5) {
                 ArrayList<City> Ccities = a.queryCC5();
                 a.displayCCities(Ccities);
-                CapitalCityReport();
+
             }
             if (n == 6) {
                 ArrayList<City> Ccities = a.queryCC6();
                 a.displayCCities(Ccities);
-                CapitalCityReport();
+
             }
         }
     }
@@ -1190,6 +1190,7 @@ public class App {
      * @return populationPerCon
      */
     public ArrayList<PopulationPercent> query23() {
+        System.out.println("1. Population of people, people living in cities, and people not living in cities in each region");
         try {
             ArrayList<PopulationPercent> populationPerCon = new ArrayList<>();
             // Create an SQL statement
@@ -1232,6 +1233,7 @@ public class App {
      * @return populationPerReg
      */
     public ArrayList<PopulationPercent> query24() {
+        System.out.println("1. Population of people, people living in cities, and people not living in cities in each region");
         ArrayList<PopulationPercent> populationPerReg = new ArrayList<>();
         try {
             // Create an SQL statement
@@ -1274,6 +1276,7 @@ public class App {
      * @return populationPerCou
      */
     public ArrayList<PopulationPercent> query25() {
+        System.out.println("1. Population of people, people living in cities, and people not living in cities in each country");
         ArrayList<PopulationPercent> populationPerCou = new ArrayList<>();
         try {
             // Create an SQL statement
