@@ -95,5 +95,5 @@ public class Countrylanguage {
     /**
      * CountryLanguage Language
      */
-    private String Language;
+    public String Language;
 }
