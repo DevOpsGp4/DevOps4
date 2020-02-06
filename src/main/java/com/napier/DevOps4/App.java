@@ -1175,7 +1175,7 @@ public class App
                 System.out.println(String.format("%-25s %-25s", "District Name", "City Population"));
                 for (City d:districts)
                 {
-                System.out.println(String.format("%-25s %-25s", d.getDistrict(), d.getPopulation()));
+                    System.out.println(String.format("%-25s %-25s", d.getDistrict(), d.getPopulation()));
                 }
             }
             if (n == 9)
