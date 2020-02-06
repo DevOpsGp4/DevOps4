@@ -66,8 +66,9 @@ public class Countrylanguage {
 
     @Override
     public String toString() {
-        return "countrylanguage{" +
+        return "Countrylanguage{" +
                 "Name='" + Name + '\'' +
+                ", total=" + totallang +
                 ", CountryCode='" + CountryCode + '\'' +
                 ", Population='" + Population + '\'' +
                 ", IsOfficial='" + IsOfficial + '\'' +
@@ -91,4 +92,16 @@ public class Countrylanguage {
         Language = language;
     }
 
+    public long getTotallang() {
+        return totallang;
+    }
+
+    public void setTotallang(long total) {
+        this.totallang = total;
+    }
+
+    /**
+     * Total Population.
+     */
+    private long totallang;
 }

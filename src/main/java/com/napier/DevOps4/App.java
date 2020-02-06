@@ -28,6 +28,7 @@ public class App {
         //This is the main menu that will be displayed first.
         System.out.println("  World Population ");
         System.out.println("===============================================");
+        System.out.println("All the Reports are ordered by largest to smallest");
         System.out.println("1. Country Report");
         System.out.println("2. City Report");
         System.out.println("3. Capital City Report");
@@ -70,7 +71,12 @@ public class App {
             }
             if (n == 5) {
                 // Language report
-                LanguageReport();
+                App a = new App();
+                a.connect("localhost:33060");
+                // Extract population of living in cities and not
+                ArrayList<Countrylanguage> language = a.Languagelist();
+                // Print format function for population living and not living in cities
+                a.displaylangauge(language);
             }
 
         }
@@ -415,70 +421,6 @@ public class App {
             }
         }
     }
-
-    /**
-     * Sub Menus5 Language Report
-     */
-    public static void LanguageReport() {
-        Scanner console = new Scanner(System.in);
-        // Create new Application
-        App a = new App();
-        // Connect to database
-        a.connect("localhost:33060");
-        char c;
-        int n = 0;
-
-        // this will be the sub menu that gets displayed.
-        System.out.println("  Language Report ");
-        System.out.println("===============================================");
-        System.out.println("1. Chinese");
-        System.out.println("2. English");
-        System.out.println("3. Hindi");
-        System.out.println("4. Spanish");
-        System.out.println("5. Arabic");
-        System.out.println("===============================================");
-        System.out.println("6. EXIT SUB MENU");
-
-        while (n != 6)// Exits the program when 5 is pressed
-        {
-            System.out.print("\n Please enter option 1-5 to continue or 6 to exit...: ");
-            n = Integer.parseInt(System.console().readLine());
-            // Reads user input and takes them to selected code.
-            if (n > 6 || n < 1) {
-                //Invalid input
-                System.out.print("Invalid input, please try again...");
-            }
-            if (n == 6) {
-                // Exit output
-                System.out.print("Back to Menus...");
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-                Menus();
-            }
-            if (n == 1) {
-                ArrayList<Countrylanguage> languages = a.chineseL();
-                a.displayLanguage(languages);
-            }
-
-            if (n == 2) {
-                ArrayList<Countrylanguage> languages = a.englishL();
-                a.displayLanguage(languages);
-            }
-            if (n == 3) {
-                ArrayList<Countrylanguage> languages = a.hindiL();
-                a.displayLanguage(languages);
-            }
-            if (n == 4) {
-                ArrayList<Countrylanguage> languages = a.spanishL();
-                a.displayLanguage(languages);
-            }
-            if (n == 5) {
-                ArrayList<Countrylanguage> languages = a.arabicL();
-                a.displayLanguage(languages);
-            }
-        }
-    }
-
     /**
      * Connect to the MySQL database.
      */
@@ -1547,154 +1489,70 @@ public class App {
     }
 
     /**
-     * Set Methods
-     *
-     * @return An array list of all countries
+     * @return Total population with the respective language used.
      */
-    public ArrayList<Countrylanguage> getLanguage(Statement stmt, String strSelect) throws SQLException {
-        ResultSet resultSet = stmt.executeQuery(strSelect);
-        // Extract country information
-        ArrayList<Countrylanguage> languages = new ArrayList<>();
-        while (resultSet.next()) {
-            Countrylanguage cl = new Countrylanguage();
-            cl.setName(resultSet.getString(1));
-            cl.setCountryCode(resultSet.getString(2));
-            cl.setPopulation(resultSet.getString(3));
-            cl.setIsOfficial(resultSet.getString(4));
-            cl.setPercentage(resultSet.getFloat(5));
-            languages.add(cl);
-        }
-        return languages;
-    }
+    public ArrayList<Countrylanguage> Languagelist()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            Statement stmt1 = con.createStatement();
+            // Create string for SQL statement LIMIT 5";
+            String strSelect=
+                    "SELECT  countrylanguage.Language, SUM((country.Population *( countrylanguage.Percentage /100))) from countrylanguage, country WHERE countrylanguage.CountryCode= country.Code GROUP By countrylanguage.Language ORDER By (SUM(100*(country.Population *( countrylanguage.Percentage /100))/6078749450)) DESC LIMIT 5";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract Population information
+            ArrayList<Countrylanguage> language = new ArrayList<>();
+            while (rset.next())
+            {
+                Countrylanguage lang = new Countrylanguage();
+                lang.setName(rset.getString(1));
+                lang.setTotallang(rset.getLong(2));
+                String strSelect1=
+                        "SELECT SUM(country.population) FROM country";
+                ResultSet rset1 = stmt1.executeQuery(strSelect1);
+                while (rset1.next()) {
+                    lang.setPercentage((float)((rset.getLong(2))) * 100 / rset1.getLong(1));
+                }
+                language.add(lang);
+            }
 
+            return language;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+            return null;
+        }
+    }
     /**
      * Display a list of languages.
-     * //* @param languages The list of countries to display.
+     * /return languages The list of countries to display.
      */
-    public void displayLanguage(ArrayList<Countrylanguage> languages) {
-        //Check languages is not null
-        if (languages == null) {
-            System.out.println("No Languages");
+    public void displaylangauge(ArrayList<Countrylanguage> language)
+    {
+        // Check population is not null
+        if (language == null)
+        {
+            System.out.println("No languages");
             return;
         }
-        System.out.println(String.format("%1$-20s %2$-25s %3$-25s %4$-25s %5$-25s\n", "Country Name", "Country Code", "Population", "ISOfficial", "Percentage"));
-        for (Countrylanguage cl : languages) {
-            System.out.println(String.format("%1$-20s %2$-25s %3$-25s %4$-25s %5$-25s\n", cl.getName(), cl.getCountryCode(), cl.getPopulation(), cl.getIsOfficial(), cl.getPercentage()));
-        }
-    }
-
-    /**
-     * Gets Chinese Language usage by largest number to smallest.
-     *
-     * @return A list of Chinese Language usage, or null if there is an error.
-     */
-    public ArrayList<Countrylanguage> chineseL() {
-        System.out.println("1 - Chinese.\n");
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT country.Name, countrylanguage.CountryCode, country.Population, countrylanguage.IsOfficial, countrylanguage.Percentage FROM `countrylanguage`,`country` WHERE countrylanguage.CountryCode=country.Code AND countrylanguage.Language='Chinese' ORDER BY `countrylanguage`.`Percentage` DESC";
-            // Execute SQL statement
-            return getLanguage(stmt, strSelect);
-        } catch (Exception e) //Catch any errors and print error message
+        // Print header
+        System.out.println("a number of people that used following languages with percentage");
+        System.out.println(String.format("%-40s %-40s %-20s", "Language Name", "Total number of people","Percentage of world"));
+        System.out.println("number of Languages - " + language.size());
+        // Loop over all the answer in the list
+        for (Countrylanguage langs : language)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get details");
-            return null;
-        }
-    }
-
-    /**
-     * Gets English Language usage by largest number to smallest.
-     *
-     * @return A list of Chinese Language usage, or null if there is an error.
-     */
-    public ArrayList<Countrylanguage> englishL() {
-        System.out.println("1 - Chinese.\n");
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT country.Name, countrylanguage.CountryCode, countrylanguage.Language, countrylanguage.IsOfficial, countrylanguage.Percentage FROM `countrylanguage`,`country` WHERE countrylanguage.CountryCode=country.Code AND countrylanguage.Language='English' ORDER BY `countrylanguage`.`Percentage` DESC";
-            // Execute SQL statement
-            return getLanguage(stmt, strSelect);
-        } catch (Exception e) //Catch any errors and print error message
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get details");
-            return null;
-        }
-    }
-
-    /**
-     * Gets Hindi Language usage by largest number to smallest.
-     *
-     * @return A list of Hindi Language usage, or null if there is an error.
-     */
-    public ArrayList<Countrylanguage> hindiL() {
-        System.out.println("1 - Chinese.\n");
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT country.Name, countrylanguage.CountryCode, countrylanguage.Language, countrylanguage.IsOfficial, countrylanguage.Percentage FROM `countrylanguage`,`country` WHERE countrylanguage.CountryCode=country.Code AND countrylanguage.Language='Hindi' ORDER BY `countrylanguage`.`Percentage` DESC";
-            // Execute SQL statement
-            return getLanguage(stmt, strSelect);
-        } catch (Exception e) //Catch any errors and print error message
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get details");
-            return null;
-        }
-    }
-
-    /**
-     * Gets Spanish Language usage by largest number to smallest.
-     *
-     * @return A list of Spanish Language usage, or null if there is an error.
-     */
-    public ArrayList<Countrylanguage> spanishL() {
-        System.out.println("1 - Chinese.\n");
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT country.Name, countrylanguage.CountryCode, countrylanguage.Language, countrylanguage.IsOfficial, countrylanguage.Percentage FROM `countrylanguage`,`country` WHERE countrylanguage.CountryCode=country.Code AND countrylanguage.Language='Spanish' ORDER BY `countrylanguage`.`Percentage` DESC";
-            // Execute SQL statement
-            return getLanguage(stmt, strSelect);
-        } catch (Exception e) //Catch any errors and print error message
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get details");
-            return null;
-        }
-    }
-
-    /**
-     * Gets Arabic Language usage by largest number to smallest.
-     *
-     * @return A list of Arabic Language usage, or null if there is an error.
-     */
-    public ArrayList<Countrylanguage> arabicL() {
-        System.out.println("1 - Chinese.\n");
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT country.Name, countrylanguage.CountryCode, countrylanguage.Language, countrylanguage.IsOfficial, countrylanguage.Percentage FROM `countrylanguage`,`country` WHERE countrylanguage.CountryCode=country.Code AND countrylanguage.Language='Arabic' ORDER BY `countrylanguage`.`Percentage` DESC";
-            // Execute SQL statement
-            return getLanguage(stmt, strSelect);
-        } catch (Exception e) //Catch any errors and print error message
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get details");
-            return null;
+            if (langs == null)
+                continue;
+            String lang_string =
+                    String.format("%-40s %-40s %-20s",
+                            langs.getName(), langs.getTotallang(),langs.getPercentage()+"%");
+            System.out.println(lang_string);
         }
     }
 }
