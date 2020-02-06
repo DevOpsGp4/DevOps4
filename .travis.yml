@@ -25,7 +25,7 @@ jobs:
       script: mvn test -Dtest=com.napier.DevOps4.AppTest
     - stage: integration tests
       jdk: oraclejdk11
-      script: mvn test -Dtest=com.napier.DevOps4.AppIntegrationTest
+      script: mvn test -Dtest=com.napier.DevOps4.AppintegrationTest
     - stage: GitHub Release
       install: skip
       jdk: oraclejdk11
@@ -41,10 +41,10 @@ jobs:
         # Set tag
         - git tag $TRAVIS_TAG
       deploy:
-        provider: release
+        provider: releases
         api_key: $GITHUB_OAUTH_TOKEN
         # Copy built JAR file.  JAR built in $TRAVIS_BUILD_DIR/
-        file: $TRAVIS_BUILD_DIR/target/DevOps4-0.1.0.1.jar
+        file: $TRAVIS_BUILD_DIR/target/DevOps4-0.1.0.1-jar-with-dependencies.jar
         skip_cleanup: true
 
 stages:
