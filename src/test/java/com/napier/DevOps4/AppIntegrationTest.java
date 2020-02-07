@@ -34,6 +34,15 @@ public class AppIntegrationTest {
         city.Population = 1780000;
     }
     @Test
+    void getCapitalCitiesTest()
+    {
+        ArrayList<City> cities  = new ArrayList<City>();
+        City city = new City();
+        city.Name = "Kabul";
+        city.CountryCode = "AFG";
+        city.Population = 1780000;
+    }
+    @Test
     void getCountrylanguagesTest()
     {
         ArrayList<Countrylanguage> countrylanguages  = new ArrayList<Countrylanguage>();
@@ -41,5 +50,8 @@ public class AppIntegrationTest {
         Countrylanguage.CountryCode = "ABW";
         Countrylanguage.Language = "Dutch";
     }
+
+
+
 }
 

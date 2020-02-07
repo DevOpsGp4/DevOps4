@@ -55,8 +55,102 @@ public class AppTest {
         cities.add(null);
         app.displayCCities(cities);
     }
+    @Test
     void getCountryListTestEmpty() {
         //What happens when we pass null to getCountryList - Since our main doesn't do anything yet, it is not implemented yet
         app.displaylangauge(null);
     }
+
+    @Test
+    void cityWorldTestNull(){
+        app.cityWorld();
+    }
+
+    @Test
+    void countryContinentTestNull(){
+        app.countryContinent();
+    }
+    @Test
+    void countryRegionTestNull(){
+        app.countryRegion();
+    }
+//    @Test
+//    void topWorldCountry(){
+//        app.topWorldCountry();
+//    }
+//
+//    @Test
+//    void topRegionCountry(){
+//        app.topRegionCountry();
+//    }
+//
+//    @Test
+//    void topContinentCountry(){
+//        app.topContinentCountry();
+//    }
+
+    @Test
+    void cityContinent(){
+        app.cityContinent();
+    }
+    @Test
+    void cityRegion(){
+        app.cityRegion();
+    }
+    @Test
+    void cityCountry(){
+        app.cityCountry();
+    }
+
+    @Test
+    void cityDistrict(){
+        app.cityDistrict();
+    }
+//    @Test
+//    void topWorld(){
+//        app.topWorld();
+//    }
+//    @Test
+//    void topContinent(){
+//        app.topContinent();
+//    }
+//    @Test
+//    void topRegion(){
+//        app.topRegion();
+//    }
+//    @Test
+//    void topCountry(){
+//        app.topCountry();
+//    }
+//    @Test
+//    void topDistrict(){
+//        app.topDistrict();
+//    }
+    @Test
+    void queryCC1(){
+        app.queryCC1();
+    }
+    @Test
+    void queryCC2(){
+        app.queryCC2();
+    }
+    @Test
+    void queryCC3(){
+        app.queryCC3();
+    }
+//    @Test
+//    void queryCC4(){
+//        app.queryCC4();
+//    }
+//    @Test
+//    void queryCC5(){
+//        app.queryCC5();
+//    }
+//
+//    @Test
+//    void queryCC6(){
+//        app.queryCC6();
+//    }
+//
+
 }
