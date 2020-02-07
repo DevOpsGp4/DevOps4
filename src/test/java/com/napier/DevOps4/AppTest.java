@@ -10,8 +10,7 @@ public class AppTest {
 
     @BeforeAll
     static void init() {
-        App a = new App();
-        a.connect("localhost:33060");
+        app = new App();
     }
     //Country Testing
     @Test
