@@ -1,14 +1,14 @@
 package com.napier.DevOps4;
 
 public class PopulationPercent {
-    private String continentName;
-    private String regionName;
-    private String countryName;
-    private Long countryPopulation;
-    private Long liveInCity;
-    private Float liveInCityPercent;
-    private Long noLiveInCity;
-    private Float noLiveInCityPercent;
+    public String continentName;
+    public String regionName;
+    public String countryName;
+    public Long countryPopulation;
+    public Long liveInCity;
+    public Float liveInCityPercent;
+    public Long noLiveInCity;
+    public Float noLiveInCityPercent;
 
     public String getContinentName() {
         return continentName;

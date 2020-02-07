@@ -1190,7 +1190,7 @@ public class App {
      * @return populationPerCon
      */
     public ArrayList<PopulationPercent> query23() {
-        System.out.println("1. Population of people, people living in cities, and people not living in cities in each region");
+        System.out.println("1. Population of people, people living in cities, and people not living in cities in each continent");
         try {
             ArrayList<PopulationPercent> populationPerCon = new ArrayList<>();
             // Create an SQL statement
@@ -1317,7 +1317,6 @@ public class App {
      * The population of the world.
      */
     public void query26() {
-        ArrayList<Country> world = new ArrayList<>();
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
