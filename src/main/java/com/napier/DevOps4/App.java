@@ -96,7 +96,7 @@ public class App
         System.out.println(String.format("%-25s %-25s", "City Name", "City Population"));
         for (city c:cities)
         {
-          System.out.println(String.format("%-25s %-25s", c.getName(), c.getPopulation()));
+            System.out.println(String.format("%-25s %-25s", c.getName(), c.getPopulation()));
         }
         System.out.println("====================================================================================================");
 
