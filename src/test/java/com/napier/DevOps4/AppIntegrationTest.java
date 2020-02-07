@@ -10,153 +10,36 @@ public class AppIntegrationTest {
 
     @BeforeAll
     static void init() {
-        app = new App();
-        app.connect("localhost:33060");
+        App a = new App();
+        a.connect("localhost:33060");
     }
 
     @Test
     void getCountryTest()
     {
         ArrayList<Country> countries  = new ArrayList<>();
-        Country Country = new Country();
-        Country.Code = "ABW";
-        Country.Name = "Aruba";
-        Country.Continent = "North America";
-        Country.Region = "Caribbean";
-    }
-    @Test
-    void testCountryWorld()
-    {
-        try{
-            ArrayList<Country> countries = app.countryWorld();
-            for(Country country : countries){
-                country.Continent= "Asia";
-                country.Name = "China";
-                country.Code = "CHN";
-                country.Capital= "1891";
-                country.Population = 1277558000;
-                country.Region = "Eastern Asia";
-
-            }
-            System.out.print("Country world passed!");
-        } catch (Exception m) {
-            m.printStackTrace();
-        }
-    }
-
-    @Test
-    void testCountryContinent()
-    {
-        try{
-            ArrayList<Country> countries = app.countryContinent();
-            for(Country country : countries){
-                country.Continent= "Asia";
-                country.Name = "China";
-                country.Code = "CHN";
-                country.Capital= "1891";
-                country.Population = 1277558000;
-                country.Region = "Eastern Asia";
-
-            }
-            System.out.print("Country Continent passed!");
-        } catch (Exception m) {
-            m.printStackTrace();
-        }
-    }
-
-    @Test
-    void testCountryRegion()
-    {
-        try{
-            ArrayList<Country> countries = app.countryRegion();
-            for(Country country : countries){
-                country.Continent= "Asia";
-                country.Name = "China";
-                country.Code = "CHN";
-                country.Capital= "1891";
-                country.Population = 1277558000;
-                country.Region = "Eastern Asia";
-            }
-            System.out.print("Country Region Passed!");
-        } catch (Exception m) {
-            m.printStackTrace();
-        }
-    }
-
-    @Test
-    void testTopWorldCountry()
-    {
-        try{
-            ArrayList<Country> countries = app.topWorldCountry();
-            for(Country country : countries){
-                country.Continent= "Asia";
-                country.Name = "China";
-                country.Code = "CHN";
-                country.Capital= "1891";
-                country.Population = 1277558000;
-                country.Region = "Eastern Asia";
-
-            }
-            System.out.print("Top World Country Passed!");
-        } catch (Exception m) {
-            m.printStackTrace();
-        }
-    }
-
-    @Test
-    void testTopContinentCountry()
-    {
-        try{
-            ArrayList<Country> countries = app.topContinentCountry();
-            for(Country country : countries){
-                country.Continent= "Asia";
-                country.Name = "China";
-                country.Code = "CHN";
-                country.Capital= "1891";
-                country.Population = 1277558000;
-                country.Region = "Eastern Asia";
-            }
-            System.out.print("Top Country Continent Passed!");
-        } catch (Exception m) {
-            m.printStackTrace();
-        }
-    }
-
-    @Test
-    void testTopRegionCountry()
-    {
-        try{
-            ArrayList<Country> countries = app.topRegionCountry();
-            for(Country country : countries){
-                country.Continent= "Asia";
-                country.Name = "China";
-                country.Code = "CHN";
-                country.Capital= "1891";
-                country.Population = 1277558000;
-                country.Region = "Eastern Asia";
-            }
-            System.out.print("Top Country Region Passed!");
-        } catch (Exception m) {
-            m.printStackTrace();
-        }
+        Country Ctry1 = new Country();
+        Ctry1.Code = "ABW";
+        Ctry1.Name = "Aruba";
+        Ctry1.Continent = "North America";
+        Ctry1.Region = "Caribbean";
     }
     @Test
     void getCitiesTest()
     {
-        ArrayList<City> cities  = new ArrayList<City>();
+        ArrayList<City> cities  = new ArrayList<>();
         City city = new City();
         city.Name = "Kabul";
         city.CountryCode = "AFG";
         city.Population = 1780000;
     }
     @Test
-    void getCountrylanguagesTest()
+    void TestCountrylanguages()
     {
-        ArrayList<Countrylanguage> countrylanguages  = new ArrayList<Countrylanguage>();
+        ArrayList<Countrylanguage> countrylanguages  = new ArrayList<>();
         Countrylanguage Countrylanguage = new Countrylanguage();
         Countrylanguage.CountryCode = "ABW";
         Countrylanguage.Language = "Dutch";
     }
-
 }
 
