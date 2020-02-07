@@ -98,8 +98,8 @@ public class AppIntegrationTest {
 
             }
             System.out.print("Top World Country Passed!");
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception m) {
+            m.printStackTrace();
         }
     }
 
@@ -117,8 +117,8 @@ public class AppIntegrationTest {
                 country.Region = "Eastern Asia";
             }
             System.out.print("Top Country Continent Passed!");
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception m) {
+            m.printStackTrace();
         }
     }
 
@@ -136,8 +136,8 @@ public class AppIntegrationTest {
                 country.Region = "Eastern Asia";
             }
             System.out.print("Top Country Region Passed!");
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception m) {
+            m.printStackTrace();
         }
     }
     @Test
